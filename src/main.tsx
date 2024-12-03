@@ -1,11 +1,11 @@
-import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import './scss/custom.scss';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import App from './App.tsx';
-import './scss/custom.scss';
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <Router>
     <App />
-  </StrictMode>
+  </Router>
 );
