@@ -10,11 +10,12 @@
   &__heading {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 1.5rem;
     color: #333;
   }
 
   &__input-group {
+    position: relative;
     margin-bottom: 20px;
   }
 
@@ -28,26 +29,32 @@
   &__input {
     width: 100%;
     padding: 12px;
-    font-size: 16px;
+    font-size: 1rem;
     border-radius: 8px;
     border: 1px solid #ddd;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
 
-    &:focus {
+    &:hover {
+      border-color: #bbb;
+    }
+
+    &:focus,
+    &:active,
+    &:focus-visible {
       border-color: #007bff;
       outline: none;
     }
 
-    &:hover {
-      border-color: #bbb;
+    &.error {
+      border-color: red;
     }
   }
 
   &__button {
     width: 100%;
     padding: 12px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     color: #000;
     background-color: #ec8080;
@@ -80,5 +87,14 @@
         text-decoration: underline;
       }
     }
+  }
+
+  &__error-message {
+    position: absolute;
+    color: red;
+    top: 100%;
+    right: 0;
+    padding: 4px 4px;
+    font-size: 0.75rem;
   }
 }

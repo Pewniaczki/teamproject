@@ -1,28 +1,42 @@
-import { useState } from 'react';
+import cn from 'classnames';
+import { useFormik } from 'formik';
+
+import { validationSchema } from './validation-schema';
 import './RegistrationPage.scss';
 
 export const RegistrationPage = () => {
-  const [username, setUsername] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const formik = useFormik({
+    initialValues: {
+      username: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      console.table(values);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Username:', username);
-    console.log('First Name:', firstName);
-    console.log('Last Name:', lastName);
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
+      // API call or other form submission logic
 
-    // logika rejestracji tutaj
+      formik.resetForm();
+    },
+  });
+
+  const hasFieldError = (fieldName: keyof typeof formik.errors) => {
+    return formik.touched[fieldName] && formik.errors[fieldName];
+  };
+
+  const getInputClassNames = (fieldName: keyof typeof formik.values) => {
+    const hasError = hasFieldError(fieldName);
+    return cn('registration-form__input', {
+      error: hasError,
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="registration-form">
+    <form onSubmit={formik.handleSubmit} className="registration-form">
       <h2 className="registration-form__heading">Sign Up</h2>
       <div className="registration-form__input-group">
         <label htmlFor="username" className="registration-form__label">
@@ -31,11 +45,16 @@ export const RegistrationPage = () => {
         <input
           type="text"
           id="username"
-          className="registration-form__input"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
+          className={getInputClassNames('username')}
+          value={formik.values.username}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {hasFieldError('username') && (
+          <div className="registration-form__error-message">
+            {formik.errors.username}
+          </div>
+        )}
       </div>
       <div className="registration-form__input-group">
         <label htmlFor="firstName" className="registration-form__label">
@@ -44,11 +63,16 @@ export const RegistrationPage = () => {
         <input
           type="text"
           id="firstName"
-          className="registration-form__input"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          required
+          className={getInputClassNames('firstName')}
+          value={formik.values.firstName}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {hasFieldError('firstName') && (
+          <div className="registration-form__error-message">
+            {formik.errors.firstName}
+          </div>
+        )}
       </div>
       <div className="registration-form__input-group">
         <label htmlFor="lastName" className="registration-form__label">
@@ -57,11 +81,16 @@ export const RegistrationPage = () => {
         <input
           type="text"
           id="lastName"
-          className="registration-form__input"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required
+          className={getInputClassNames('lastName')}
+          value={formik.values.lastName}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {hasFieldError('lastName') && (
+          <div className="registration-form__error-message">
+            {formik.errors.lastName}
+          </div>
+        )}
       </div>
       <div className="registration-form__input-group">
         <label htmlFor="email" className="registration-form__label">
@@ -70,11 +99,16 @@ export const RegistrationPage = () => {
         <input
           type="email"
           id="email"
-          className="registration-form__input"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
+          className={getInputClassNames('email')}
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {hasFieldError('email') && (
+          <div className="registration-form__error-message">
+            {formik.errors.email}
+          </div>
+        )}
       </div>
       <div className="registration-form__input-group">
         <label htmlFor="password" className="registration-form__label">
@@ -83,11 +117,16 @@ export const RegistrationPage = () => {
         <input
           type="password"
           id="password"
-          className="registration-form__input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
+          className={getInputClassNames('password')}
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {hasFieldError('password') && (
+          <div className="registration-form__error-message">
+            {formik.errors.password}
+          </div>
+        )}
       </div>
       <div className="registration-form__input-group">
         <label htmlFor="confirmPassword" className="registration-form__label">
@@ -96,11 +135,16 @@ export const RegistrationPage = () => {
         <input
           type="password"
           id="confirmPassword"
-          className="registration-form__input"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
+          className={getInputClassNames('confirmPassword')}
+          value={formik.values.confirmPassword}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
         />
+        {hasFieldError('confirmPassword') && (
+          <div className="registration-form__error-message">
+            {formik.errors.confirmPassword}
+          </div>
+        )}
       </div>
       <button type="submit" className="registration-form__button">
         Sign Up
