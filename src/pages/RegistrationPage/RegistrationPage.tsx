@@ -134,6 +134,11 @@ export const RegistrationPage = () => {
             disabled={isButtonDisabled}
             aria-disabled={isButtonDisabled}
             tabIndex={isButtonDisabled ? -1 : 0}
+            title={
+              isButtonDisabled
+                ? 'Fill out all required fields first.'
+                : undefined
+            }
           >
             {submissionStatus === 'pending' ? 'Signing up...' : 'Signup'}
           </Button>

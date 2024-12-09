@@ -21,10 +21,8 @@
   }
 
   &:disabled {
-    // background-color: #d3d3d3;
     opacity: 0.5;
-    // color: #777;
     transform: none;
-    pointer-events: none;
+    cursor: not-allowed;
   }
 }
