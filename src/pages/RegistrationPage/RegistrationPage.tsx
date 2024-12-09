@@ -2,6 +2,7 @@ import { FormikProvider, useFormik } from 'formik';
 
 import { validationSchema } from './validation-schema';
 import './RegistrationPage.scss';
+import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 
 export const RegistrationPage = () => {
@@ -84,9 +85,12 @@ export const RegistrationPage = () => {
             />
           </div>
 
-          <button type="submit" className="registration-form__button">
+          <Button
+            type="submit"
+            disabled={!formik.dirty || !formik.isValid || formik.isSubmitting}
+          >
             Sign Up
-          </button>
+          </Button>
         </form>
         <div className="registration-form__login">
           <span>Already have an account? </span>
