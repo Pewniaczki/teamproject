@@ -1,11 +1,18 @@
 import { FormikProvider, useFormik } from 'formik';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { validationSchema } from './validation-schema';
 import './RegistrationPage.scss';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 
+type SubmissionStatus = 'idle' | 'pending' | 'success' | 'error';
+
 export const RegistrationPage = () => {
+  const [submissionStatus, setSubmissionStatus] =
+    useState<SubmissionStatus>('idle');
+
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -16,20 +23,45 @@ export const RegistrationPage = () => {
       confirmPassword: '',
     },
     validationSchema,
-    onSubmit: (values) => {
-      console.table(values);
+    onSubmit: async (values) => {
+      setSubmissionStatus('pending');
 
-      // API call or other form submission logic
+      try {
+        // Simulating an API call
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        console.table(values);
 
-      formik.resetForm();
+        setSubmissionStatus('success');
+        formik.resetForm();
+      } catch (error) {
+        setSubmissionStatus('error');
+        console.error(error);
+      }
     },
   });
+
+  const isButtonDisabled =
+    !formik.dirty || !formik.isValid || formik.isSubmitting;
 
   return (
     <FormikProvider value={formik}>
       <div className="registration-container">
         <form onSubmit={formik.handleSubmit} className="registration-form">
           <h2 className="registration-form__heading">Sign Up</h2>
+          {submissionStatus === 'success' && (
+            <p className="registration-form__success-message">
+              Registration successful! You can now{' '}
+              <Link to="/login" className="registration-form__success-link">
+                log in
+              </Link>
+              .
+            </p>
+          )}
+          {submissionStatus === 'error' && (
+            <p className="registration-form__error-message">
+              Something went wrong. Please try again.
+            </p>
+          )}
           <div className="registration-form__input-group">
             <InputField
               label="Username:"
@@ -38,6 +70,8 @@ export const RegistrationPage = () => {
               value={formik.values.username}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              disabled={formik.isSubmitting}
+              aria-disabled={formik.isSubmitting}
             />
 
             <InputField
@@ -47,6 +81,8 @@ export const RegistrationPage = () => {
               value={formik.values.firstName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              disabled={formik.isSubmitting}
+              aria-disabled={formik.isSubmitting}
             />
 
             <InputField
@@ -56,6 +92,8 @@ export const RegistrationPage = () => {
               value={formik.values.lastName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              disabled={formik.isSubmitting}
+              aria-disabled={formik.isSubmitting}
             />
 
             <InputField
@@ -65,6 +103,8 @@ export const RegistrationPage = () => {
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              disabled={formik.isSubmitting}
+              aria-disabled={formik.isSubmitting}
             />
 
             <InputField
@@ -74,6 +114,8 @@ export const RegistrationPage = () => {
               value={formik.values.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              disabled={formik.isSubmitting}
+              aria-disabled={formik.isSubmitting}
             />
             <InputField
               label="Confirm Password:"
@@ -82,24 +124,25 @@ export const RegistrationPage = () => {
               value={formik.values.confirmPassword}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              disabled={formik.isSubmitting}
+              aria-disabled={formik.isSubmitting}
             />
           </div>
 
           <Button
             type="submit"
-            disabled={!formik.dirty || !formik.isValid || formik.isSubmitting}
+            disabled={isButtonDisabled}
+            aria-disabled={isButtonDisabled}
+            tabIndex={isButtonDisabled ? -1 : 0}
           >
-            Sign Up
+            {submissionStatus === 'pending' ? 'Signing up...' : 'Signup'}
           </Button>
         </form>
         <div className="registration-form__login">
           <span>Already have an account? </span>
-          <a
-            href="/team_project_frontend/login"
-            className="registration-form__login-link"
-          >
+          <Link to="/login" className="registration-form__login-link">
             Log in here
-          </a>
+          </Link>
         </div>
       </div>
     </FormikProvider>

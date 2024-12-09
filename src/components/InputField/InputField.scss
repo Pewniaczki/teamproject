@@ -8,7 +8,7 @@
   &__label {
     display: block;
     font-weight: bold;
-    color: #555;
+    color: #333;
   }
 
   &__input {
@@ -30,17 +30,27 @@
       outline: none;
     }
 
+    &:disabled {
+      background-color: #f9f9f9;
+      border-color: #ccc;
+    }
+
     &--error {
       border-color: red;
     }
   }
 
   &__error-message {
+    display: flex;
     position: absolute;
     color: red;
     top: 100%;
     right: 0;
     padding: 0.25rem;
     font-size: 0.75rem;
+  }
+
+  &__error-icon {
+    margin-right: 0.25rem;
   }
 }
