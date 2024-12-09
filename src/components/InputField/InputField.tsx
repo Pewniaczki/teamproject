@@ -1,44 +1,30 @@
 import cn from 'classnames';
-import { FormikValues, useFormikContext } from 'formik';
+import { useField } from 'formik';
 import './InputField.scss';
 
 interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  name: string;
 }
 
-export const InputField = ({
-  label,
-  name,
-  id,
-  ...inputProps
-}: InputFieldProps) => {
-  const { touched, errors } = useFormikContext<FormikValues>();
-  const fieldIdentifier = (id || name) as string;
-  const hasInputError = (fieldName: keyof FormikValues) => {
-    return touched[fieldName] && errors[fieldName];
-  };
+export const InputField = ({ label, name, ...inputProps }: InputFieldProps) => {
+  const [field, meta] = useField(name);
+  const hasError = meta.touched && meta.error;
 
-  const getInputClassNames = (fieldName: keyof FormikValues) => {
-    const hasError = hasInputError(fieldName);
-    return cn('input-field__input', {
-      'input-field__input--error': hasError,
-    });
-  };
   return (
     <div className="input-field">
-      <label htmlFor={id} className="input-field__label">
+      <label htmlFor={inputProps.id} className="input-field__label">
         {label}
       </label>
       <input
-        name={name}
-        id={id}
+        {...field}
         {...inputProps}
-        className={getInputClassNames(fieldIdentifier)}
+        className={cn('input-field__input', {
+          'input-field__input--error': hasError,
+        })}
       />
-      {hasInputError(fieldIdentifier) && (
-        <div className="input-field__error-message">
-          {errors[fieldIdentifier] as string}
-        </div>
+      {hasError && (
+        <div className="input-field__error-message">{meta.error}</div>
       )}
     </div>
   );

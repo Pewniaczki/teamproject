@@ -34,7 +34,7 @@ export const RegistrationPage = () => {
             <InputField
               label="Username:"
               type="text"
-              id="username"
+              name="username"
               value={formik.values.username}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -43,7 +43,7 @@ export const RegistrationPage = () => {
             <InputField
               label="First Name:"
               type="text"
-              id="firstName"
+              name="firstName"
               value={formik.values.firstName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -52,7 +52,7 @@ export const RegistrationPage = () => {
             <InputField
               label="Last Name:"
               type="text"
-              id="lastName"
+              name="lastName"
               value={formik.values.lastName}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -61,7 +61,7 @@ export const RegistrationPage = () => {
             <InputField
               label="Email:"
               type="email"
-              id="email"
+              name="email"
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -70,7 +70,7 @@ export const RegistrationPage = () => {
             <InputField
               label="Password:"
               type="password"
-              id="password"
+              name="password"
               value={formik.values.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -78,7 +78,7 @@ export const RegistrationPage = () => {
             <InputField
               label="Confirm Password:"
               type="password"
-              id="confirmPassword"
+              name="confirmPassword"
               value={formik.values.confirmPassword}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
