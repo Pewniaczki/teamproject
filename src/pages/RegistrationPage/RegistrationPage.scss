@@ -1,65 +1,41 @@
-.registration-form {
+.registration-container {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
   max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
   background-color: #f8d3d3;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-family: 'Arial', sans-serif;
+}
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
   &__heading {
     text-align: center;
-    margin-bottom: 20px;
     font-size: 1.5rem;
     color: #333;
   }
 
   &__input-group {
-    position: relative;
-    margin-bottom: 20px;
-  }
-
-  &__label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
-  }
-
-  &__input {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-
-    &:hover {
-      border-color: #bbb;
-    }
-
-    &:focus,
-    &:active,
-    &:focus-visible {
-      border-color: #007bff;
-      outline: none;
-    }
-
-    &.error {
-      border-color: red;
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   &__button {
     width: 100%;
-    padding: 12px;
+    padding: 0.75rem;
     font-size: 1rem;
     font-weight: bold;
     color: #000;
     background-color: #ec8080;
     border: none;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     cursor: pointer;
     transition:
       background-color 0.3s ease,
@@ -76,7 +52,6 @@
 
   &__login {
     text-align: center;
-    margin-top: 15px;
 
     &-link {
       color: #000;
@@ -87,14 +62,5 @@
         text-decoration: underline;
       }
     }
-  }
-
-  &__error-message {
-    position: absolute;
-    color: red;
-    top: 100%;
-    right: 0;
-    padding: 4px 4px;
-    font-size: 0.75rem;
   }
 }

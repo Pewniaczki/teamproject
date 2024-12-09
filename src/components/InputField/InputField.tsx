@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { FormikValues, useFormikContext } from 'formik';
+import './InputField.scss';
 
 interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -13,19 +14,19 @@ export const InputField = ({
 }: InputFieldProps) => {
   const { touched, errors } = useFormikContext<FormikValues>();
   const fieldIdentifier = (id || name) as string;
-  const hasFieldError = (fieldName: keyof FormikValues) => {
+  const hasInputError = (fieldName: keyof FormikValues) => {
     return touched[fieldName] && errors[fieldName];
   };
 
   const getInputClassNames = (fieldName: keyof FormikValues) => {
-    const hasError = hasFieldError(fieldName);
-    return cn('registration-form__input', {
-      error: hasError,
+    const hasError = hasInputError(fieldName);
+    return cn('input-field__input', {
+      'input-field__input--error': hasError,
     });
   };
   return (
-    <div className="registration-form__input-group">
-      <label htmlFor={id} className="registration-form__label">
+    <div className="input-field">
+      <label htmlFor={id} className="input-field__label">
         {label}
       </label>
       <input
@@ -34,8 +35,8 @@ export const InputField = ({
         {...inputProps}
         className={getInputClassNames(fieldIdentifier)}
       />
-      {hasFieldError(fieldIdentifier) && (
-        <div className="registration-form__error-message">
+      {hasInputError(fieldIdentifier) && (
+        <div className="input-field__error-message">
           {errors[fieldIdentifier] as string}
         </div>
       )}
