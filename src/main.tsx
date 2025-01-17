@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import './scss/custom.scss';
+import './scss/main.scss';
 import { HashRouter as Router } from 'react-router-dom';
 
 import App from './App.tsx';
