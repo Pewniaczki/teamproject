@@ -12,7 +12,7 @@ export const CountryMatches: React.FC<CountryMatchesType> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
+    <div className={style.country__wrapper}>
       <div
         className={cn(style.country, {
           [style.country__open]: isOpen,
@@ -57,6 +57,6 @@ export const CountryMatches: React.FC<CountryMatchesType> = ({
           <ListOfLeagues leagues={leagues} />
         </div>
       )}
-    </>
+    </div>
   );
 };

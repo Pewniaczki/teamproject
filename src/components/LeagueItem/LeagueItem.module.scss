@@ -1,19 +1,38 @@
 .league {
-    &__container {
-        display: flex;
-        padding: 5px;
-    }
+  &__container {
+    display: flex;
+    padding: 8px 8px 8px 16px;
+    align-items: center;
+    justify-content: space-between;
 
-    &__logo {
-        width: 16px;
+    &Left {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      align-items: center;
     }
+  }
 
-    &__name {
-        font-size: 1rem;
-    }
+  &__logo {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 
-    &__matches_list {
-        display: flex;
-        flex-direction: column;
-    }
+  &__name {
+    font-size: 1rem;
+    line-height: 21px;
+  }
+
+  &__matches_list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__favoriteIcon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
 }
