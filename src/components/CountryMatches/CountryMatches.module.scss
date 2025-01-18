@@ -18,9 +18,10 @@
 
     &__container {
         display: flex;
+        gap: 10px;
 
         &__img {
-            width: 24px;
+            width: 24px;            
         }
 
         &__paragraph {
