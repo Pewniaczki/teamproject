@@ -3,7 +3,9 @@
 .country {
     display: flex;
     justify-content: space-between;
-    width: $country-list-width;
+    min-width: $country-list-MinWidth;
+    max-width: $country-list-MaxWidth;
+    width: 100%;
     padding: 15px;
     color: $color-grey-20;
     background-color: $color-grey-70;
@@ -21,7 +23,7 @@
         gap: 10px;
 
         &__img {
-            width: 24px;            
+            width: 24px;
         }
 
         &__paragraph {
@@ -30,7 +32,9 @@
     }
 
     &__list {
-        width: $country-list-width;
+        min-width: $country-list-MinWidth;
+        max-width: $country-list-MaxWidth;
+        width: 100%;
 
         &__open {
             margin-bottom: 5px;
