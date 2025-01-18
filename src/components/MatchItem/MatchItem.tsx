@@ -12,11 +12,13 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
     <>
       <table className={style.match}>
         <thead>
-          <th></th>
-          <th></th>
-          <th>W</th>
-          <th>Last 5 matches</th>
-          <th>Mid</th>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>W</th>
+            <th>Last 5 matches</th>
+            <th>Mid</th>
+          </tr>
         </thead>
         <tbody>
           <tr>
