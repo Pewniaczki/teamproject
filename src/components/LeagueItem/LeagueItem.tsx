@@ -19,11 +19,11 @@ export const LeagueItem: React.FC<Props> = ({ league }) => {
         </div>
         <img
           className={style.league__favoriteIcon}
-          onClick={() => setIsFavorite(!isFavorite)}
+          onClick={() => setIsFavorite((prev) => !prev)}
           src={
             isFavorite
-              ? './UI_Elements/star.svg'
-              : './UI_Elements/star_fill.svg'
+              ? './UI_Elements/star_fill.svg'
+              : './UI_Elements/star.svg'
           }
         />
       </div>
