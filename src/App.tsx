@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <nav className="nav">
+      {/* <nav className="nav">
         <div className="nav__links">
           <NavLink
             to="/"
@@ -42,15 +42,13 @@ function App() {
             )}
           </div>
         </div>
-      </nav>
+      </nav> */}
 
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegistrationPage />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+      </Routes>
     </>
   );
 }
