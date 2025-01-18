@@ -3,7 +3,7 @@
 .country {
     display: flex;
     justify-content: space-between;
-    width: 320px;
+    width: $country-list-width;
     padding: 15px;
     color: $color-grey-20;
     background-color: $color-grey-70;
@@ -29,7 +29,7 @@
     }
 
     &__list {
-        width: 320px;
+        width: $country-list-width;
 
         &__open {
             margin-bottom: 5px;
