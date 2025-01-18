@@ -1,0 +1,19 @@
+.league {
+    &__container {
+        display: flex;
+        padding: 5px;
+    }
+
+    &__logo {
+        width: 16px;
+    }
+
+    &__name {
+        font-size: 1rem;
+    }
+
+    &__matches_list {
+        display: flex;
+        flex-direction: column;
+    }
+}

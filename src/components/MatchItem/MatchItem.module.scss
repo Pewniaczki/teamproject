@@ -1,0 +1,22 @@
+.match {
+    font-size: 0.8rem;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+    font-family: "Bai Jamjuree", serif;
+    font-weight: 200;
+    font-style: normal;
+
+    &__container {
+        display: flex;
+
+        &__logo {
+            width: 16px;
+        }
+
+        &__name {
+            white-space: nowrap;
+            font-size: 12px;
+        }
+    }
+}

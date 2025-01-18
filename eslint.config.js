@@ -34,7 +34,10 @@ export default tseslint.config(
       import: importPlugin,
       prettier: prettierPlugin,
     },
+    parser: '@typescript-eslint/parser',
     rules: {
+      "react/jsx-key": "warn",
+      'react/prop-types': 'off',
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',

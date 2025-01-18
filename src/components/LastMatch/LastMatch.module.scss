@@ -1,0 +1,23 @@
+@import '../../scss/variables.scss';
+
+.match {
+    display: inline-block;
+    width: 20px;
+    height: 18px;
+    line-height: 18px;
+    font-weight: bold;
+    color: $color-grey-0;
+    // padding: 5px;
+
+    &__red {
+        background-color: $color-red;
+    }
+
+    &__green {
+        background-color: $color-green;
+    }
+
+    &__yellow {
+        background-color: $color-yellow;
+    }
+}
