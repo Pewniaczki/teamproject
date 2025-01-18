@@ -1,4 +1,4 @@
-@import '../../scss/variables.scss';
+@use '../../scss/variables.scss' as *;
 
 .list_of_leagues {
     background-color: $color-grey-70;

@@ -1,14 +1,17 @@
-import { Match } from "../../types/countryMatchesTypes";
-import { MatchItem } from "../MatchItem";
+import { Match } from '../../types/countryMatchesTypes';
+import { MatchItem } from '../MatchItem';
+import style from './MatchesList.Module.scss';
 
 type Props = {
-    matches: Match[];
-}
+  matches: Match[];
+};
 
 export const MatchesList: React.FC<Props> = ({ matches }) => {
-    return (
-        <div className="match_item">
-        {matches.map(match => <MatchItem key={match.teamA.teamLogo} match={match} />)}
-        </div>
-    )
+  return (
+    <div className={style.matches__list}>
+      {matches.map((match) => (
+        <MatchItem key={match.teamA.teamLogo} match={match} />
+      ))}
+    </div>
+  );
 };
