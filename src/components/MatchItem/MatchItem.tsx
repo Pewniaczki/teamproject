@@ -1,6 +1,6 @@
 import { Match } from '../../types/countryMatchesTypes';
 import { LastMatch } from '../LastMatch';
-import style from './MatchItem.module.scss'
+import style from './MatchItem.module.scss';
 
 type Props = {
   match: Match;
@@ -22,10 +22,20 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
         </thead>
         <tbody>
           <tr>
-            <td>{new Date(time).toLocaleTimeString().split(':').splice(0,2).join(':')}</td>
+            <td className={style.match__time}>
+              {new Date(time)
+                .toLocaleTimeString()
+                .split(':')
+                .splice(0, 2)
+                .join(':')}
+            </td>
             <td>
               <div className={style.match__container}>
-                <img className={style.match__container__logo} alt="team logo" src={teamA.teamLogo} />
+                <img
+                  className={style.match__container__logo}
+                  alt="team logo"
+                  src={teamA.teamLogo}
+                />
                 <p className={style.match__container__name}>{teamA.teamName}</p>
               </div>
             </td>
@@ -43,8 +53,12 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
           <tr>
             <td>{'\u2014'}</td>
             <td>
-            <div className={style.match__container}>
-                <img className={style.match__container__logo} alt="team logo" src={teamB.teamLogo} />
+              <div className={style.match__container}>
+                <img
+                  className={style.match__container__logo}
+                  alt="team logo"
+                  src={teamB.teamLogo}
+                />
                 <p className={style.match__container__name}>{teamB.teamName}</p>
               </div>
             </td>

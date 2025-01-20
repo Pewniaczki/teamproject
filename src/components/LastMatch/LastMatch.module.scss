@@ -1,23 +1,26 @@
 @use '../../scss/variables.scss' as *;
 
 .match {
-    display: inline-block;
-    width: 20px;
-    height: 18px;
-    line-height: 18px;
-    font-weight: bold;
-    color: $color-grey-0;
-    // padding: 5px;
+  display: inline-flex;
+  width: 26px;
+  height: 18px;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 300;
+  color: $color-grey-0;
+  align-items: center;
+  justify-content: center;
+  // padding: 5px;
 
-    &__red {
-        background-color: $color-red;
-    }
+  &__red {
+    background-color: $color-red;
+  }
 
-    &__green {
-        background-color: $color-green;
-    }
+  &__green {
+    background-color: $color-green;
+  }
 
-    &__yellow {
-        background-color: $color-yellow;
-    }
+  &__yellow {
+    background-color: $color-yellow;
+  }
 }

@@ -12,7 +12,10 @@ export const CountryMatches: React.FC<CountryMatchesType> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={style.country__wrapper}>
+    <div
+      className={style.country__wrapper}
+      onClick={() => setIsOpen((prev) => !prev)}
+    >
       <div
         className={cn(style.country, {
           [style.country__open]: isOpen,
@@ -37,7 +40,6 @@ export const CountryMatches: React.FC<CountryMatchesType> = ({
           </p>
           <img
             className={style.country__container__arrow}
-            onClick={() => setIsOpen((prevState) => !prevState)}
             src={
               isOpen
                 ? './UI_Elements/arrow_up.svg'
