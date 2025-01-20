@@ -10,12 +10,12 @@ export const CountryMatches: React.FC<CountryMatchesType> = ({
   leagues,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const handleClick = () => {
+    setIsOpen((prev) => !prev);
+  };
 
   return (
-    <div
-      className={style.country__wrapper}
-      onClick={() => setIsOpen((prev) => !prev)}
-    >
+    <div className={style.country__wrapper}>
       <div
         className={cn(style.country, {
           [style.country__open]: isOpen,
@@ -46,6 +46,7 @@ export const CountryMatches: React.FC<CountryMatchesType> = ({
                 : './UI_Elements/arrow_down.svg'
             }
             alt="arrow up"
+            onClick={handleClick}
           />
         </div>
       </div>
