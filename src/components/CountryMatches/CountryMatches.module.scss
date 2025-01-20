@@ -46,7 +46,12 @@
 
     &__arrow {
       width: 20px;
-      aspect-ratio: 1/1;
+      height: 20px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &__arrow__open {
+      transform: rotate(180deg);
     }
   }
 

@@ -39,12 +39,10 @@ export const CountryMatches: React.FC<CountryMatchesType> = ({
             {leagues.length}
           </p>
           <img
-            className={style.country__container__arrow}
-            src={
-              isOpen
-                ? './UI_Elements/arrow_up.svg'
-                : './UI_Elements/arrow_down.svg'
-            }
+            className={cn(style.country__container__arrow, {
+              [style.country__container__arrow__open]: isOpen,
+            })}
+            src="./UI_Elements/arrow_down.svg"
             alt="arrow up"
             onClick={handleClick}
           />
