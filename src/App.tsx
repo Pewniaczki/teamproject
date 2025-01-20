@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, NavLink, Route, Routes } from 'react-router-dom';
+// import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 import './styles.scss';
 import { HomePage } from './pages/HomePage/HomePage';
@@ -7,7 +7,7 @@ import { LoginPage } from './pages/LoginPage/LoginPage';
 import { RegistrationPage } from './pages/RegistrationPage/RegistrationPage';
 
 function App() {
-  const [user, setUser] = useState(false);
+  // const [user, setUser] = useState(false);
 
   return (
     <>
