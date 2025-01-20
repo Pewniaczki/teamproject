@@ -1,14 +1,11 @@
 import styles from './Navbar.module.scss';
-import MatchesIcon from '../../assets/icons/time.svg?react';
-import LeaguesIcon from '../../assets/icons/cup.svg?react';
-import FavouritesIcon from '../../assets/icons/star.svg?react';
-import RatesIcon from '../../assets/icons/rates.svg?react';
-import ProfileIcon from '../../assets/icons/profile.svg?react';
+
 import { NavbarItem } from '../NavbarItem';
 import { useState } from 'react';
+import { navbarItems } from '../../data/NavbarItems';
 
 export const Navbar = () => {
-  const [activeItem, setActiveItem] = useState<string>('Matches');
+  const [activeItem, setActiveItem] = useState<string>(navbarItems[0].text);
 
   const handleItemClick = (itemName: string) => {
     setActiveItem(itemName);
@@ -17,41 +14,16 @@ export const Navbar = () => {
   return (
     <nav role="menubar" className={styles.navbar}>
       <div className={styles.navbarContainer}>
-        <NavbarItem
-          text="Matches"
-          icon={<MatchesIcon />}
-          active={activeItem === 'Matches'}
-          link="#"
-          onClick={() => handleItemClick('Matches')}
-        />
-        <NavbarItem
-          text="Leagues"
-          icon={<LeaguesIcon />}
-          active={activeItem === 'Leagues'}
-          link="#"
-          onClick={() => handleItemClick('Leagues')}
-        />
-        <NavbarItem
-          text="Favourites"
-          icon={<FavouritesIcon />}
-          active={activeItem === 'Favourites'}
-          link="#"
-          onClick={() => handleItemClick('Favourites')}
-        />
-        <NavbarItem
-          text="Rates"
-          icon={<RatesIcon />}
-          active={activeItem === 'Rates'}
-          link="#"
-          onClick={() => handleItemClick('Rates')}
-        />
-        <NavbarItem
-          text="Profile"
-          icon={<ProfileIcon />}
-          active={activeItem === 'Profile'}
-          link="#"
-          onClick={() => handleItemClick('Profile')}
-        />
+        {navbarItems.map((item) => (
+          <NavbarItem
+            key={item.text}
+            text={item.text}
+            icon={<item.icon />}
+            active={activeItem === item.text}
+            link={item.link}
+            onClick={() => handleItemClick(item.text)}
+          />
+        ))}
       </div>
     </nav>
   );
