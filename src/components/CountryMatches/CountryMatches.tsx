@@ -15,7 +15,7 @@ export const CountryMatches: React.FC<CountryMatchesType> = ({
   };
 
   return (
-    <div className={style.country__wrapper}>
+    <div className={style.wrapper}>
       <div
         className={cn(style.country, {
           [style.country__open]: isOpen,
