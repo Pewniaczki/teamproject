@@ -19,6 +19,7 @@ export const NavbarItem = ({
     <a
       href={link}
       className={cn(styles.navbarItem, { [styles.active]: active })}
+      role="menuitem"
       onClick={onClick}
     >
       {React.cloneElement(icon as React.ReactElement, {
