@@ -1,3 +1,5 @@
+@use '../../scss/variables.scss' as *;
+
 .league {
   &__container {
     display: flex;
@@ -33,6 +35,12 @@
   &__favoriteIcon {
     width: 24px;
     height: 24px;
+    color: $color-grey-20;
+    fill: none;
     cursor: pointer;
   }
+}
+
+.iconActive {
+  fill: currentColor;
 }
