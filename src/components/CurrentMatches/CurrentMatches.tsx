@@ -14,26 +14,26 @@ export const CurrentMatches = () => {
       day: 'Today',
     },
     {
-        teams: [
-            { name: 'Barcelona', icon: BarcelonaIcon },
-            { name: 'Manchester', icon: ManchesterIcon },
-          ],
+      teams: [
+        { name: 'Barcelona', icon: BarcelonaIcon },
+        { name: 'Manchester', icon: ManchesterIcon },
+      ],
       time: '22:30',
       day: 'Today',
     },
     {
-        teams: [
-            { name: 'Barcelona', icon: BarcelonaIcon },
-            { name: 'Manchester', icon: ManchesterIcon },
-          ],
+      teams: [
+        { name: 'Barcelona', icon: BarcelonaIcon },
+        { name: 'Manchester', icon: ManchesterIcon },
+      ],
       time: '19:45',
       day: 'Tomorrow',
     },
     {
-        teams: [
-            { name: 'Barcelona', icon: BarcelonaIcon },
-            { name: 'Manchester', icon: ManchesterIcon },
-          ],
+      teams: [
+        { name: 'Barcelona', icon: BarcelonaIcon },
+        { name: 'Manchester', icon: ManchesterIcon },
+      ],
       time: '21:15',
       day: 'Tomorrow',
     },
@@ -53,7 +53,7 @@ export const CurrentMatches = () => {
             ) : (
               <span>{match.teams[0].name}</span>
             )}
-            <img src={SoccerBall} alt="soccer ball" className={styles.icon} />
+            <img src={SoccerBall} alt="soccer ball" className={styles.icon__soccer} />
             {match.teams[1].icon ? (
               <img
                 src={match.teams[1].icon}

@@ -20,15 +20,20 @@
   
   .teams {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     gap: 5px;
     margin-bottom: 10px;
   }
   
   .icon {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
+
+    &__soccer {
+        width: 32px;
+        height: 32px;
+    }
   }
   
   .info {
