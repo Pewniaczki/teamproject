@@ -1,0 +1,50 @@
+@use '../../scss/variables.scss' as *;
+
+.container {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+
+  overflow-x: auto;
+  scrollbar-width: none;
+  width: 100%;
+  max-width: 700px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: $color-grey-70;
+  padding: 8px 16px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  gap: 8px;
+  color: $color-grey-20;
+  text-align: center;
+}
+
+.teams {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+
+  &__soccer {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 500;
+}
