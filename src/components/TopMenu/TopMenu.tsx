@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
-import style from './TopMenu.module.scss';
-import { useState } from 'react';
 import cn from 'classnames';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import style from './TopMenu.module.scss';
 
 export const TopMenu: React.FC = () => {
   const links = [
