@@ -1,0 +1,61 @@
+@use '../../scss/variables' as *;
+
+.nav {
+  display: flex;
+  position: relative;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 70px;
+    height: 100%;
+    z-index: 2;
+    right: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      $color-grey-80
+    );
+  }
+
+  &__active {
+    margin-right: 4%;
+
+    &__link {
+      text-decoration: none;
+      font-weight: 700;
+      color: $color-grey-50;
+      line-height: 40px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    column-gap: 18%;
+    width: 100%;
+    overflow: auto;
+    position: relative;
+    padding-right: 25px;
+
+    &__link {
+      text-decoration: none;
+      font-weight: 700;
+      color: $color-grey-50;
+      line-height: 40px;
+    }
+  }
+
+  &__active {
+    font-size: 32px;
+    font-weight: 600;
+    color: $color-secondary;
+    text-align: center;
+    text-decoration-skip-ink: none;
+  }
+}
+
+.hidden {
+    display: none;
+  }
