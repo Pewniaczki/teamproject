@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 import axios from 'axios';
-
-import { TopMenu } from '../../components/TopMenu/TopMenu';
 import { CountryMatches } from '../../components/CountryMatches';
 import { CurrentMatches } from '../../components/CurrentMatches/CurrentMatches';
 import { countryMatches } from '../../data/CountryMatches';
@@ -26,31 +24,25 @@ export const HomePage = () => {
       .catch((e) => console.error(e));
   }, []);
   return (
-
     <div>
-<!--       <p>Welcome to the Home Page</p> -->
-<!--       <TopMenu /> -->
+      <div className={style.home}>
+        <div className={style.home__list}>
+          <CurrentMatches />
 
-    <div className={style.home}>
-      <div className={style.home__list}>
-
-      <CurrentMatches />
-      
-        {countryMatches.map((countryMatch) => {
-          const { countryFlag, countryName, leagues } = countryMatch;
-          return (
-            <>
-            
-            <CountryMatches
-              key={countryFlag}
-              countryFlag={countryFlag}
-              countryName={countryName}
-              leagues={leagues}
-            />
-            </>
-            
-          );
-        })}
+          {countryMatches.map((countryMatch) => {
+            const { countryFlag, countryName, leagues } = countryMatch;
+            return (
+              <>
+                <CountryMatches
+                  key={countryFlag}
+                  countryFlag={countryFlag}
+                  countryName={countryName}
+                  leagues={leagues}
+                />
+              </>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
