@@ -1,17 +1,18 @@
-import { useState } from 'react';
-import { Link, NavLink, Route, Routes } from 'react-router-dom';
+// import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
 import './styles.scss';
 import { HomePage } from './pages/HomePage/HomePage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { RegistrationPage } from './pages/RegistrationPage/RegistrationPage';
+import { Navbar } from './components/Navbar';
 
 function App() {
-  const [user, setUser] = useState(false);
+  // const [user, setUser] = useState(false);
 
   return (
     <>
-      <nav className="nav">
+      {/* <nav className="nav">
         <div className="nav__links">
           <NavLink
             to="/"
@@ -42,15 +43,14 @@ function App() {
             )}
           </div>
         </div>
-      </nav>
+      </nav> */}
 
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegistrationPage />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+      </Routes>
+      <Navbar />
     </>
   );
 }

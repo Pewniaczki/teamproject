@@ -1,0 +1,47 @@
+.match {
+  font-size: 0.8rem;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+  font-family: 'Bai Jamjuree', serif;
+  font-size: 14px;
+  font-weight: 200;
+  font-style: normal;
+
+  &__time {
+    font-weight: 500;
+  }
+
+  &__container {
+    display: flex;
+    gap: 4px;
+
+    &__logo {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+    }
+
+    &__name {
+      white-space: nowrap;
+      line-height: 14px;
+      font-weight: 500;
+    }
+  }
+
+  &__lastMatchContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: fit-content;
+  }
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  font-weight: 300;
+}
