@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { FormikProvider, useFormik } from 'formik';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -6,7 +7,6 @@ import { validationSchema } from './validation-schema';
 import './RegistrationPage.scss';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
-import axios from 'axios';
 
 type SubmissionStatus = 'idle' | 'pending' | 'success' | 'error';
 
@@ -34,7 +34,6 @@ export const RegistrationPage = () => {
           values
         );
         console.log('red', res.data);
-        console.table(values);
 
         setSubmissionStatus('success');
         formik.resetForm();
