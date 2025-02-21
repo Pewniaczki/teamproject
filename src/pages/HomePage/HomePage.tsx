@@ -1,10 +1,36 @@
+import { useEffect } from 'react';
+import axios from 'axios';
+
+import { TopMenu } from '../../components/TopMenu/TopMenu';
 import { CountryMatches } from '../../components/CountryMatches';
 import { CurrentMatches } from '../../components/CurrentMatches/CurrentMatches';
 import { countryMatches } from '../../data/CountryMatches';
 import style from './HomePage.module.scss';
 
 export const HomePage = () => {
+  useEffect(() => {
+    const get = async () => {
+      try {
+        const response = await axios.get(
+          'https://team-project-backend-uvbx.onrender.com/get'
+        );
+
+        return response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    get()
+      .then((r) => console.log(r))
+      .catch((e) => console.error(e));
+  }, []);
   return (
+
+    <div>
+<!--       <p>Welcome to the Home Page</p> -->
+<!--       <TopMenu /> -->
+
     <div className={style.home}>
       <div className={style.home__list}>
 

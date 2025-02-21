@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { FormikProvider, useFormik } from 'formik';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -16,8 +17,8 @@ export const RegistrationPage = () => {
   const formik = useFormik({
     initialValues: {
       username: '',
-      firstName: '',
-      lastName: '',
+      name: '',
+      surname: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -28,8 +29,11 @@ export const RegistrationPage = () => {
 
       try {
         // Simulating an API call
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        console.table(values);
+        const res = await axios.post(
+          'https://team-project-backend-uvbx.onrender.com/register',
+          values
+        );
+        console.log('red', res.data);
 
         setSubmissionStatus('success');
         formik.resetForm();
@@ -75,10 +79,10 @@ export const RegistrationPage = () => {
             />
 
             <InputField
-              label="First Name:"
+              label="name:"
               type="text"
-              name="firstName"
-              value={formik.values.firstName}
+              name="name"
+              value={formik.values.name}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               disabled={formik.isSubmitting}
@@ -86,10 +90,10 @@ export const RegistrationPage = () => {
             />
 
             <InputField
-              label="Last Name:"
+              label="surname:"
               type="text"
-              name="lastName"
-              value={formik.values.lastName}
+              name="surname"
+              value={formik.values.surname}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               disabled={formik.isSubmitting}

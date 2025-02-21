@@ -7,13 +7,13 @@ export const validationSchema = Yup.object({
     .max(20, 'Username cannot exceed 20 characters')
     .required('Username is required'),
 
-  firstName: Yup.string()
+  name: Yup.string()
     .matches(/^[a-zA-Z]+$/, 'First name can only contain letters')
     .min(2, 'First name must be at least 2 characters')
     .max(30, 'First name cannot exceed 30 characters')
     .required('First name is required'),
 
-  lastName: Yup.string()
+  surname: Yup.string()
     .matches(
       /^[a-zA-Z]+(-[a-zA-Z]+)?$/,
       'Last name can only contain letters and hyphen between parts'
