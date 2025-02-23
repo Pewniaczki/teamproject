@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type NavbarItem = {
+export type NavbarItemType = {
   text: string;
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   active?: boolean;
