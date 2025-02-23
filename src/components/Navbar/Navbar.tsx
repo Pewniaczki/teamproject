@@ -22,10 +22,7 @@ export const Navbar = () => {
     setActiveItem(itemName);
   };
 
-  useEffect(() => {
-    console.log("isDesktop:", isDesktop);
-    console.log("navbarItems:", navbarItems);
-  
+  useEffect(() => {  
     if (!isDesktop) {
       setVisibleNavbarItems(navbarItems.slice(0, -2));
     } else {
