@@ -1,17 +1,23 @@
 // import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Outlet, Route, Routes } from 'react-router-dom';
 
 import './styles.scss';
 import { HomePage } from './pages/HomePage/HomePage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { RegistrationPage } from './pages/RegistrationPage/RegistrationPage';
 import { Navbar } from './components/Navbar';
+import {
+  useBreakPointListener,
+  useBreakPointStore,
+} from './zustand/useBreakPoint';
 
 function App() {
   // const [user, setUser] = useState(false);
+  const { isDesktop } = useBreakPointStore();
+  useBreakPointListener();
 
   return (
-    <>
+    <div className={isDesktop ? 'app__desktop' : 'app'}>
       {/* <nav className="nav">
         <div className="nav__links">
           <NavLink
@@ -50,8 +56,11 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
       </Routes>
+      
       <Navbar />
-    </>
+      <Outlet />
+      
+    </div>
   );
 }
 

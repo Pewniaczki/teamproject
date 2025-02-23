@@ -93,3 +93,21 @@ main {
   flex-direction: column;
   padding: 1rem;
 }
+
+// .desktop {
+//   display: flex;
+// }
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__desktop {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
