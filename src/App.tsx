@@ -10,6 +10,7 @@ import {
   useBreakPointListener,
   useBreakPointStore,
 } from './zustand/useBreakPoint';
+import { TopMenu } from './components/TopMenu/TopMenu';
 
 function App() {
   // const [user, setUser] = useState(false);
@@ -52,12 +53,16 @@ function App() {
       </nav> */}
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={
+          // <HomePage />
+          <RegistrationPage />
+          } />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
       </Routes>
       
       <Navbar />
+      {/* <TopMenu /> */}
       <Outlet />
       
     </div>

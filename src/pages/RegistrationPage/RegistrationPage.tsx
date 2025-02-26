@@ -113,6 +113,7 @@ export const RegistrationPage = () => {
 
             <InputField
               label="Password:"
+              autoComplete="new-password"
               type="password"
               name="password"
               value={formik.values.password}
@@ -124,6 +125,7 @@ export const RegistrationPage = () => {
             <InputField
               label="Confirm Password:"
               type="password"
+              autoComplete="new-password"
               name="confirmPassword"
               value={formik.values.confirmPassword}
               onChange={formik.handleChange}
