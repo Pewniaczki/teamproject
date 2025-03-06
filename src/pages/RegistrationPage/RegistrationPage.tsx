@@ -11,6 +11,7 @@ import { InputField } from '../../components/InputField';
 type SubmissionStatus = 'idle' | 'pending' | 'success' | 'error';
 
 export const RegistrationPage = () => {
+  const BACKEND = import.meta.env.VITE_BACKEND_URL;
   const [submissionStatus, setSubmissionStatus] =
     useState<SubmissionStatus>('idle');
 
@@ -29,10 +30,9 @@ export const RegistrationPage = () => {
 
       try {
         // Simulating an API call
-        const res = await axios.post(
-          'https://team-project-backend-uvbx.onrender.com/register',
-          values
-        );
+        const res = await axios.post(`${BACKEND}/register`, values, {
+          withCredentials: true,
+        });
         console.log('red', res.data);
 
         setSubmissionStatus('success');

@@ -5,13 +5,15 @@ import { CurrentMatches } from '../../components/CurrentMatches/CurrentMatches';
 import { countryMatches } from '../../data/CountryMatches';
 import style from './HomePage.module.scss';
 
+const BACKEND = import.meta.env.VITE_BACKEND_URL;
+
 export const HomePage = () => {
   useEffect(() => {
     const get = async () => {
       try {
-        const response = await axios.get(
-          'https://team-project-backend-uvbx.onrender.com/get'
-        );
+        const response = await axios.get(`${BACKEND}/get`, {
+          withCredentials: true,
+        });
 
         return response.data;
       } catch (error) {
