@@ -2,13 +2,14 @@ import { FormikProvider, useFormik } from 'formik';
 import { useState } from 'react';
 import './LoginPage.scss';
 import { Link } from 'react-router-dom';
-
 import { validationSchema } from './validation-schema';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 import axios from 'axios';
 
 type loginStatus = 'idle' | 'pending' | 'success' | 'error';
+
+const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
 export const LoginPage = () => {
   const [loginStatus, setLoginStatus] = useState<loginStatus>('idle');
@@ -24,7 +25,11 @@ export const LoginPage = () => {
 
       try {
         // Simulating an API call
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        const login = await axios.post(`${BACKEND}/login`, {
+          email: values.email,
+          password: values.password,
+        });
+        console.log('login', login.data);
         console.table(values);
 
         setLoginStatus('success');

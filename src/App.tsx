@@ -55,8 +55,8 @@ function App() {
       <Routes>
         <Route path="/" element={
           // <HomePage />
-          <RegistrationPage />
-          // <LoginPage />
+          // <RegistrationPage />
+          <LoginPage />
           } />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
