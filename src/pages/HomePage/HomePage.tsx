@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import axios from 'axios';
 import { CountryMatches } from '../../components/CountryMatches';
 import { CurrentMatches } from '../../components/CurrentMatches/CurrentMatches';
 import { countryMatches } from '../../data/CountryMatches';
 import style from './HomePage.module.scss';
+import { api } from '../../axiosConfig';
 
 const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
@@ -11,7 +11,7 @@ export const HomePage = () => {
   useEffect(() => {
     const get = async () => {
       try {
-        const response = await axios.get(`${BACKEND}/get`, {
+        const response = await api.get(`${BACKEND}/get`, {
           withCredentials: true,
         });
 

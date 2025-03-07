@@ -7,6 +7,7 @@ import { validationSchema } from './validation-schema';
 import './RegistrationPage.scss';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
+import { api } from '../../axiosConfig';
 
 type SubmissionStatus = 'idle' | 'pending' | 'success' | 'error';
 
@@ -30,7 +31,7 @@ export const RegistrationPage = () => {
 
       try {
         // Simulating an API call
-        const res = await axios.post(`${BACKEND}/register`, values, {
+        const res = await api.post(`${BACKEND}/register`, values, {
           withCredentials: true,
         });
         console.log('red', res.data);
