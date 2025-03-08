@@ -24,7 +24,6 @@ export const LoginPage = () => {
       setLoginStatus('pending');
 
       try {
-        // Simulating an API call
         const login = await api.post(`${BACKEND}/login`, {
           email: values.email,
           password: values.password,
@@ -59,6 +58,7 @@ export const LoginPage = () => {
               Something went wrong. Please try again.
             </p>
           )}
+          
           <div className="login-form__input-group">
             <InputField
               label="Email:"
@@ -82,6 +82,7 @@ export const LoginPage = () => {
               aria-disabled={formik.isSubmitting}
             />
           </div>
+
           <Button
             type="submit"
             disabled={isButtonDisabled}

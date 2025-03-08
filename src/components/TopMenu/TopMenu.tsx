@@ -6,11 +6,12 @@ import style from './TopMenu.module.scss';
 
 export const TopMenu: React.FC = () => {
   const links = [
+    ['/login', 'Login'],
+    ['/register', 'Regiter'],
     ['#all', 'All'],
     ['#live', 'Live'],
     ['#finished', 'Finished'],
     ['#scheduled', 'Scheduled'],
-    ['#coś', 'Coś'],
   ];
   const [activeIndex, setActiveIndex] = useState(0);
 

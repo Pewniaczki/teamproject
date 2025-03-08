@@ -54,16 +54,15 @@ function App() {
 
       <Routes>
         <Route path="/" element={
-          // <HomePage />
+          <HomePage />
           // <RegistrationPage />
-          <LoginPage />
           } />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
       </Routes>
       
       <Navbar />
-      {/* <TopMenu /> */}
+      <TopMenu />
       <Outlet />
       
     </div>

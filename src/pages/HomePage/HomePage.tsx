@@ -11,9 +11,7 @@ export const HomePage = () => {
   useEffect(() => {
     const get = async () => {
       try {
-        const response = await api.get(`${BACKEND}/get`, {
-          withCredentials: true,
-        });
+        const response = await api.get(`${BACKEND}/get`);
 
         return response.data;
       } catch (error) {
