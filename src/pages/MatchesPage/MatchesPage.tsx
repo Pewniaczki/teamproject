@@ -3,19 +3,25 @@ import { CountryMatches } from '../../components/CountryMatches';
 import { CurrentMatches } from '../../components/CurrentMatches/CurrentMatches';
 import { countryMatches } from '../../data/CountryMatches';
 import style from './MatchesPage.module.scss';
-import { apiLogin, apiPewniaczki } from '../../axiosConfig';
+import { apiPewniaczki } from '../../axiosConfig';
 import { TopMenu } from '../../components/TopMenu/TopMenu';
-
-const BACKEND = import.meta.env.VITE_BACKEND_URL;
+import { Options } from '../../components/Options/Options';
+import {
+  useBreakPointListener,
+  useBreakPointStore,
+} from '../../zustand/useBreakPoint';
 
 export const MatchesPage: React.FC = () => {
   const [matches, setMatches] = useState();
+  const { isDesktop } = useBreakPointStore();
+
+  useBreakPointListener();
 
   useEffect(() => {
     const getMatches = async () => {
       const response = await apiPewniaczki('/matches');
       if (response.data) {
-        setMatches(response.data)
+        setMatches(response.data);
       }
     };
 
@@ -23,17 +29,19 @@ export const MatchesPage: React.FC = () => {
       .then((r) => console.log(r))
       .catch((e) => console.error(e));
 
-      console.log('matches', matches)
+    console.log('matches', matches);
   }, []);
   return (
     <>
-    <TopMenu />
-    
+      <TopMenu />
+
+      {isDesktop && <Options />}
+
       <div className={style.match}>
         <div className={style.match__list}>
           <CurrentMatches />
 
-          <div>
+          <div className={style.match__countries}>
             {countryMatches.map((countryMatch) => {
               const { countryFlag, countryName, leagues } = countryMatch;
               return (
