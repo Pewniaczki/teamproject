@@ -1,7 +1,7 @@
 @use '../../scss/variables.scss' as *;
 
 .navbar {
-  // position: fixed;
+  position: fixed;
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -24,8 +24,8 @@
   justify-content: center;
   align-items: flex-start;
   background-color: $color-grey-70;
-  width: 20%;
   border-right: 1px solid $color-secondary;
+  height: 100%;
 
   &__logo {
     margin-bottom: 20px;

@@ -12,17 +12,17 @@ export const navbarItems: NavbarItemType[] = [
   {
     text: 'Matches',
     icon: MatchesIcon,
-    link: '#',
+    link: '#/matches',
   },
   {
     text: 'Leagues',
     icon: LeaguesIcon,
-    link: '#',
+    link: '#/league',
   },
   {
     text: 'Favourites',
     icon: FavouritesIcon,
-    link: '#',
+    link: '#/favourites',
   },
   {
     text: 'Rates',
@@ -32,16 +32,16 @@ export const navbarItems: NavbarItemType[] = [
   {
     text: 'Profile',
     icon: ProfileIcon,
-    link: '#',
+    link: '#/profile',
   },
   {
     text: 'Settings',
     icon: SettingsIcon,
-    link: '#',
+    link: '#/settings',
   },
   {
     text: 'Log out',
     icon: Log_outIcon,
-    link: '#',
+    link: '#/logout',
   },
 ];

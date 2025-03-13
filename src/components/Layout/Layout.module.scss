@@ -1,0 +1,33 @@
+@use '../../utils/mixins' as *;
+
+.layout {
+  display: flex;
+  flex-direction: column-reverse;
+  min-height: 100vh;
+
+  @include for-desktop {
+    flex-direction: row;
+  }
+
+  &_header {
+    position: sticky;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 20%;
+  }
+
+  &_main {
+    color: blue;
+    // width: 100%;
+    display: flex;
+
+    @include for-desktop {
+      width: 100%;
+    }
+  }
+
+  &_footer {
+    color: rgb(0, 255, 183);
+  }
+}

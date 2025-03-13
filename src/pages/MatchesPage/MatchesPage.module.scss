@@ -1,0 +1,25 @@
+@use '../../utils/mixins' as *;
+
+.match {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+
+  @include for-desktop {
+    width: 100%;
+  }
+
+  &__list {
+    width: 100%;
+    height: calc(100vh - 13px);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @include for-desktop {
+      flex-direction: row;
+      height: auto;
+    }
+  }
+}

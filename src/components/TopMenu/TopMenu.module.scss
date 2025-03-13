@@ -1,8 +1,13 @@
 @use '../../scss/variables' as *;
-
+@use '../../utils/mixins' as *;
 .nav {
   display: flex;
   position: relative;
+
+  @include for-desktop {
+    width: 100%;
+    margin-bottom: 32px;
+  }
 
   &:after {
     content: '';
@@ -23,11 +28,18 @@
   &__active {
     margin-right: 4%;
 
+    @include for-desktop {
+      width: calc(160px + 4%);
+    }
+
     &__link {
       text-decoration: none;
       font-weight: 700;
-      color: $color-grey-50;
       line-height: 40px;
+
+      @include for-desktop {
+        font-size: 32px;
+      }
     }
   }
 
@@ -39,11 +51,21 @@
     position: relative;
     padding-right: 25px;
 
+    @include for-desktop {
+      padding: 0;
+      justify-content: space-evenly;
+    }
+
     &__link {
       text-decoration: none;
       font-weight: 700;
       color: $color-grey-50;
       line-height: 40px;
+
+      @include for-desktop {
+        font-size: 32px;
+        color: $color-grey-30;
+      }
     }
   }
 

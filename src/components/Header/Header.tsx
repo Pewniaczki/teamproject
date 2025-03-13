@@ -1,4 +1,4 @@
-import styles from './Navbar.module.scss';
+import styles from './Header.module.scss';
 
 import { NavbarItem } from '../NavbarItem';
 import { useEffect, useState } from 'react';
@@ -10,7 +10,7 @@ import {
 import cn from 'classnames';
 import { NavbarItemType } from '../../types/navbarItemType';
 
-export const Navbar = () => {
+export const Header:React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>(navbarItems[0].text);
   const { isDesktop } = useBreakPointStore();
   const [visibleNavbarItems, setVisibleNavbarItems] = useState<

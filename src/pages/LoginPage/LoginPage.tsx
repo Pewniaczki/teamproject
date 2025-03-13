@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { validationSchema } from './validation-schema';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
-import { api } from '../../axiosConfig';
+import { apiLogin } from '../../axiosConfig';
 
 type loginStatus = 'idle' | 'pending' | 'success' | 'error';
 
@@ -24,7 +24,7 @@ export const LoginPage = () => {
       setLoginStatus('pending');
 
       try {
-        const login = await api.post(`${BACKEND}/login`, {
+        const login = await apiLogin.post(`${BACKEND}/login`, {
           email: values.email,
           password: values.password,
         });
