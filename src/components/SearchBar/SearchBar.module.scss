@@ -2,12 +2,19 @@
 
 .searchBar {
     height: 80px;
-    // padding: 10px;
     background-color: $color-grey-70;
     border-bottom: 1px solid $color-grey-50;
+    margin-bottom: 15px;
 
     &__text {
+        font-size: 32px;
+        color: $color-grey-20;
+        font-weight: 700;
         line-height: 80px;
         margin-left: 10px;     
+    }
+
+    $__search {
+        
     }
 }
