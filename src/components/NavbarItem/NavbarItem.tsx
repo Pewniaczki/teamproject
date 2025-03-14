@@ -27,24 +27,18 @@ export const NavbarItem = ({
   return (
     <a
       href={link}
-      className={cn({
-        [styles.navbarItem] : !isDesktop,
-        [styles.navbarItem__desktop] : isDesktop,
-        [styles.active]: active
-      })}
+      className={cn(styles.navbarItem,{[styles.active]: active})}
       role="menuitem"
       onClick={onClick}
     >
       {React.cloneElement(icon as React.ReactElement, {
-        className:cn({
-          [styles.navbarItemIcon]: !isDesktop,
-          [styles.navbarItem__desktopIcon]: isDesktop,
-        }),
+        className: styles.navbarItemIcon,
       })}
-      <p className={cn({
-          [styles.navbarItemText]: !isDesktop,
-          [styles.navbarItem__desktopText]: isDesktop,
-        })}>{text}</p>
+      <p
+        className={styles.navbarItemText}
+      >
+        {text}
+      </p>
     </a>
   );
 };

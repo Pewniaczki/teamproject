@@ -1,4 +1,5 @@
 @use '../../scss/variables.scss' as *;
+@use '../../utils/mixins' as *;
 
 .navbarItem {
   display: flex;
@@ -11,30 +12,10 @@
   color: $color-grey-40;
   flex-basis: 20%;
 
-  &Icon {
-    width: 24px;
-    height: 24px;
-    color: inherit;
+  @include for-desktop {
+    flex-direction: row;
+    height: fit-content;
   }
-
-  &Text {
-    color: inherit;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 12px;
-  }
-}
-
-.navbarItem__desktop {
-  display: flex;
-  // flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 8px;
-  text-decoration: none;
-  color: $color-grey-40;
-  flex-basis: 20%;
 
   &Icon {
     width: 24px;

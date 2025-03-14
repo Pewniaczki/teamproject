@@ -10,6 +10,7 @@ import {
   useBreakPointListener,
   useBreakPointStore,
 } from '../../zustand/useBreakPoint';
+import { SearchBar } from '../../components/SearchBar/SearchBar';
 
 export const MatchesPage: React.FC = () => {
   const [matches, setMatches] = useState();
@@ -33,8 +34,8 @@ export const MatchesPage: React.FC = () => {
   }, []);
   return (
     <>
+      {isDesktop && <SearchBar />}
       <TopMenu />
-
       {isDesktop && <Options />}
 
       <div className={style.match}>

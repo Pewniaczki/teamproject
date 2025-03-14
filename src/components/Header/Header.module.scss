@@ -1,4 +1,5 @@
 @use '../../scss/variables.scss' as *;
+@use '../../utils/mixins' as *;
 
 .navbar {
   position: fixed;
@@ -9,34 +10,30 @@
   width: 100%;
   border-top: 1px solid $color-secondary;
 
+  @include for-desktop {
+    position: sticky;
+    height: 100%;
+    border-top: none;
+    border-right: 1px solid $color-secondary;
+  }
+
+  &__logo {
+    margin-bottom: 20px;
+    padding: 0 10px 0 0;
+  }
+
   &Container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
     max-width: 500px;
+
+    @include for-desktop {
+      align-items: flex-start;
+      flex-direction: column;
+      height: 70%;
+    }
   }
 }
 
-.navbar_desktop {
-  padding: 0.5%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: $color-grey-70;
-  border-right: 1px solid $color-secondary;
-  height: 100%;
-
-  &__logo {
-    margin-bottom: 20px;
-  }
-
-  &Container {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 100%;
-    max-width: 500px;
-  }
-}
