@@ -1,4 +1,4 @@
-@use '../../utils/mixins' as *;
+@use '../../scss/mixins' as *;
 
 .match {
   display: flex;
@@ -7,7 +7,7 @@
 
   @include for-desktop {
     width: 100%;
-    padding: 0;
+    padding: 10px;
   }
 
   &__list {

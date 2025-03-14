@@ -1,6 +1,7 @@
 @use '../../scss/variables' as *;
 
 .options {
+  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   gap: 1.5rem;

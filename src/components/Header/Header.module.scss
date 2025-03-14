@@ -1,5 +1,5 @@
 @use '../../scss/variables.scss' as *;
-@use '../../utils/mixins' as *;
+@use '../../scss/mixins' as *;
 
 .navbar {
   position: fixed;
@@ -8,13 +8,13 @@
   justify-content: center;
   background-color: $color-grey-70;
   width: 100%;
-  border-top: 1px solid $color-secondary;
+  border-top: 1px solid $color-grey-50;
 
   @include for-desktop {
     position: sticky;
     height: 100%;
     border-top: none;
-    border-right: 1px solid $color-secondary;
+    border-right: 1px solid $color-grey-50;
   }
 
   &__logo {

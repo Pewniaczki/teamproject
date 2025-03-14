@@ -1,3 +1,13 @@
+@use '../../scss/variables' as *;
+
 .searchBar {
-    background-color: aqua;
+    height: 80px;
+    // padding: 10px;
+    background-color: $color-grey-70;
+    border-bottom: 1px solid $color-grey-50;
+
+    &__text {
+        line-height: 80px;
+        margin-left: 10px;     
+    }
 }

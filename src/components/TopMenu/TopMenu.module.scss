@@ -1,11 +1,12 @@
 @use '../../scss/variables' as *;
-@use '../../utils/mixins' as *;
+@use '../../scss/mixins' as *;
 .nav {
   display: flex;
   position: relative;
 
   @include for-desktop {
     width: 100%;
+    padding: 0 10px;
     margin-bottom: 32px;
   }
 

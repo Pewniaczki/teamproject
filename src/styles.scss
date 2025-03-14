@@ -1,4 +1,4 @@
-@use './utils/mixins' as *;
+@use './scss/mixins' as *;
 
 .nav {
   width: 100%;
@@ -93,10 +93,6 @@ main {
   flex-direction: column;
   padding: 1rem;
   padding: 0;
-
-  @include for-desktop {
-    padding: 10px;
-  }
 }
 
 // .app {

@@ -1,4 +1,4 @@
-@use '../../utils/mixins' as *;
+@use '../../scss/mixins' as *;
 
 .layout {
   display: flex;
@@ -19,7 +19,6 @@
 
   &_main {
     color: blue;
-    // width: 100%;
     display: flex;
 
     @include for-desktop {
