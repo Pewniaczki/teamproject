@@ -1,0 +1,70 @@
+@use '../../scss/variables' as *;
+.current {
+  padding: 0 20px;
+
+  &__back {
+    background-color: inherit;
+    border: none;
+    margin-bottom: 20px;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: space-between;
+    width: 75px;
+    transform: translateY(45px);
+  }
+
+  &__teams {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    &_item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &_logo {
+        width: 40px;
+        margin-bottom: 10px;
+      }
+
+      &_name {
+        color: $color-grey-0;
+        font-weight: 700;
+        font-size: 32px;
+      }
+    }
+  }
+
+  &__time {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 50px;
+
+    &_item {
+      color: $color-grey-30;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    &_item {
+      color: $color-grey-0;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+      padding: 0 10px;
+
+      &.active {
+        border-bottom: 2px solid $color-grey-0;
+      }
+    }
+  }
+}

@@ -40,7 +40,7 @@ export const Header:React.FC = () => {
       >
         {isDesktop && (
           <img
-            className={styles.navbar_desktop__logo}
+            className={styles.navbar__logo}
             src="./UI_Elements/Name_logo.svg"
           />
         )}

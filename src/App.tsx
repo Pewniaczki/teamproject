@@ -9,6 +9,7 @@ import {
   useBreakPointListener,
 } from './zustand/useBreakPoint';
 import { Layout } from './components/Layout/Layout';
+import { CurrentMatch } from './pages/MatchDetails/CurrentMatch';
 
 function App() {
   // const [user, setUser] = useState(false);
@@ -21,6 +22,7 @@ function App() {
         <Route path="matches" element={<MatchesPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegistrationPage />} />
+        <Route path="current_match" element={<CurrentMatch />} />
       </Route>
     </Routes>
   );
