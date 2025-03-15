@@ -1,11 +1,13 @@
 import styles from './CurrentMatches.module.scss';
 import SoccerBall from '../../assets/icons/soccer-ball.svg';
-import BarcelonaIcon from '../../assets/icons/barselonaSpain.svg'; 
+import BarcelonaIcon from '../../assets/icons/barselonaSpain.svg';
 import ManchesterIcon from '../../assets/icons/ManchesterLondon.svg';
-import { useEffect} from 'react';
+// import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {CurrentMatchType } from '../../types/countryMatchesTypes';
 
 export const CurrentMatches: React.FC = () => {
-  const matches = [
+  const matches: CurrentMatchType[] = [
     {
       teams: [
         { name: 'Barcelona', icon: BarcelonaIcon },
@@ -40,12 +42,21 @@ export const CurrentMatches: React.FC = () => {
     },
   ];
   // const [matches, setMatches] = useState<>(null)
-  useEffect(() => {}, [])
+  const navigate = useNavigate();
+  // useEffect(() => {}, []); // fetch matches from api
 
   return (
     <div className={styles.container}>
       {matches.map((match, index) => (
-        <div key={index} className={styles.card}>
+        <div
+          onClick={() =>
+            navigate('/current_match', {
+              state: { match },
+            })
+          }
+          key={index}
+          className={styles.card}
+        >
           <div className={styles.teams}>
             {match.teams[0].icon ? (
               <img
@@ -56,8 +67,12 @@ export const CurrentMatches: React.FC = () => {
             ) : (
               <span>{match.teams[0].name}</span>
             )}
-            
-            <img src={SoccerBall} alt="soccer ball" className={styles.icon__soccer} />
+
+            <img
+              src={SoccerBall}
+              alt="soccer ball"
+              className={styles.icon__soccer}
+            />
             {match.teams[1].icon ? (
               <img
                 src={match.teams[1].icon}

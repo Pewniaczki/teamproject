@@ -21,6 +21,15 @@ export type Match = {
   };
 };
 
+export type CurrentMatchType = {
+  teams: [
+    { name: string; icon: string },
+    { name: string; icon: string },
+  ];
+  time: string;
+  day: 'Today' | 'Tomorrow';
+};
+
 // type Match = {
 //   competition: string;
 //   match_info: {
