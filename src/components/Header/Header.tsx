@@ -1,4 +1,4 @@
-import styles from './Navbar.module.scss';
+import styles from './Header.module.scss';
 
 import { NavbarItem } from '../NavbarItem';
 import { useEffect, useState } from 'react';
@@ -7,10 +7,9 @@ import {
   useBreakPointStore,
   useBreakPointListener,
 } from '../../zustand/useBreakPoint';
-import cn from 'classnames';
 import { NavbarItemType } from '../../types/navbarItemType';
 
-export const Navbar = () => {
+export const Header:React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>(navbarItems[0].text);
   const { isDesktop } = useBreakPointStore();
   const [visibleNavbarItems, setVisibleNavbarItems] = useState<
@@ -34,16 +33,10 @@ export const Navbar = () => {
   return (
     <nav
       role="menubar"
-      className={cn({
-        [styles.navbar]: !isDesktop,
-        [styles.navbar_desktop]: isDesktop,
-      })}
+      className={styles.navbar}
     >
       <div
-        className={cn({
-          [styles.navbarContainer]: !isDesktop,
-          [styles.navbar_desktopContainer]: isDesktop,
-        })}
+        className={styles.navbarContainer}
       >
         {isDesktop && (
           <img
@@ -51,16 +44,18 @@ export const Navbar = () => {
             src="./UI_Elements/Name_logo.svg"
           />
         )}
-        {visibleNavbarItems.map((item) => (
-          <NavbarItem
-            key={item.text}
-            text={item.text}
-            icon={<item.icon />}
-            active={activeItem === item.text}
-            link={item.link}
-            onClick={() => handleItemClick(item.text)}
-          />
-        ))}
+      
+          {visibleNavbarItems.map((item) => (
+            <NavbarItem
+              key={item.text}
+              text={item.text}
+              icon={<item.icon />}
+              active={activeItem === item.text}
+              link={item.link}
+              onClick={() => handleItemClick(item.text)}
+            />
+          ))}
+        
       </div>
     </nav>
   );

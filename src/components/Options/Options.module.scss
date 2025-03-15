@@ -1,0 +1,36 @@
+@use '../../scss/variables' as *;
+
+.options {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 32px;
+
+  &_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &_recommended {
+      padding: 8px;
+      border: none;
+      width: 100%;
+      background-color: $color-grey-70;
+      padding: 0.25rem;
+      color: $color-grey-20;
+      font-weight: 400;
+      font-size: 16px;
+    }
+
+    &_input {
+      padding: 8px;
+      border: none;
+      background-color: $color-grey-70;
+      color: $color-grey-20;
+      font-weight: 400;
+      font-size: 16px;
+    }
+  }
+}

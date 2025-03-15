@@ -1,0 +1,33 @@
+@use '../../scss/mixins' as *;
+
+.match {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+
+  @include for-desktop {
+    width: 100%;
+    padding: 10px;
+  }
+
+  &__list {
+    width: 100%;
+    height: calc(100vh - 13px);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @include for-desktop {
+      flex-direction: row;
+      height: auto;
+      gap: 1.5rem;
+    }
+  }
+
+  &__countries {
+    @include for-desktop {
+      width: 100%;
+    }
+  }
+}

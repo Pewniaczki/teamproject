@@ -2,8 +2,9 @@ import styles from './CurrentMatches.module.scss';
 import SoccerBall from '../../assets/icons/soccer-ball.svg';
 import BarcelonaIcon from '../../assets/icons/barselonaSpain.svg'; 
 import ManchesterIcon from '../../assets/icons/ManchesterLondon.svg';
+import { useEffect} from 'react';
 
-export const CurrentMatches = () => {
+export const CurrentMatches: React.FC = () => {
   const matches = [
     {
       teams: [
@@ -38,6 +39,8 @@ export const CurrentMatches = () => {
       day: 'Tomorrow',
     },
   ];
+  // const [matches, setMatches] = useState<>(null)
+  useEffect(() => {}, [])
 
   return (
     <div className={styles.container}>
@@ -53,6 +56,7 @@ export const CurrentMatches = () => {
             ) : (
               <span>{match.teams[0].name}</span>
             )}
+            
             <img src={SoccerBall} alt="soccer ball" className={styles.icon__soccer} />
             {match.teams[1].icon ? (
               <img
@@ -64,6 +68,7 @@ export const CurrentMatches = () => {
               <span>{match.teams[1].name}</span>
             )}
           </div>
+
           <div className={styles.info}>
             <span>{match.day}</span>
             <span>{match.time}</span>
