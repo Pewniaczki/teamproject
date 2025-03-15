@@ -17,4 +17,26 @@
         font-size: 24px;
         font-weight: 400;
     }
+
+    &_container {
+        display: flex;
+    }
+
+    &_block {
+        background-color: $color-secondary;
+        height: 40px;
+        width: 40px;
+    }
+
+    &_block2 {
+        background-color: $color-primary;
+        height: 40px;
+        width: 40px;        
+    }
+
+    &_block3 {
+        background-color: $color-grey-30;
+        height: 40px;
+        width: 40px;         
+    }
 }
