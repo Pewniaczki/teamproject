@@ -7,6 +7,7 @@ import RatesIcon from '../assets/icons/rates.svg?react';
 import ProfileIcon from '../assets/icons/profile.svg?react';
 import SettingsIcon from '../assets/icons/settings.svg?react';
 import Log_outIcon from '../assets/icons/log_out.svg?react';
+import Log_inIcon from '../assets/icons/log_in.svg?react';
 
 export const navbarItems: NavbarItemType[] = [
   {
@@ -42,6 +43,10 @@ export const navbarItems: NavbarItemType[] = [
   {
     text: 'Log out',
     icon: Log_outIcon,
-    link: '#/logout',
+  },
+  {
+    text: 'Log in',
+    icon: Log_inIcon,
+    link: '#/login',
   },
 ];

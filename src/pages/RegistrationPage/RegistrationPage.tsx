@@ -11,7 +11,7 @@ import { apiLogin } from '../../axiosConfig';
 type SubmissionStatus = 'idle' | 'pending' | 'success' | 'error';
 
 export const RegistrationPage = () => {
-  const BACKEND = import.meta.env.VITE_BACKEND_URL;
+  const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
   const [submissionStatus, setSubmissionStatus] =
     useState<SubmissionStatus>('idle');
 

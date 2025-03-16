@@ -6,13 +6,15 @@ import { validationSchema } from './validation-schema';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 import { apiLogin } from '../../axiosConfig';
+import { useAuthStore } from '../../zustand/useLogged';
 
 type loginStatus = 'idle' | 'pending' | 'success' | 'error';
 
-const BACKEND = import.meta.env.VITE_BACKEND_URL;
+const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
 
 export const LoginPage = () => {
   const [loginStatus, setLoginStatus] = useState<loginStatus>('idle');
+  const { setLogged } = useAuthStore();
 
   const formik = useFormik({
     initialValues: {
@@ -30,6 +32,7 @@ export const LoginPage = () => {
         });
         console.log('login', login.data);
         console.table(values);
+        setLogged(true);
 
         setLoginStatus('success');
         formik.resetForm();
@@ -58,7 +61,7 @@ export const LoginPage = () => {
               Something went wrong. Please try again.
             </p>
           )}
-          
+
           <div className="login-form__input-group">
             <InputField
               label="Email:"

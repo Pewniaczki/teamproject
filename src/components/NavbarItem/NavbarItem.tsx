@@ -1,16 +1,11 @@
 import React from 'react';
 import styles from './NavbarItem.module.scss';
 import cn from 'classnames';
-import {
-  useBreakPointListener,
-  useBreakPointStore,
-} from '../../zustand/useBreakPoint';
-
 type NavbarItemProps = {
   text: string;
   icon: React.ReactNode;
   active?: boolean;
-  link: string;
+  link?: string;
   onClick?: () => void;
 };
 
@@ -21,8 +16,6 @@ export const NavbarItem = ({
   link,
   onClick,
 }: NavbarItemProps) => {
-  const { isDesktop } = useBreakPointStore();
-  useBreakPointListener();
 
   return (
     <a
