@@ -6,7 +6,7 @@ export const SearchBar: React.FC = () => {
       <p className={styles.searchBar__text}>Matches</p>
 
       <div className={styles.searchBar__search}>
-        <img src="./src/assets/icons/search.svg" />
+        <img src="./assets/icons/search.svg" />
         
         <input
           className={styles.searchBar__search_input}
