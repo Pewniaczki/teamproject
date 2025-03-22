@@ -1,7 +1,7 @@
 import { FormikProvider, useFormik } from 'formik';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './LoginPage.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { validationSchema } from './validation-schema';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
@@ -12,9 +12,14 @@ type loginStatus = 'idle' | 'pending' | 'success' | 'error';
 
 const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
 
-export const LoginPage = () => {
+type Props = {
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const LoginPage: React.FC<Props> = ({ setIsAuthenticated }) => {
   const [loginStatus, setLoginStatus] = useState<loginStatus>('idle');
   const { setLogged } = useAuthStore();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -35,6 +40,8 @@ export const LoginPage = () => {
         setLogged(true);
 
         setLoginStatus('success');
+        setIsAuthenticated(true);
+        navigate('/matches');
         formik.resetForm();
       } catch (error) {
         setLoginStatus('error');

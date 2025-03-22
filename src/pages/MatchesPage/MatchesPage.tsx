@@ -3,7 +3,7 @@ import { CountryMatches } from '../../components/CountryMatches';
 import { CurrentMatches } from '../../components/CurrentMatches/CurrentMatches';
 import { countryMatches } from '../../data/CountryMatches';
 import style from './MatchesPage.module.scss';
-import { apiPewniaczki } from '../../axiosConfig';
+// import { apiPewniaczki } from '../../axiosConfig';
 import { TopMenu } from '../../components/TopMenu/TopMenu';
 import { Options } from '../../components/Options/Options';
 import {
@@ -11,6 +11,7 @@ import {
   useBreakPointStore,
 } from '../../zustand/useBreakPoint';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
+import axios from 'axios';
 
 export const MatchesPage: React.FC = () => {
   const [matches, setMatches] = useState();
@@ -20,7 +21,8 @@ export const MatchesPage: React.FC = () => {
 
   useEffect(() => {
     const getMatches = async () => {
-      const response = await apiPewniaczki('/matches');
+      const response =await axios.get("/api/matches");
+      
       if (response.data) {
         setMatches(response.data);
       }

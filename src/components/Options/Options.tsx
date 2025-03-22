@@ -1,7 +1,8 @@
+import axios from 'axios';
 import styles from './Options.module.scss';
 
 import { useEffect, useState } from 'react';
-import { apiPewniaczki } from '../../axiosConfig';
+// import { apiPewniaczki } from '../../axiosConfig';
 
 type CompetitionType = {
   competition_id: number;
@@ -15,7 +16,7 @@ export const Options: React.FC = () => {
   useEffect(() => {
     const getOptions = async () => {
       try {
-        const response = await apiPewniaczki('/competitions');
+        const response = await axios('/api/competitions');
         if (response.data) {
           setOptions(response.data);
         }
@@ -26,6 +27,7 @@ export const Options: React.FC = () => {
 
     getOptions();
   }, []);
+  console.log('options', options)
   return (
     <div className={styles.options}>
       <div className={styles.options_container}>

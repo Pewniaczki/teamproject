@@ -13,4 +13,13 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://pewniaczki.onrender.com",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });
