@@ -18,25 +18,10 @@
     padding: 0.75rem;
     border-radius: 0.5rem;
     border: 1px solid $color-grey-50;
-    background-color: inherit;
+    background-color: $color-grey-80;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
-
-    &:hover {
-      border-color: #bbb;
-    }
-
-    &:focus,
-    &:active,
-    &:focus-visible {
-      border-color: #007bff;
-      outline: none;
-    }
-
-    &:disabled {
-      background-color: #f9f9f9;
-      border-color: #ccc;
-    }
+    color: $color-grey-20;
 
     &--error {
       border-color: red;
