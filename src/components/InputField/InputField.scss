@@ -1,3 +1,5 @@
+@use '../../scss/variables' as *;
+
 .input-field {
   position: relative;
   display: flex;
@@ -8,14 +10,15 @@
   &__label {
     display: block;
     font-weight: bold;
-    color: #333;
+    color: $color-grey-20;
   }
 
   &__input {
     width: 100%;
     padding: 0.75rem;
     border-radius: 0.5rem;
-    border: 1px solid #ddd;
+    border: 1px solid $color-grey-50;
+    background-color: inherit;
     box-sizing: border-box;
     transition: border-color 0.3s ease;
 

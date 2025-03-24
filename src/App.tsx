@@ -8,11 +8,11 @@ import { RegistrationPage } from './pages/RegistrationPage/RegistrationPage';
 import { Layout } from './components/Layout/Layout';
 import { CurrentMatch } from './pages/MatchDetails/CurrentMatch';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import { StartPage } from './pages/StartPage/StartPage';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
-  // Ustal stan logowania na podstawie np. tokena w localStorage lub cookies
   useEffect(() => {
     const token = localStorage.getItem('authToken');
     if (token) {
@@ -23,12 +23,11 @@ function App() {
   return (
     <Routes>
       <Route
-        path="/login"
-        element={<LoginPage setIsAuthenticated={setIsAuthenticated} />}
+        path="/start"
+        element={<StartPage setIsAuthenticated={setIsAuthenticated} />}
       />
       <Route path="/register" element={<RegistrationPage />} />
       <Route path="/" element={<Layout />}>
-        {/* PrivateRoute zabezpiecza dostęp do tras wymagających zalogowania */}
         <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
           <Route index element={<Navigate to="/matches" />} />
           <Route path="matches" element={<MatchesPage />} />

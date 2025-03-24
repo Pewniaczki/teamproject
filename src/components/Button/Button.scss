@@ -1,11 +1,13 @@
+@use '../../scss/variables' as *;
+
 .button {
   width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
   font-weight: bold;
-  color: #000;
-  background-color: #ec8080;
-  border: none;
+  color: $color-grey-20;
+  background-color: $color-grey-70;
+  border: 1px solid $color-grey-50;
   border-radius: 0.5rem;
   cursor: pointer;
   transition:
@@ -14,6 +16,9 @@
 
   &:hover {
     transform: translateY(-2px);
+    border: 1px solid $color-secondary;
+    color: $color-secondary;
+    background-color: rgba($color-secondary, 0.2);
   }
 
   &:active {

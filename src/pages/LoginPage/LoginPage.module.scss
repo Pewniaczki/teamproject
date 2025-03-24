@@ -1,0 +1,134 @@
+@use '../../scss/variables' as *;
+@use '../../scss/mixins' as *;
+
+.container {
+  display: flex;
+  align-content: stretch;
+
+  // &__img {
+  //   background-image: url(./UI_Elements/loginImage.svg);
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   background-position: right;
+  //   height: 100vh;
+  //   display: none;
+
+  //   @include for-desktop {
+  //     display: block;
+  //     width: 50%;      
+  //   }
+  // }
+
+
+
+  &__login {
+
+    &_back {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+
+        &_btn {
+            width: 17px;
+            height: 13px;
+        }
+
+        &_paragraph {
+            font-weight: 400;
+            font-size: 24x;
+            color: $color-grey-30;
+        }
+    }
+
+    &_paragraph {
+        font-weight: 400;
+        font-size: 18px;
+        color: $color-grey-20;
+        margin-bottom: 0.75rem;
+    }
+
+    &_input {
+        background-color: inherit;
+        border: 1px solid $color-grey-50;
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 5px;
+        margin-bottom:  2rem;
+        color: $color-grey-30;
+    }
+
+    &_error {
+      color: $color-grey-40;      
+    }
+
+    &_btn {
+        border: 1px solid $color-grey-40;
+        background-color: $color-grey-70;
+        height: 48px;
+        width: 100%;
+        color: $color-grey-40;
+        font-weight: 700;
+
+        &:hover {
+            background-color: rgba($color-secondary, 0.2);
+            border: 1px solid $color-secondary;
+            color: $color-secondary; 
+        }
+    }
+  }
+
+  &__start {
+    padding: 1%;
+    width: 50%;
+
+    &_img {
+      padding-bottom: 15%;
+    }
+
+    &_container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &_paragraph {
+      font-size: 24px;
+      font-weight: 400;
+      color: $color-grey-30;
+      text-align: center;
+      margin-bottom: 10%;
+    }
+
+    &_element {
+        background-color: $color-grey-70;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 2%;
+        margin-bottom: 30px;
+
+        &_paragraph {
+            font-weight: 500;
+            text-align: center;
+            font-size: 18px;
+            color: $color-grey-20;
+            padding: 3%;
+        }
+
+        &_btn {
+            border: 1px solid $color-secondary;
+            background-color:  $color-grey-70;
+            color: $color-secondary;
+            padding: 16px 10px;
+
+            &:hover {
+                background-color:  rgba($color-secondary, 0.2);
+            }
+        }
+    }
+  }
+
+ 
+}
