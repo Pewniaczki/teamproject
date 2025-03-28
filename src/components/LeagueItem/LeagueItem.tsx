@@ -1,23 +1,23 @@
 import { useState } from 'react';
-import { League } from '../../types/countryMatchesTypes';
+import { Match } from '../../types/countryMatchesTypes';
 import { MatchesList } from '../MatchesList/MatchesList';
 import style from './LeagueItem.module.scss';
 import Star from '../../assets/icons/star.svg?react';
 import cn from 'classnames';
 
 type Props = {
-  league: League;
+  detail: Match;
 };
 
-export const LeagueItem: React.FC<Props> = ({ league }) => {
-  const { leagueLogo, leagueName, matches } = league;
+export const LeagueItem: React.FC<Props> = ({ detail }) => {
+  const { competition, country, match_info } = detail;
   const [isFavorite, setIsFavorite] = useState(false);
   return (
     <div className={style.league}>
       <div className={style.league__container}>
         <div className={style.league__containerLeft}>
-          <img className={style.league__logo} src={leagueLogo} />
-          <p className={style.league__name}>{leagueName}</p>
+          {/* <img className={style.league__logo} src={leagueLogo} /> */}
+          <p className={style.league__name}>{competition}</p>
         </div>
         <Star
           className={cn(style.league__favoriteIcon, {

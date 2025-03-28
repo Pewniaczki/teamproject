@@ -2,7 +2,7 @@ import axios from 'axios';
 import styles from './Options.module.scss';
 
 import { useEffect, useState } from 'react';
-// import { apiPewniaczki } from '../../axiosConfig';
+import { useDateStore } from '../../zustand/useDate';
 
 type CompetitionType = {
   competition_id: number;
@@ -11,8 +11,12 @@ type CompetitionType = {
   country: null | string;
 };
 
+
+
 export const Options: React.FC = () => {
   const [options, setOptions] = useState<CompetitionType[] | null>(null);
+  const { date, setDate } = useDateStore();
+
   useEffect(() => {
     const getOptions = async () => {
       try {
@@ -27,7 +31,7 @@ export const Options: React.FC = () => {
 
     getOptions();
   }, []);
-  console.log('options', options)
+
   return (
     <div className={styles.options}>
       <div className={styles.options_container}>
@@ -43,7 +47,15 @@ export const Options: React.FC = () => {
             ))}
         </select>
 
-        <input className={styles.options_container_input} type='date' defaultValue={new Date().toISOString().split("T")[0]} />
+        <input
+          className={styles.options_container_input}
+          type="date"
+          onChange={(e) => {
+            const [year, month, day] = e.target.value.split('-');
+            setDate(`${day}.${month}.${year}`);
+          }}
+          defaultValue={date.split('.').reverse().join('-')}
+        />
       </div>
 
       <div className={styles.options_container}>

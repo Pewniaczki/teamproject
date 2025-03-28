@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styles from './StartPage.module.scss';
 import { LoginPage } from '../LoginPage/LoginPage';
 import { RegistrationPage } from '../RegistrationPage/RegistrationPage';
@@ -6,11 +5,17 @@ import { RegistrationPage } from '../RegistrationPage/RegistrationPage';
 export type Open = 'signup' | 'login' | 'start';
 
 type Props = {
-  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;  
+  setIsOpen: React.Dispatch<React.SetStateAction<Open>>;
+  isOpen: Open;
 };
 
-export const StartPage: React.FC<Props> = ({ setIsAuthenticated }) => {
-  const [isOpen, setIsOpen] = useState<Open>('start');
+export const StartPage: React.FC<Props> = ({
+  setIsAuthenticated,
+  isOpen,
+  setIsOpen,
+}) => {
+  // const [isOpen, setIsOpen] = useState<Open>('start');
 
   return (
     <div className={styles.container}>
@@ -62,9 +67,7 @@ export const StartPage: React.FC<Props> = ({ setIsAuthenticated }) => {
           />
         )}
 
-        {isOpen === 'signup' && (
-          <RegistrationPage setIsOpen={setIsOpen} />
-        )}
+        {isOpen === 'signup' && <RegistrationPage setIsOpen={setIsOpen} />}
       </div>
     </div>
   );

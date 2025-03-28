@@ -1,13 +1,19 @@
 import { useState } from 'react';
-import { CountryMatchesType } from '../../types/countryMatchesTypes';
+import { Match } from '../../types/countryMatchesTypes';
 import { ListOfLeagues } from '../ListOfLeagues';
 import style from './CountryMatches.module.scss';
 import cn from 'classnames';
+// import { LeagueItem } from '../LeagueItem';
 
-export const CountryMatches: React.FC<CountryMatchesType> = ({
-  countryFlag,
+type Props = {
+  countryName: string,
+  details: Match[]
+
+}
+
+export const CountryMatches: React.FC<Props> = ({
   countryName,
-  leagues,
+  details,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => {
@@ -26,7 +32,7 @@ export const CountryMatches: React.FC<CountryMatchesType> = ({
         >
           <img
             className={style.country__container__img}
-            src={countryFlag}
+            // src={countryFlag}
             alt="country flag"
           />
           <p className={style.country__container__paragraph}>{countryName}</p>
@@ -36,7 +42,7 @@ export const CountryMatches: React.FC<CountryMatchesType> = ({
           className={`${style.country__container} ${style.country__containerRight}`}
         >
           <p className={style.country__container__paragraph}>
-            {leagues.length}
+            {details.length}
           </p>
           <img
             className={cn(style.country__container__arrow, {
@@ -55,7 +61,8 @@ export const CountryMatches: React.FC<CountryMatchesType> = ({
             [style.country__list__open]: isOpen,
           })}
         >
-          <ListOfLeagues leagues={leagues} />
+          <ListOfLeagues details={details} />
+          {/* <LeagueItem key={details.} details={details} /> */}
         </div>
       )}
     </div>

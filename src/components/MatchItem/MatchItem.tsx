@@ -1,5 +1,5 @@
 import { Match } from '../../types/countryMatchesTypes';
-import { LastMatch } from '../LastMatch';
+// import { LastMatch } from '../LastMatch';
 import style from './MatchItem.module.scss';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const MatchItem: React.FC<Props> = ({ match }) => {
-  const { time, teamA, teamB } = match;
+  const { match_info } = match;
   return (
     <>
       <table className={style.match}>
@@ -23,31 +23,30 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
         <tbody>
           <tr>
             <td className={style.match__time}>
-              {new Date(time)
-                .toLocaleTimeString()
-                .split(':')
-                .splice(0, 2)
-                .join(':')}
+              {new Date(match_info.date_time).toLocaleTimeString('pl-PL', {
+                hour: '2-digit',
+                minute: '2-digit',
+              })}
             </td>
             <td>
               <div className={style.match__container}>
                 <img
                   className={style.match__container__logo}
                   alt="team logo"
-                  src={teamA.teamLogo}
+                  src={match_info.home_team_logo}
                 />
-                <p className={style.match__container__name}>{teamA.teamName}</p>
+                <p className={style.match__container__name}>{match_info.home_team}</p>
               </div>
             </td>
-            <td>{teamA.winTime}</td>
+            <td>{match_info.home_wins_probability}</td>
             <td>
-              <span>
-                {teamA.last5Matches.map((match) => (
-                  <LastMatch key={match.id} match={match} />
+              {/* <span>
+                {match_info.home_team_last_five_results.map((match) => (
+                  <LastMatch key={match} match={match} />
                 ))}
-              </span>
+              </span> */}
             </td>
-            <td>{teamA.mid}</td>
+            <td>{match_info.home_score}</td>
           </tr>
 
           <tr>
@@ -57,20 +56,20 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
                 <img
                   className={style.match__container__logo}
                   alt="team logo"
-                  src={teamB.teamLogo}
+                  src={match_info.away_team_logo}
                 />
-                <p className={style.match__container__name}>{teamB.teamName}</p>
+                <p className={style.match__container__name}>{match_info.away_team}</p>
               </div>
             </td>
-            <td>{teamB.winTime}</td>
+            <td>{match_info.away_wins_probability}</td>
             <td>
-              <span>
-                {teamB.last5Matches.map((match) => (
-                  <LastMatch key={match.id} match={match} />
+              {/* <span>
+                {match_info.away_team_last_five_results.map((match) => (
+                  <LastMatch key={match} match={match} />
                 ))}
-              </span>
+              </span> */}
             </td>
-            <td>{teamB.mid}</td>
+            <td>{match_info.away_score}</td>
           </tr>
         </tbody>
       </table>

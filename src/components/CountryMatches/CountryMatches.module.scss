@@ -1,5 +1,6 @@
 @use '../../scss/variables.scss' as *;
 @use '../../scss/mixins' as *;
+
 .wrapper {
   width: 100%;
   place-items: center;
@@ -65,6 +66,7 @@
     min-width: $country-list-MinWidth;
     max-width: $country-list-MaxWidth;
     width: 100%;
+    background-color: $color-grey-70;
 
     &__open {
       margin-bottom: 0;

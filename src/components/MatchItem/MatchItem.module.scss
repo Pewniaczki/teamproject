@@ -1,5 +1,8 @@
+@use '../../scss/variables' as *;
+
 .match {
   font-size: 0.8rem;
+  color: $color-grey-20;
   padding: 5px;
   text-align: center;
   width: 100%;

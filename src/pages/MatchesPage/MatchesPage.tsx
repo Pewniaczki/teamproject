@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { CountryMatches } from '../../components/CountryMatches';
 import { CurrentMatches } from '../../components/CurrentMatches/CurrentMatches';
-import { countryMatches } from '../../data/CountryMatches';
+// import { countryMatches } from '../../data/CountryMatches';
 import style from './MatchesPage.module.scss';
 // import { apiPewniaczki } from '../../axiosConfig';
 import { TopMenu } from '../../components/TopMenu/TopMenu';
@@ -12,28 +12,40 @@ import {
 } from '../../zustand/useBreakPoint';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import axios from 'axios';
+import { Match } from '../../types/countryMatchesTypes';
+import { useDateStore } from '../../zustand/useDate';
 
 export const MatchesPage: React.FC = () => {
-  const [matches, setMatches] = useState();
+  const [matches, setMatches] = useState<Match[]>([]);
+  const [data, setData] = useState<Record<string, Match[]> | null>(null);
   const { isDesktop } = useBreakPointStore();
+  const { date } = useDateStore();
+
+  // data &&
+  //   Object.entries(data).map(([countryName, details]) => {
+  //     console.log(countryName, details);
+  //   });
 
   useBreakPointListener();
 
   useEffect(() => {
     const getMatches = async () => {
-      const response =await axios.get("/api/matches");
-      
+      const response =
+        date !== ''
+          ? await axios.get(`/api/matches?date=${date}`)
+          : await axios.get(`/api/matches`);
+
       if (response.data) {
-        setMatches(response.data);
+        const matches = Object.values(response.data).flatMap(
+          (countryMatches) => countryMatches
+        ) as Match[];
+
+        setMatches(matches);
+        setData(response.data);
       }
     };
-
-    getMatches()
-      .then((r) => console.log(r))
-      .catch((e) => console.error(e));
-
-    console.log('matches', matches);
-  }, []);
+    getMatches();
+  }, [date]);
   return (
     <>
       {isDesktop && <SearchBar />}
@@ -42,17 +54,15 @@ export const MatchesPage: React.FC = () => {
 
       <div className={style.match}>
         <div className={style.match__list}>
-          <CurrentMatches />
+          <CurrentMatches matches={matches} />
 
           <div className={style.match__countries}>
-            {countryMatches.map((countryMatch) => {
-              const { countryFlag, countryName, leagues } = countryMatch;
+            {Object.entries(data || {}).map(([cuntryName, details]) => {
               return (
                 <CountryMatches
-                  key={countryFlag}
-                  countryFlag={countryFlag}
-                  countryName={countryName}
-                  leagues={leagues}
+                  key={cuntryName}
+                  countryName={cuntryName}
+                  details={details}
                 />
               );
             })}

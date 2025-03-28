@@ -1,49 +1,17 @@
 import styles from './CurrentMatches.module.scss';
 import SoccerBall from '../../assets/icons/soccer-ball.svg';
-import BarcelonaIcon from '../../assets/icons/barselonaSpain.svg';
-import ManchesterIcon from '../../assets/icons/ManchesterLondon.svg';
+// import BarcelonaIcon from '../../assets/icons/barselonaSpain.svg';
+// import ManchesterIcon from '../../assets/icons/ManchesterLondon.svg';
 // import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {CurrentMatchType } from '../../types/countryMatchesTypes';
+import { Match } from '../../types/countryMatchesTypes';
 
-export const CurrentMatches: React.FC = () => {
-  const matches: CurrentMatchType[] = [
-    {
-      teams: [
-        { name: 'Barcelona', icon: BarcelonaIcon },
-        { name: 'Manchester', icon: ManchesterIcon },
-      ],
-      time: '20:45',
-      day: 'Today',
-    },
-    {
-      teams: [
-        { name: 'Barcelona', icon: BarcelonaIcon },
-        { name: 'Manchester', icon: ManchesterIcon },
-      ],
-      time: '22:30',
-      day: 'Today',
-    },
-    {
-      teams: [
-        { name: 'Barcelona', icon: BarcelonaIcon },
-        { name: 'Manchester', icon: ManchesterIcon },
-      ],
-      time: '19:45',
-      day: 'Tomorrow',
-    },
-    {
-      teams: [
-        { name: 'Barcelona', icon: BarcelonaIcon },
-        { name: 'Manchester', icon: ManchesterIcon },
-      ],
-      time: '21:15',
-      day: 'Tomorrow',
-    },
-  ];
-  // const [matches, setMatches] = useState<>(null)
+type Props = {
+  matches: Match[];
+};
+
+export const CurrentMatches: React.FC<Props> = ({ matches }) => {
   const navigate = useNavigate();
-  // useEffect(() => {}, []); // fetch matches from api
 
   return (
     <div className={styles.container}>
@@ -58,35 +26,31 @@ export const CurrentMatches: React.FC = () => {
           className={styles.card}
         >
           <div className={styles.teams}>
-            {match.teams[0].icon ? (
+            {
               <img
-                src={match.teams[0].icon}
-                alt={match.teams[0].name}
+                src={match.match_info.home_team_logo}
+                alt={match.match_info.home_team}
                 className={styles.icon}
               />
-            ) : (
-              <span>{match.teams[0].name}</span>
-            )}
+            }
 
             <img
               src={SoccerBall}
               alt="soccer ball"
               className={styles.icon__soccer}
             />
-            {match.teams[1].icon ? (
+            {
               <img
-                src={match.teams[1].icon}
-                alt={match.teams[1].name}
+                src={match.match_info.away_team_logo}
+                alt={match.match_info.away_team}
                 className={styles.icon}
               />
-            ) : (
-              <span>{match.teams[1].name}</span>
-            )}
+            }
           </div>
 
           <div className={styles.info}>
-            <span>{match.day}</span>
-            <span>{match.time}</span>
+            <p>Today</p>
+            <span>{match.match_info.date_time.split('T')[1].split(':').slice(0,2).join(':')}</span>
           </div>
         </div>
       ))}

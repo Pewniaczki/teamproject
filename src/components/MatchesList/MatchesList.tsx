@@ -3,14 +3,14 @@ import { MatchItem } from '../MatchItem';
 import style from './MatchesList.module.scss';
 
 type Props = {
-  matches: Match[];
+  details: Match[];
 };
 
-export const MatchesList: React.FC<Props> = ({ matches }) => {
+export const MatchesList: React.FC<Props> = ({ details }) => {
   return (
     <div className={style.matches__list}>
-      {matches.map((match) => (
-        <MatchItem key={match.teamA.teamLogo} match={match} />
+      {details.map((detail) => (
+        <MatchItem key={detail.match_info.home_team_logo} match={detail} />
       ))}
     </div>
   );

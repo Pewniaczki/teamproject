@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { CurrentMatchType } from '../../types/countryMatchesTypes';
+import { Match } from '../../types/countryMatchesTypes';
 import styles from './CurrentMatch.module.scss';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { useState } from 'react';
@@ -8,7 +8,7 @@ import { CurrentDetails } from '../../components/CurrentDetails/CurrentDetails';
 export const CurrentMatch: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const current: CurrentMatchType = location.state.match;
+  const current: Match = location.state.match;
   const menuItems = ['Details', 'Team composition', 'Grid', 'Matches'] as const;
   const [activeElement, setActiveElement] =
     useState<(typeof menuItems)[number]>('Details');
@@ -31,27 +31,27 @@ export const CurrentMatch: React.FC = () => {
           <div className={styles.current__teams_item}>
             <img
               className={styles.current__teams_item_logo}
-              src={current.teams[0].icon}
+              src={current.match_info.home_team_logo}
               alt="team icon"
             />
             <p className={styles.current__teams_item_name}>
-              {current.teams[0].name}
+              {current.match_info.home_team}
             </p>
           </div>
 
           <div className={styles.current__time}>
-            <p className={styles.current__time_item}>{current.time}</p>
-            <p className={styles.current__time_item}>{current.day}</p>
+            <p className={styles.current__time_item}>{current.match_info.date_time.split('T')[1].split(':').slice(0,2).join(':')}</p>
+            <p className={styles.current__time_item}>Today</p>
           </div>
 
           <div className={styles.current__teams_item}>
             <img
               className={styles.current__teams_item_logo}
-              src={current.teams[1].icon}
+              src={current.match_info.away_team_logo}
               alt="team icon"
             />
             <p className={styles.current__teams_item_name}>
-              {current.teams[1].name}
+              {current.match_info.away_team}
             </p>
           </div>
         </div>
