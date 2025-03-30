@@ -1,1 +1,1 @@
-export { LeagueItem } from "./LeagueItem"
+// export { LeagueItem } from "./LeagueItem"
