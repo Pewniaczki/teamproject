@@ -21,11 +21,6 @@ export const MatchesPage: React.FC = () => {
   const { isDesktop } = useBreakPointStore();
   const { date } = useDateStore();
 
-  // data &&
-  //   Object.entries(data).map(([countryName, details]) => {
-  //     console.log(countryName, details);
-  //   });
-
   useBreakPointListener();
 
   useEffect(() => {

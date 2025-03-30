@@ -32,7 +32,7 @@ export const CountryMatches: React.FC<Props> = ({
         >
           <img
             className={style.country__container__img}
-            // src={countryFlag}
+            src={details[0].country_flag}
             alt="country flag"
           />
           <p className={style.country__container__paragraph}>{countryName}</p>

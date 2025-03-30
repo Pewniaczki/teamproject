@@ -24,7 +24,7 @@ export const ListOfLeagues: React.FC<Props> = ({ details }) => {
     <div className={style.league}>
       <div className={style.league__container}>
         <div className={style.league__containerLeft}>
-          {/* <img className={style.league__logo} src={leagueLogo} /> */}
+          <img className={style.league__logo} src={details[0].competition_logo} />
           <p className={style.league__name}>{details[0].competition}</p>
         </div>
         <Star

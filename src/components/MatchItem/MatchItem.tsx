@@ -1,5 +1,5 @@
 import { Match } from '../../types/countryMatchesTypes';
-// import { LastMatch } from '../LastMatch';
+import { LastMatch } from '../LastMatch';
 import style from './MatchItem.module.scss';
 
 type Props = {
@@ -40,11 +40,11 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
             </td>
             <td>{match_info.home_wins_probability}</td>
             <td>
-              {/* <span>
+              <span>
                 {match_info.home_team_last_five_results.map((match) => (
                   <LastMatch key={match} match={match} />
                 ))}
-              </span> */}
+              </span>
             </td>
             <td>{match_info.home_score}</td>
           </tr>
@@ -63,11 +63,11 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
             </td>
             <td>{match_info.away_wins_probability}</td>
             <td>
-              {/* <span>
+              <span>
                 {match_info.away_team_last_five_results.map((match) => (
                   <LastMatch key={match} match={match} />
                 ))}
-              </span> */}
+              </span>
             </td>
             <td>{match_info.away_score}</td>
           </tr>

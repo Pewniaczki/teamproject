@@ -7,12 +7,12 @@ type Props = {
 };
 export const LastMatch: React.FC<Props> = ({ match }) => {
   const getResult = () => {
-    switch (match.result) {
-      case 'loose':
+    switch (match) {
+      case 'L':
         return <span className={cn(style.match, style.match__red)}>L</span>;
-      case 'win':
+      case 'W':
         return <span className={cn(style.match, style.match__green)}>W</span>;
-      case 'draw':
+      case 'D':
         return <span className={cn(style.match, style.match__yellow)}>D</span>;
     }
   };
