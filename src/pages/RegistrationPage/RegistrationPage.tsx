@@ -6,8 +6,9 @@ import { validationSchema } from './validation-schema';
 import './RegistrationPage.scss';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
-import { apiLogin } from '../../axiosConfig';
+// import { apiLogin } from '../../axiosConfig';
 import { Open } from '../StartPage/StartPage';
+import axios from 'axios';
 
 type SubmissionStatus = 'idle' | 'pending' | 'success' | 'error';
 
@@ -35,7 +36,7 @@ export const RegistrationPage: React.FC<Props> = ({ setIsOpen }) => {
 
       try {
         // Simulating an API call
-        const res = await apiLogin.post(`${BACKEND}/register`, values, {
+        const res = await axios.post(`${BACKEND}/register`, values, {
           withCredentials: true,
         });
         console.log('red', res.data);

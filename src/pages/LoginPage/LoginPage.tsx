@@ -3,14 +3,16 @@ import React, { useState } from 'react';
 import styles from './LoginPage.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { validationSchema } from './validation-schema';
-import { apiLogin } from '../../axiosConfig';
+// import { apiLogin } from '../../axiosConfig';
 import { useAuthStore } from '../../zustand/useLogged';
 import { Open } from '../StartPage/StartPage';
 import { PasswordPage } from './PasswordPage';
 import { LoginStatus } from '../../types/loginStatus';
 import { InputType } from '../../types/InputType';
 import { EmailPage } from './EmailPage';
+import axios from 'axios';
 
+const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
 
 type Props = {
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
@@ -41,7 +43,7 @@ export const LoginPage: React.FC<Props> = ({
       setLoginStatus('pending');
 
       try {
-        const login = await apiLogin.post(`/login`, {
+        const login = await axios.post(`${BACKEND}/login`, {
           email: values.email,
           password: values.password,
         });
