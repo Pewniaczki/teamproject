@@ -71,7 +71,7 @@ export const LoginPage: React.FC<Props> = ({
           <div onClick={handlerBack} className={styles.container__login_back}>
             <img
               className={styles.container__login_back_btn}
-              src="public\UI_Elements\arrow_back.svg"
+              src=".\UI_Elements\arrow_back.svg"
               alt="back icon"
             />
             <p className={styles.container__login_back_paragraph}>SING UP</p>
