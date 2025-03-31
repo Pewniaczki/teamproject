@@ -11,7 +11,6 @@ import { LoginStatus } from '../../types/loginStatus';
 import { InputType } from '../../types/InputType';
 import { EmailPage } from './EmailPage';
 
-const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
 
 type Props = {
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
@@ -42,7 +41,7 @@ export const LoginPage: React.FC<Props> = ({
       setLoginStatus('pending');
 
       try {
-        const login = await apiLogin.post(`${BACKEND}/login`, {
+        const login = await apiLogin.post(`/login`, {
           email: values.email,
           password: values.password,
         });
