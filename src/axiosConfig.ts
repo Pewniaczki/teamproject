@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BACKEND_LOGIN_URL = import.meta.env.VITE_BACKEND_LOGIN_URL || "http://localhost:3000";
-const BACKEND_PEWNIACZKI_URL = import.meta.env.VITE_BACKEND_PEWNIACZKI || "http://localhost:5000";
+const BACKEND_LOGIN_URL = import.meta.env.VITE_BACKEND_LOGIN_URL;
+const BACKEND_PEWNIACZKI_URL = import.meta.env.VITE_BACKEND_PEWNIACZKI;
 
 export const apiLogin = axios.create({
   baseURL: BACKEND_LOGIN_URL,
