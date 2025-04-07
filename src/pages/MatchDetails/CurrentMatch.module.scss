@@ -1,4 +1,6 @@
 @use '../../scss/variables' as *;
+@use '../../scss/mixins' as *;
+
 .current {
   padding: 0 20px;
 
@@ -11,8 +13,20 @@
   &__icons {
     display: flex;
     justify-content: space-between;
-    width: 75px;
-    transform: translateY(45px);
+    width: 100%;
+    margin-bottom: 20px;
+
+    @include for-desktop {
+      width: 75px;
+      flex-direction: column;
+      height: 80px;
+    }
+
+    &__group {
+      width: 72px;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   &__teams {

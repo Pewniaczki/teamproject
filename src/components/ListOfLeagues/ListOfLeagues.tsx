@@ -1,5 +1,4 @@
 import { Match } from "../../types/countryMatchesTypes";
-// import { LeagueItem } from "../LeagueItem";
 import style from './ListOfLeagues.module.scss';
 import Star from '../../assets/icons/star.svg?react';
 import { useState } from "react";
@@ -15,12 +14,6 @@ export const ListOfLeagues: React.FC<Props> = ({ details }) => {
   const [isFavorite, setIsFavorite] = useState(false);
     
   return (
-    // <div className={style.list_of_leagues}>
-    //   {details.map(detail => (
-    //     <LeagueItem key={detail.match_info.match_id} detail={detail} />
-    //   ))}
-    // </div>
-
     <div className={style.league}>
       <div className={style.league__container}>
         <div className={style.league__containerLeft}>

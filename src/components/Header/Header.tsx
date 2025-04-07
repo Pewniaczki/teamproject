@@ -20,6 +20,7 @@ export const Header: React.FC = () => {
   useBreakPointListener();
 
   const handleItemClick = (itemName: string) => {
+    console.log('itemName', itemName)
     setActiveItem(itemName);
     if (itemName === 'Log out') {
       setLogged(false)

@@ -10,7 +10,7 @@ export const MatchesList: React.FC<Props> = ({ details }) => {
   return (
     <div className={style.matches__list}>
       {details.map((detail) => (
-        <MatchItem key={detail.match_info.home_team_logo} match={detail} />
+        <MatchItem key={detail.match_info.match_id} match={detail} />
       ))}
     </div>
   );

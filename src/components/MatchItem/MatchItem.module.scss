@@ -9,6 +9,7 @@
   font-family: 'Bai Jamjuree', serif;
   font-size: 14px;
   font-weight: 200;
+  margin-bottom: 5px;
   font-style: normal;
 
   &__time {
@@ -18,6 +19,7 @@
   &__container {
     display: flex;
     gap: 4px;
+    width: 80px;
 
     &__logo {
       width: 14px;

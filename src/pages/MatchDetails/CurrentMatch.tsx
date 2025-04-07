@@ -17,14 +17,16 @@ export const CurrentMatch: React.FC = () => {
       <SearchBar />
 
       <div className={styles.current}>
+        <div className={styles.current__icons}>
+          
         <button className={styles.current__back} onClick={() => navigate(-1)}>
           <img src=".\UI_Elements\arrow_back.svg"></img>
         </button>
 
-        <div className={styles.current__icons}>
-          <img src=".\UI_Elements\bell.svg" alt="bell image" />
-
-          <img src=".\UI_Elements\star.svg" alt="star image" />
+          <div className={styles.current__icons__group}>
+            <img src=".\UI_Elements\bell.svg" alt="bell image" />
+            <img src=".\UI_Elements\star.svg" alt="star image" />
+          </div>
         </div>
 
         <div className={styles.current__teams}>

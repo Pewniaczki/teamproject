@@ -10,6 +10,8 @@ import { InputField } from '../../components/InputField';
 import { Open } from '../StartPage/StartPage';
 import axios from 'axios';
 
+const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
+
 type SubmissionStatus = 'idle' | 'pending' | 'success' | 'error';
 
 type Props = {
@@ -17,7 +19,7 @@ type Props = {
 };
 
 export const RegistrationPage: React.FC<Props> = ({ setIsOpen }) => {
-  const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
+  
   const [submissionStatus, setSubmissionStatus] =
     useState<SubmissionStatus>('idle');
 

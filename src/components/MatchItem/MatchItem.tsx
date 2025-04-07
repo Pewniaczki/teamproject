@@ -41,8 +41,8 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
             <td>{match_info.home_wins_probability}</td>
             <td>
               <span>
-                {match_info.home_team_last_five_results.map((match) => (
-                  <LastMatch key={match} match={match} />
+                {match_info.home_team_last_five_results.map((match, index) => (
+                  <LastMatch key={index} match={match} />
                 ))}
               </span>
             </td>
@@ -64,8 +64,8 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
             <td>{match_info.away_wins_probability}</td>
             <td>
               <span>
-                {match_info.away_team_last_five_results.map((match) => (
-                  <LastMatch key={match} match={match} />
+                {match_info.away_team_last_five_results.map((match, index) => (
+                  <LastMatch key={index} match={match} />
                 ))}
               </span>
             </td>
