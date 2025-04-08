@@ -8,14 +8,16 @@ import { RegistrationPage } from './pages/RegistrationPage/RegistrationPage';
 import { Layout } from './components/Layout/Layout';
 import { CurrentMatch } from './pages/MatchDetails/CurrentMatch';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import { Open, StartPage } from './pages/StartPage/StartPage';
+import { Open,
+  //  StartPage
+   } from './pages/StartPage/StartPage';
 import { Page404 } from './pages/Page404/Page404';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
     !!localStorage.getItem('logged')
   );
-  const [isOpen, setIsOpen] = useState<Open>('start');
+  const [_isOpen, setIsOpen] = useState<Open>('start');
 
   useEffect(() => {
     const token = localStorage.getItem('logged');
