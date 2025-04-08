@@ -81,6 +81,7 @@ export const LoginPage: React.FC<Props> = ({
             />
             <p className={styles.container__login_back_paragraph}>SING UP</p>
           </div>
+          <p>gggggggggggggggggg</p>
 
           {input === 'login' && (
             <EmailPage formik={formik} setInput={setInput} />
