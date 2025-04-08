@@ -4,7 +4,7 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/team_project_frontend/',
+  base: '/teamproject/',
   plugins: [react(), svgr()],
   css: {
     preprocessorOptions: {
