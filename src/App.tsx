@@ -8,16 +8,14 @@ import { RegistrationPage } from './pages/RegistrationPage/RegistrationPage';
 import { Layout } from './components/Layout/Layout';
 import { CurrentMatch } from './pages/MatchDetails/CurrentMatch';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import { Open,
-  //  StartPage
-   } from './pages/StartPage/StartPage';
+import { Open, StartPage } from './pages/StartPage/StartPage';
 import { Page404 } from './pages/Page404/Page404';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
     !!localStorage.getItem('logged')
   );
-  const [_isOpen, setIsOpen] = useState<Open>('start');
+  const [isOpen, setIsOpen] = useState<Open>('start');
 
   useEffect(() => {
     const token = localStorage.getItem('logged');
@@ -31,12 +29,11 @@ function App() {
       <Route
         path="/start"
         element={
-          // <StartPage
-          //   isOpen={isOpen}
-          //   setIsOpen={setIsOpen}
-          //   setIsAuthenticated={setIsAuthenticated}
-          // />
-          <p>dupa</p>
+          <StartPage
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            setIsAuthenticated={setIsAuthenticated}
+          />
         }
       />
       <Route
@@ -50,7 +47,7 @@ function App() {
           <Route path="current_match" element={<CurrentMatch />} />
         </Route>
       </Route>
-      <Route path='*' element={<Page404 />} />
+      <Route path="*" element={<Page404 />} />
     </Routes>
   );
 }
