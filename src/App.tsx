@@ -29,11 +29,12 @@ function App() {
       <Route
         path="/start"
         element={
-          <StartPage
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            setIsAuthenticated={setIsAuthenticated}
-          />
+          // <StartPage
+          //   isOpen={isOpen}
+          //   setIsOpen={setIsOpen}
+          //   setIsAuthenticated={setIsAuthenticated}
+          // />
+          <p>dupa</p>
         }
       />
       <Route
