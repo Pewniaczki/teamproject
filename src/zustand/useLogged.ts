@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 interface AuthState {
   logged: boolean;
@@ -6,8 +6,14 @@ interface AuthState {
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-  logged: localStorage.getItem("logged") === "true",
+  logged: localStorage.getItem('logged') === 'true',
   setLogged: (value) => {
+    if (value === false) {
+      localStorage.removeItem('logged');
+      set({ logged: value });
+      return;
+    }
+
     localStorage.setItem("logged", value.toString());
     set({ logged: value });
   },

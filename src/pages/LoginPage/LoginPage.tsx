@@ -25,6 +25,7 @@ export const LoginPage: React.FC<Props> = ({
 }) => {
   const [loginStatus, setLoginStatus] = useState<LoginStatus>('idle');
   const [input, setInput] = useState<InputType>('login');
+  const [token, setToken] = useState();
   const { setLogged } = useAuthStore();
   const navigate = useNavigate();
 
@@ -43,10 +44,14 @@ export const LoginPage: React.FC<Props> = ({
       setLoginStatus('pending');
 
       try {
-        await axios.post(`${BACKEND}/login`, {
-          email: values.email,
-          password: values.password,
-        });
+        await axios.post(
+          `${BACKEND}/login`,
+          {
+            email: values.email,
+            password: values.password,
+          },
+          { withCredentials: true }
+        );
         setLogged(true);
 
         setLoginStatus('success');

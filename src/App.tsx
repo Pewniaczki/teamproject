@@ -9,6 +9,7 @@ import { Layout } from './components/Layout/Layout';
 import { CurrentMatch } from './pages/MatchDetails/CurrentMatch';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { Open, StartPage } from './pages/StartPage/StartPage';
+import { Page404 } from './pages/Page404/Page404';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
@@ -18,7 +19,7 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem('logged');
-    if (token) {
+    if (token === 'true') {
       setIsAuthenticated(true);
     }
   }, []);
@@ -46,6 +47,7 @@ function App() {
           <Route path="current_match" element={<CurrentMatch />} />
         </Route>
       </Route>
+      <Route path='*' element={<Page404 />} />
     </Routes>
   );
 }

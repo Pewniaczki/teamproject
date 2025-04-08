@@ -9,6 +9,7 @@ import {
 } from '../../zustand/useBreakPoint';
 import { NavbarItemType } from '../../types/navbarItemType';
 import { useAuthStore } from '../../zustand/useLogged';
+import { useNavigate } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>(navbarItems[0].text);
@@ -18,12 +19,14 @@ export const Header: React.FC = () => {
   >([]);
   const { logged, setLogged } = useAuthStore();
   useBreakPointListener();
+  const navigate = useNavigate();
 
   const handleItemClick = (itemName: string) => {
-    console.log('itemName', itemName)
+    console.log('itemName', itemName);
     setActiveItem(itemName);
     if (itemName === 'Log out') {
-      setLogged(false)
+      setLogged(false);
+      navigate('/start');
     }
   };
 
