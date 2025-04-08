@@ -25,7 +25,7 @@ export const LoginPage: React.FC<Props> = ({
 }) => {
   const [loginStatus, setLoginStatus] = useState<LoginStatus>('idle');
   const [input, setInput] = useState<InputType>('login');
-  const [token, setToken] = useState();
+  // const [token, setToken] = useState();
   const { setLogged } = useAuthStore();
   const navigate = useNavigate();
 
