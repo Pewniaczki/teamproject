@@ -3,8 +3,8 @@ import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: '/teamproject/',
+export default defineConfig(({mode}) => ({
+  base: mode === 'production' ? '/teamproject/' : '/',
   plugins: [react(), svgr()],
   css: {
     preprocessorOptions: {
@@ -22,4 +22,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
