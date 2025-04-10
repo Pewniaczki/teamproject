@@ -21,6 +21,8 @@ export const StartPage: React.FC<Props> = ({
     <div className={styles.container}>
       <div className={styles.container__img} />
 
+      <p>jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj</p>
+
       <div className={styles.container__start}>
         <img
           className={styles.container__start_img}
