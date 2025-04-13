@@ -23,6 +23,10 @@ concurrency:
 jobs:
   # Single deploy job since we're just deploying
   deploy:
+    env:
+      SECRET: ${{ secrets.SECRET }}
+      VITE_BACKEND_LOGIN_URL: ${{ vars.VITE_BACKEND_LOGIN_URL}}
+      VITE_BACKEND_PEWNIACZKI: ${{ vars.VITE_BACKEND_PEWNIACZKI}}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
