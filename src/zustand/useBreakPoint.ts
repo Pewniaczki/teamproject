@@ -3,15 +3,18 @@ import { create } from 'zustand';
 
 const BREAKPOINTS = {
   desktop: 1024,
+  tablet: 768
 } as const;
 
 type BreakPointType = {
   isDesktop: boolean;
+  isTablet: boolean;
   updateBreakPoints: () => void;
 };
 
 export const useBreakPointStore = create<BreakPointType>((set) => ({
   isDesktop: window.innerWidth >= BREAKPOINTS.desktop,
+  isTablet: window.innerWidth >= BREAKPOINTS.tablet,
 
   updateBreakPoints: () => {
     set({

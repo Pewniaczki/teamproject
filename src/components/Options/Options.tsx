@@ -3,6 +3,7 @@ import styles from './Options.module.scss';
 
 import { useEffect, useState } from 'react';
 import { useDateStore } from '../../zustand/useDate';
+import { useBreakPointStore } from '../../zustand/useBreakPoint';
 
 type CompetitionType = {
   competition_id: number;
@@ -16,6 +17,7 @@ type CompetitionType = {
 export const Options: React.FC = () => {
   const [options, setOptions] = useState<CompetitionType[] | null>(null);
   const { date, setDate } = useDateStore();
+  const {isTablet} = useBreakPointStore();
 
   useEffect(() => {
     const getOptions = async () => {
@@ -56,6 +58,10 @@ export const Options: React.FC = () => {
           }}
           defaultValue={date.split('.').reverse().join('-')}
         />
+
+        <div className={styles.options_container_search}>
+          <img src=".\UI_Elements\search.svg" alt="" />
+        </div>
       </div>
 
       <div className={styles.options_container}>

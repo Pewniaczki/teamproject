@@ -76,12 +76,11 @@ export const LoginPage: React.FC<Props> = ({
           <div onClick={handlerBack} className={styles.container__login_back}>
             <img
               className={styles.container__login_back_btn}
-              src="\UI_Elements\arrow_back.svg"
+              src=".\UI_Elements\arrow_back.svg"
               alt="back icon"
             />
             <p className={styles.container__login_back_paragraph}>SING UP</p>
           </div>
-          <p>gggggggggggggggggg</p>
 
           {input === 'login' && (
             <EmailPage formik={formik} setInput={setInput} />

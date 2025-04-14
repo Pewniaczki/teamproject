@@ -3,6 +3,7 @@
 .nav {
   display: flex;
   position: relative;
+  margin-bottom: 10px;
 
   @include for-desktop {
     width: 100%;

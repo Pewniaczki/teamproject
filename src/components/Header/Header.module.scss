@@ -9,6 +9,7 @@
   background-color: $color-grey-70;
   width: 100%;
   border-top: 1px solid $color-grey-50;
+  overflow: auto;
 
   @include for-desktop {
     position: sticky;

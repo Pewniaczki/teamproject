@@ -2,7 +2,11 @@
 @use '../../scss/mixins' as *;
 
 .current {
-  padding: 0 20px;
+  padding: 5px 15px;
+
+  @include for-desktop {
+    padding: 0 20px;
+  }
 
   &__back {
     background-color: inherit;
@@ -56,7 +60,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 50px;
+    padding: 0 25px;
+
+    @include for-desktop {
+      padding: 0 50px;
+    }
 
     &_item {
       color: $color-grey-30;
@@ -75,6 +83,7 @@
       font-size: 24px;
       line-height: 32px;
       padding: 0 10px;
+      white-space: nowrap;
 
       &.active {
         border-bottom: 2px solid $color-grey-0;

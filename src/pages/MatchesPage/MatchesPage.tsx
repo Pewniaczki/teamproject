@@ -45,7 +45,7 @@ export const MatchesPage: React.FC = () => {
     <>
       {isDesktop && <SearchBar />}
       <TopMenu />
-      {isDesktop && <Options />}
+      <Options />
 
       <div className={style.match}>
         <div className={style.match__list}>

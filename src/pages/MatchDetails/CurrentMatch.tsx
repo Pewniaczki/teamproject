@@ -4,24 +4,29 @@ import styles from './CurrentMatch.module.scss';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { useState } from 'react';
 import { CurrentDetails } from '../../components/CurrentDetails/CurrentDetails';
+import {
+  useBreakPointListener,
+  useBreakPointStore,
+} from '../../zustand/useBreakPoint';
 
 export const CurrentMatch: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  useBreakPointListener();
+  const { isDesktop } = useBreakPointStore();
   const current: Match = location.state.match;
   const menuItems = ['Details', 'Team composition', 'Grid', 'Matches'] as const;
   const [activeElement, setActiveElement] =
     useState<(typeof menuItems)[number]>('Details');
   return (
     <>
-      <SearchBar />
+      {isDesktop && <SearchBar />}
 
       <div className={styles.current}>
         <div className={styles.current__icons}>
-          
-        <button className={styles.current__back} onClick={() => navigate(-1)}>
-          <img src=".\UI_Elements\arrow_back.svg"></img>
-        </button>
+          <button className={styles.current__back} onClick={() => navigate(-1)}>
+            <img src=".\UI_Elements\arrow_back.svg"></img>
+          </button>
 
           <div className={styles.current__icons__group}>
             <img src=".\UI_Elements\bell.svg" alt="bell image" />
@@ -42,7 +47,13 @@ export const CurrentMatch: React.FC = () => {
           </div>
 
           <div className={styles.current__time}>
-            <p className={styles.current__time_item}>{current.match_info.date_time.split('T')[1].split(':').slice(0,2).join(':')}</p>
+            <p className={styles.current__time_item}>
+              {current.match_info.date_time
+                .split('T')[1]
+                .split(':')
+                .slice(0, 2)
+                .join(':')}
+            </p>
             <p className={styles.current__time_item}>Today</p>
           </div>
 
