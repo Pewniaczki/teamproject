@@ -36,8 +36,8 @@ export const LoginPage: React.FC<Props> = ({
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: 'patryk@outlook.com',
+      password: '1q2w3e4r$R',
     },
     validationSchema,
     onSubmit: async (values) => {
