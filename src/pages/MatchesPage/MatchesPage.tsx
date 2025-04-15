@@ -67,7 +67,7 @@ export const MatchesPage: React.FC = () => {
 
 
           {!matches.length && loadingStatus === 'fetched' && (
-            <p>There is no matches today</p>
+            <p className={style.no_matches}>There is no matches today</p>
           )}
 
           {!!matches.length && loadingStatus === 'fetched' && (
