@@ -20,6 +20,7 @@ export const MatchesPage: React.FC = () => {
   const [data, setData] = useState<Record<string, Match[]> | null>(null);
   const { isDesktop } = useBreakPointStore();
   const { date } = useDateStore();
+  const BACKEND = import.meta.env.VITE_BACKEND_PEWNIACZKI;
 
   useBreakPointListener();
 
@@ -27,8 +28,8 @@ export const MatchesPage: React.FC = () => {
     const getMatches = async () => {
       const response =
         date !== ''
-          ? await axios.get(`/api/matches?date=${date}`)
-          : await axios.get(`/api/matches`);
+          ? await axios.get(`${BACKEND}/api/matches?date=${date}`)
+          : await axios.get(`${BACKEND}/api/matches`);
 
       if (response.data) {
         const matches = Object.values(response.data).flatMap(
