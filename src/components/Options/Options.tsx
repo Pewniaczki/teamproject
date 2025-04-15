@@ -3,7 +3,6 @@ import styles from './Options.module.scss';
 
 import { useEffect, useState } from 'react';
 import { useDateStore } from '../../zustand/useDate';
-import { useBreakPointStore } from '../../zustand/useBreakPoint';
 
 type CompetitionType = {
   competition_id: number;
