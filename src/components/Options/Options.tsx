@@ -11,6 +11,7 @@ type CompetitionType = {
   country: null | string;
 };
 
+const BACKEND = import.meta.env.VITE_BACKEND_PEWNIACZKI;
 
 
 export const Options: React.FC = () => {
@@ -20,7 +21,7 @@ export const Options: React.FC = () => {
   useEffect(() => {
     const getOptions = async () => {
       try {
-        const response = await axios('/api/competitions');
+        const response = await axios(`${BACKEND}/api/competitions`);
         if (response.data) {
           setOptions(response.data);
         }
