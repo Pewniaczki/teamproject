@@ -17,7 +17,6 @@ type CompetitionType = {
 export const Options: React.FC = () => {
   const [options, setOptions] = useState<CompetitionType[] | null>(null);
   const { date, setDate } = useDateStore();
-  const {isTablet} = useBreakPointStore();
 
   useEffect(() => {
     const getOptions = async () => {
