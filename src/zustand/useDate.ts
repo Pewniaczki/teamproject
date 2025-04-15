@@ -6,7 +6,7 @@ type useDateType = {
 }
 
 export const useDateStore = create<useDateType>((set) => ({
-    date: '01.01.2024',
+    date: '21.01.2024',
     setDate: (value) => {
         set({date: value})
     }
