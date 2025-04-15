@@ -20,6 +20,7 @@
   &_main {
     color: blue;
     display: flex;
+    margin-bottom: 10px;
 
     @include for-desktop {
       width: 100%;

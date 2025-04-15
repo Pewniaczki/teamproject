@@ -1,5 +1,9 @@
 @use './scss/mixins' as *;
 
+* {
+  box-sizing: border-box;
+}
+
 .nav {
   width: 100%;
   display: flex;

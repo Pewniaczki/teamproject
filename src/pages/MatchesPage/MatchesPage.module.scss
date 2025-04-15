@@ -26,6 +26,7 @@
   }
 
   &__countries {
+    margin-bottom: 15px;
     @include for-desktop {
       width: 100%;
     }
