@@ -8,6 +8,7 @@ import {
   useBreakPointListener,
   useBreakPointStore,
 } from '../../zustand/useBreakPoint';
+import { useFavouriteMatches } from '../../zustand/useFavouritesMatches';
 
 export const CurrentMatch: React.FC = () => {
   const location = useLocation();
@@ -18,6 +19,9 @@ export const CurrentMatch: React.FC = () => {
   const menuItems = ['Details', 'Team composition', 'Grid', 'Matches'] as const;
   const [activeElement, setActiveElement] =
     useState<(typeof menuItems)[number]>('Details');
+
+  const { setFavourite } = useFavouriteMatches();
+
   return (
     <>
       {isDesktop && <SearchBar />}
@@ -30,7 +34,11 @@ export const CurrentMatch: React.FC = () => {
 
           <div className={styles.current__icons__group}>
             <img src=".\UI_Elements\bell.svg" alt="bell image" />
-            <img src=".\UI_Elements\star.svg" alt="star image" />
+            <img
+              onClick={() => setFavourite(current)}
+              src=".\UI_Elements\star.svg"
+              alt="star image"
+            />
           </div>
         </div>
 
