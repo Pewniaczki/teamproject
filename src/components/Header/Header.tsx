@@ -1,22 +1,22 @@
 import styles from './Header.module.scss';
 
 import { NavbarItem } from '../NavbarItem';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { navbarItems } from '../../data/NavbarItems';
 import {
   useBreakPointStore,
   useBreakPointListener,
 } from '../../zustand/useBreakPoint';
-import { NavbarItemType } from '../../types/navbarItemType';
+// import { NavbarItemType } from '../../types/navbarItemType';
 import { useAuthStore } from '../../zustand/useLogged';
 import { useNavigate } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>(navbarItems[0].text);
   const { isDesktop } = useBreakPointStore();
-  const [visibleNavbarItems, setVisibleNavbarItems] = useState<
-    NavbarItemType[]
-  >([]);
+  // const [visibleNavbarItems, setVisibleNavbarItems] = useState<
+  //   NavbarItemType[]
+  // >([]);
   const { logged, setLogged } = useAuthStore();
   useBreakPointListener();
   const navigate = useNavigate();
@@ -26,17 +26,24 @@ export const Header: React.FC = () => {
     setActiveItem(itemName);
     if (itemName === 'Log out') {
       setLogged(false);
-      navigate('/start');
+      navigate('/start', { replace: true });
+      location.reload();
+    }
+
+    if (itemName === 'Log in') {
+      setLogged(false);
+      navigate('/start', { replace: true });
+      location.reload();
     }
   };
 
-  useEffect(() => {
-    if (!isDesktop) {
-      setVisibleNavbarItems(navbarItems.slice(0, -2));
-    } else {
-      setVisibleNavbarItems(navbarItems);
-    }
-  }, [isDesktop, navbarItems]);
+  // useEffect(() => {
+  //   if (!isDesktop) {
+  //     setVisibleNavbarItems(navbarItems.slice(0, -2));
+  //   } else {
+  //     setVisibleNavbarItems(navbarItems);
+  //   }
+  // }, [isDesktop, navbarItems]);
 
   return (
     <nav role="menubar" className={styles.navbar}>
@@ -48,7 +55,7 @@ export const Header: React.FC = () => {
           />
         )}
 
-        {visibleNavbarItems.map((item) => {
+        {navbarItems.map((item) => {
           if (item.text === 'Log in' && logged) return null;
           if (item.text === 'Log out' && !logged) return null;
           return (

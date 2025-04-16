@@ -20,12 +20,12 @@ export const ListOfLeagues: React.FC<Props> = ({ details }) => {
           <img className={style.league__logo} src={details[0].competition_logo} />
           <p className={style.league__name}>{details[0].competition}</p>
         </div>
-        <Star
+        {/* <Star
           className={cn(style.league__favoriteIcon, {
             [style.iconActive]: isFavorite,
           })}
           onClick={() => setIsFavorite((prev) => !prev)}
-        />
+        /> */}
       </div>
 
       <div className={style.league__matches_list}>
