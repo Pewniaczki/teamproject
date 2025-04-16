@@ -20,7 +20,9 @@ export const CurrentMatch: React.FC = () => {
   const [activeElement, setActiveElement] =
     useState<(typeof menuItems)[number]>('Details');
 
-  const { setFavourite } = useFavouriteMatches();
+  const { setFavourite, favourite } = useFavouriteMatches();
+
+  const includedInFavourite = favourite.includes(current);
 
   return (
     <>
@@ -34,11 +36,16 @@ export const CurrentMatch: React.FC = () => {
 
           <div className={styles.current__icons__group}>
             <img src=".\UI_Elements\bell.svg" alt="bell image" />
-            <img
-              onClick={() => setFavourite(current)}
-              src=".\UI_Elements\star.svg"
-              alt="star image"
-            />
+
+            <div className={styles.current__icons__fav}>
+              <img
+                onClick={() => setFavourite(current)}
+                src=".\UI_Elements\star.svg"
+                alt="star image"
+              />
+
+              {includedInFavourite && <p className={styles.current__icons__fav_text}>included</p>}
+            </div>
           </div>
         </div>
 

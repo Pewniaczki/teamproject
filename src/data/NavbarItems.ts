@@ -23,7 +23,7 @@ export const navbarItems: NavbarItemType[] = [
   {
     text: 'Favourites',
     icon: FavouritesIcon,
-    link: '#/favourites',
+    link: '#/favourite',
   },
   {
     text: 'Rates',

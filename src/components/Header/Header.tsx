@@ -1,7 +1,7 @@
 import styles from './Header.module.scss';
 
 import { NavbarItem } from '../NavbarItem';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { navbarItems } from '../../data/NavbarItems';
 import {
   useBreakPointStore,
@@ -10,10 +10,12 @@ import {
 // import { NavbarItemType } from '../../types/navbarItemType';
 import { useAuthStore } from '../../zustand/useLogged';
 import { useNavigate } from 'react-router-dom';
+import { useActiveNavbarItem } from '../../zustand/useActiveNavbar';
 
 export const Header: React.FC = () => {
-  const [activeItem, setActiveItem] = useState<string>(navbarItems[0].text);
+  // const [activeItem, setActiveItem] = useState<string>(navbarItems[0].text);
   const { isDesktop } = useBreakPointStore();
+  const {activeItem, setActiveItem} = useActiveNavbarItem();
   // const [visibleNavbarItems, setVisibleNavbarItems] = useState<
   //   NavbarItemType[]
   // >([]);
@@ -35,6 +37,10 @@ export const Header: React.FC = () => {
       navigate('/start', { replace: true });
       location.reload();
     }
+
+    // if(itemName === 'Favourites') {
+    //   navigate('/favourite')
+    // }
   };
 
   // useEffect(() => {

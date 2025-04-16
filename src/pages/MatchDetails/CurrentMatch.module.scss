@@ -27,9 +27,21 @@
     }
 
     &__group {
-      width: 72px;
+      width: 100px;
       display: flex;
       justify-content: space-between;
+    }
+
+    &__fav {
+      display: flex;
+      gap: 5px;
+
+      &_text {
+        color: $color-grey-0;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 21px;
+      }
     }
   }
 

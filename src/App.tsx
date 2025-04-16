@@ -10,6 +10,7 @@ import { CurrentMatch } from './pages/MatchDetails/CurrentMatch';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { Open, StartPage } from './pages/StartPage/StartPage';
 import { Page404 } from './pages/Page404/Page404';
+import { FavouriteMatches } from './pages/FavouriteMatches/FavouriteMatches';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
@@ -45,6 +46,7 @@ function App() {
           <Route index element={<Navigate to="/matches" />} />
           <Route path="matches" element={<MatchesPage />} />
           <Route path="current_match" element={<CurrentMatch />} />
+          <Route path="favourite" element={<FavouriteMatches />} />
         </Route>
       </Route>
       <Route path="*" element={<Page404 />} />
