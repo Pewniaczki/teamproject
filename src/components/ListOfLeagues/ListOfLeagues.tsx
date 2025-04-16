@@ -1,8 +1,8 @@
 import { Match } from "../../types/countryMatchesTypes";
 import style from './ListOfLeagues.module.scss';
-import Star from '../../assets/icons/star.svg?react';
-import { useState } from "react";
-import cn from 'classnames';
+// import Star from '../../assets/icons/star.svg?react';
+// import { useState } from "react";
+// import cn from 'classnames';
 import { MatchesList } from "../MatchesList";
 
 
@@ -11,7 +11,7 @@ type Props ={
 }
 
 export const ListOfLeagues: React.FC<Props> = ({ details }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  // const [isFavorite, setIsFavorite] = useState(false);
     
   return (
     <div className={style.league}>
