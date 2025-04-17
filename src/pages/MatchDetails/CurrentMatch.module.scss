@@ -3,6 +3,7 @@
 
 .current {
   padding: 15px;
+  // margin: 0 auto;
 
   @include for-desktop {
     padding: 0 20px;
@@ -17,17 +18,17 @@
   &__icons {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    margin-bottom: 20px;
+    width: 90%;
+    margin: 0 auto 15px;
 
-    @include for-desktop {
-      width: 75px;
-      flex-direction: column;
-      height: 80px;
-    }
+    // @include for-desktop {
+    //   width: 75px;
+    //   flex-direction: column;
+    //   height: 80px;
+    // }
 
     &__group {
-      width: 100px;
+      width: 70px;
       display: flex;
       justify-content: space-between;
     }
@@ -90,10 +91,15 @@
 
   &__menu {
     display: flex;
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     overflow: auto;
     justify-content: space-between;
     margin-bottom: 20px;
+
+    @include for-desktop {
+      width: 100%;
+    }
 
     &_item {
       color: $color-grey-0;

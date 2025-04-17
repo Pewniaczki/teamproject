@@ -1,6 +1,7 @@
 @use '../../scss/variables' as *;
 
 .favourite {
+    margin: 15px auto;
     &_title {
         color: $color-grey-0;
         font-weight: 400;

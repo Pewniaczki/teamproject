@@ -49,7 +49,6 @@ export const CurrentMatches: React.FC<Props> = ({ matches }) => {
           </div>
 
           <div className={styles.info}>
-            <p>Today</p>
             <span>{match.match_info.date_time.split('T')[1].split(':').slice(0,2).join(':')}</span>
           </div>
         </div>
