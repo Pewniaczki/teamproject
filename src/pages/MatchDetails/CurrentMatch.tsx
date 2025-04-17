@@ -26,6 +26,18 @@ export const CurrentMatch: React.FC = () => {
     (item) => current.match_info.match_id === item.match_info.match_id
   );
 
+  const [animateStar, setAnimateStar] = useState(false);
+
+  const handleStarClick = () => {
+    setFavourite(current);
+
+    setAnimateStar(true);
+
+    setTimeout(() => {
+      setAnimateStar(false);
+    }, 300);
+  };
+
   return (
     <>
       {isDesktop && <SearchBar />}
@@ -37,19 +49,22 @@ export const CurrentMatch: React.FC = () => {
           </button>
 
           <div className={styles.current__icons__group}>
-          <img src=".\UI_Elements\bell.svg" alt="bell image" />
+            <img src=".\UI_Elements\bell.svg" alt="bell image" />
 
-          {/* <div className={styles.current__icons__fav}> */}
-          <img
-            onClick={() => setFavourite(current)}
-            src={
-              includedInFavourite
-                ? './UI_Elements/filled_star.svg'
-                : './UI_Elements/star.svg'
-            }
-            alt="star image"
-          />
-          {/* </div> */}
+            {/* <div className={styles.current__icons__fav}> */}
+            <img
+              onClick={handleStarClick}
+              className={`${styles.current__icons__group__star} ${
+                animateStar ? styles.animate : ''
+              }`}
+              src={
+                includedInFavourite
+                  ? './UI_Elements/filled_star.svg'
+                  : './UI_Elements/star.svg'
+              }
+              alt="star image"
+            />
+            {/* </div> */}
           </div>
         </div>
 

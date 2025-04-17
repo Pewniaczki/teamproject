@@ -1,6 +1,18 @@
 @use '../../scss/variables' as *;
 @use '../../scss/mixins' as *;
 
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .current {
   padding: 15px;
   // margin: 0 auto;
@@ -31,6 +43,15 @@
       width: 70px;
       display: flex;
       justify-content: space-between;
+
+      &__star {
+        cursor: pointer;
+        transition: transform 0.2s ease;
+
+        &.animate {
+          animation: pop 0.3s ease;
+        }
+      }
     }
 
     &__fav {

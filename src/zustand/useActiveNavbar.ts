@@ -7,8 +7,9 @@ type ActiveState = {
 }
 
 export const useActiveNavbarItem = create<ActiveState>((set) => ({
-    activeItem: navbarItems[0].text,
+    activeItem: sessionStorage.getItem('activetem') || '',
     setActiveItem: (value) => {
         set({activeItem: value})
+        sessionStorage.setItem('activetem', value);
     }
 }))

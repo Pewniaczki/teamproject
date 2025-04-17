@@ -11,13 +11,19 @@ export const useFavouriteMatches = create<FavouriteState>((set, get) => ({
 
   setFavourite: (match) => {
     const currentFavourite = get().favourite;
+    let newFavourites: Match[];
     const existInCurrent = currentFavourite.some(
       (item) => item.match_info.match_id === match.match_info.match_id
     );
 
-    if (existInCurrent) return;
+    if (existInCurrent) {
+      newFavourites = currentFavourite.filter(
+        (item) => item.match_info.match_id !== match.match_info.match_id
+      );
+    } else {
+      newFavourites = [...currentFavourite, match];
+    }
 
-    const newFavourites = [...currentFavourite, match];
     set({ favourite: newFavourites });
 
     localStorage.setItem('favouriteMatches', JSON.stringify(newFavourites));
