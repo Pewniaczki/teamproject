@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { navbarItems } from '../data/NavbarItems';
 
 type ActiveState = {
     activeItem: string,
