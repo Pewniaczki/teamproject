@@ -22,7 +22,7 @@ export const CurrentMatch: React.FC = () => {
 
   const { setFavourite, favourite } = useFavouriteMatches();
 
-  const includedInFavourite = favourite.includes(current);
+  const includedInFavourite = favourite.some(item => current.match_info.match_id === item.match_info.match_id);
 
   return (
     <>
@@ -40,11 +40,9 @@ export const CurrentMatch: React.FC = () => {
             <div className={styles.current__icons__fav}>
               <img
                 onClick={() => setFavourite(current)}
-                src=".\UI_Elements\star.svg"
+                src={includedInFavourite ? "./UI_Elements/filled_star.svg" : "./UI_Elements/star.svg"}
                 alt="star image"
               />
-
-              {includedInFavourite && <p className={styles.current__icons__fav_text}>included</p>}
             </div>
           </div>
         </div>
