@@ -26,7 +26,7 @@ export const PasswordPage: React.FC<Props> = ({
         onBlur={formik.handleBlur}
         name="password"
         placeholder="Password"
-        className={styles.container__login_input}
+        className='bg-inherit border-1 border-[var(--color-grey-50)] w-full p-2 rounded-md mb-8 text-[var(--color-grey-30)]'
       />
 
       {formik.touched.password && formik.errors.password && (

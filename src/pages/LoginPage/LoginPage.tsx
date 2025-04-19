@@ -71,15 +71,14 @@ export const LoginPage: React.FC<Props> = ({
 
   return (
     <FormikProvider value={formik}>
-      <form onSubmit={formik.handleSubmit}>
-        <div className={styles.container__login}>
-          <div onClick={handlerBack} className={styles.container__login_back}>
+      <form onSubmit={formik.handleSubmit}>        
+          <div onClick={handlerBack} className='flex items-center gap-2 mb-2'>
             <img
-              className={styles.container__login_back_btn}
+              className='w-4 h-3'
               src=".\UI_Elements\arrow_back.svg"
               alt="back icon"
             />
-            <p className={styles.container__login_back_paragraph}>SING UP</p>
+            <p className='text-lg text-[var(--color-grey-0)] font-normal'>SING UP</p>
           </div>
 
           {input === 'login' && (
@@ -93,8 +92,7 @@ export const LoginPage: React.FC<Props> = ({
               loginStatus={loginStatus}
               setInput={setInput}
             />
-          )}
-        </div>
+          )}        
       </form>
     </FormikProvider>
   );
