@@ -6,8 +6,8 @@ export const FavouriteMatches: React.FC = () => {
   const { favourite } = useFavouriteMatches();
 
   return (
-    <div className={styles.favourite}>
-      <h1 className={styles.favourite_title}>Your Favourite matches</h1>
+    <div className="mx-auto my-4">
+      <h1 className='text-[var(--color-grey-0)] font-normal mb-4'>Your Favourite matches</h1>
       {!!favourite.length ? (
         <CurrentMatches matches={favourite} />
       ) : (

@@ -10,7 +10,7 @@ type Props = {
 export const EmailPage: React.FC<Props> = ({ formik, setInput }) => {
   return (
     <>
-      <p className={styles.container__login_paragraph}>
+      <p className='font-normal text-lg text-[var(--color-grey-20)] mb-3'>
         Please enter your email
       </p>
       <input
@@ -20,11 +20,11 @@ export const EmailPage: React.FC<Props> = ({ formik, setInput }) => {
         onBlur={formik.handleBlur}
         name="email"
         placeholder="Email address"
-        className={styles.container__login_input}
+        className='bg-inherit border-s-1 border-[var(--color-grey-50)] w-full p-2 rounded-md mb-8 text=[var(--color-grey-30)]'
       />
 
       {formik.touched.email && formik.errors.email && (
-        <div className={styles.container__login_error}>
+        <div className='text-[var(--color-grey-40)]'>
           {formik.errors.email}
         </div>
       )}
@@ -38,7 +38,7 @@ export const EmailPage: React.FC<Props> = ({ formik, setInput }) => {
             setInput('password');
           }
         }}
-        className={styles.container__login_btn}
+        className='border-s-1 border-[var(--color-grey-40)] bg-[var(--color-grey-70)] h-12 w-full text-[var(--color-grey-40)] font-bold'
       >
         CONTINUE
       </button>
