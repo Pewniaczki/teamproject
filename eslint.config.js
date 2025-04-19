@@ -36,7 +36,7 @@ export default tseslint.config(
     },
     parser: '@typescript-eslint/parser',
     rules: {
-      "react/jsx-key": "warn",
+      'react/jsx-key': 'warn',
       'react/prop-types': 'off',
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
