@@ -1,5 +1,5 @@
 import { FormikProps } from 'formik';
-import styles from './LoginPage.module.scss';
+// import styles from './LoginPage.module.scss';
 import { InputType } from '../../types/InputType';
 
 type Props = {
@@ -10,9 +10,10 @@ type Props = {
 export const EmailPage: React.FC<Props> = ({ formik, setInput }) => {
   return (
     <>
-      <p className={styles.container__login_paragraph}>
+      <p className='font-normal text-lg text-[var(--color-grey-20)] mb-3'>
         Please enter your email
       </p>
+
       <input
         type="text"
         value={formik.values.email}
@@ -20,11 +21,11 @@ export const EmailPage: React.FC<Props> = ({ formik, setInput }) => {
         onBlur={formik.handleBlur}
         name="email"
         placeholder="Email address"
-        className={styles.container__login_input}
+        className='bg-inherit border-1 border-[var(--color-grey-50)] w-full p-2 rounded-s mb-8 text-[var(--color-grey-20)]'
       />
 
       {formik.touched.email && formik.errors.email && (
-        <div className={styles.container__login_error}>
+        <div className='text-[var(--color-grey-40)]'>
           {formik.errors.email}
         </div>
       )}
@@ -38,7 +39,7 @@ export const EmailPage: React.FC<Props> = ({ formik, setInput }) => {
             setInput('password');
           }
         }}
-        className={styles.container__login_btn}
+        className='border-1 border-[var(--color-grey-40)] bg-[var(--color-grey-70)] h-12 w-full text-[var(--color-grey-40)] font-bold'
       >
         CONTINUE
       </button>
