@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { CountryMatches } from '../../components/CountryMatches';
 import { CurrentMatches } from '../../components/CurrentMatches/CurrentMatches';
 // import { countryMatches } from '../../data/CountryMatches';
-import style from './MatchesPage.module.scss';
+// import style from './MatchesPage.module.scss';
 // import { apiPewniaczki } from '../../axiosConfig';
 import { TopMenu } from '../../components/TopMenu/TopMenu';
 import { Options } from '../../components/Options/Options';
