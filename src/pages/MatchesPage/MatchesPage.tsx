@@ -58,23 +58,23 @@ export const MatchesPage: React.FC = () => {
       <TopMenu />
       <Options />
 
-      <div className={style.match}>
-        <div className={style.match__list}>
-
+      <div className="flex flex-col p-2 lg:w-full lg:p-2.5">
+        <div className="flex h-[calc(100vh-13px)] w-full flex-col justify-start gap-2 lg:h-auto lg:flex-row lg:gap-6">
           {loadingStatus === 'error' && <Error />}
 
           {loadingStatus === 'pending' && <Loading size={200} />}
 
-
           {!matches.length && loadingStatus === 'fetched' && (
-            <p className={style.no_matches}>There is no matches today</p>
+            <p className="text-2xl font-normal text-[var(--color-grey-0)]">
+              There is no matches today
+            </p>
           )}
 
           {!!matches.length && loadingStatus === 'fetched' && (
             <CurrentMatches matches={matches} />
           )}
 
-          <div className={style.match__countries}>
+          <div className="mb-3.5 lg:w-full">
             {Object.entries(data || {}).map(([cuntryName, details]) => {
               return (
                 <CountryMatches
