@@ -1,6 +1,5 @@
 import { InputType } from '../../types/InputType';
 import { LoginStatus } from '../../types/loginStatus';
-// import styles from './LoginPage.module.scss';
 import { FormikProps } from 'formik';
 
 type Props = {

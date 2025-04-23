@@ -1,9 +1,7 @@
 import { FormikProvider, useFormik } from 'formik';
 import React, { useState } from 'react';
-// import styles from './LoginPage.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { validationSchema } from './validation-schema';
-// import { apiLogin } from '../../axiosConfig';
 import { useAuthStore } from '../../zustand/useLogged';
 import { Open } from '../StartPage/StartPage';
 import { PasswordPage } from './PasswordPage';
@@ -25,7 +23,6 @@ export const LoginPage: React.FC<Props> = ({
 }) => {
   const [loginStatus, setLoginStatus] = useState<LoginStatus>('idle');
   const [input, setInput] = useState<InputType>('login');
-  // const [token, setToken] = useState();
   const { setLogged } = useAuthStore();
   const navigate = useNavigate();
 

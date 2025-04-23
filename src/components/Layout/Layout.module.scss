@@ -2,7 +2,6 @@
 
 .layout {
   display: flex;
-  // flex-direction: column-reverse;
   min-height: 100vh;
 
   @include for-desktop {

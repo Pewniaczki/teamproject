@@ -3,7 +3,6 @@ import { Match } from '../../types/countryMatchesTypes';
 import { ListOfLeagues } from '../ListOfLeagues';
 import style from './CountryMatches.module.scss';
 import cn from 'classnames';
-// import { LeagueItem } from '../LeagueItem';
 
 type Props = {
   countryName: string,

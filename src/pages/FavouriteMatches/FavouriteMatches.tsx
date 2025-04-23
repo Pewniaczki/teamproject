@@ -1,6 +1,5 @@
 import { CurrentMatches } from '../../components/CurrentMatches/CurrentMatches';
 import { useFavouriteMatches } from '../../zustand/useFavouritesMatches';
-// import styles from './FavouriteMatches.module.scss';
 
 export const FavouriteMatches: React.FC = () => {
   const { favourite } = useFavouriteMatches();

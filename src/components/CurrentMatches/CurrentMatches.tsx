@@ -1,8 +1,5 @@
 import styles from './CurrentMatches.module.scss';
 import SoccerBall from '../../assets/icons/soccer-ball.svg';
-// import BarcelonaIcon from '../../assets/icons/barselonaSpain.svg';
-// import ManchesterIcon from '../../assets/icons/ManchesterLondon.svg';
-// import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Match } from '../../types/countryMatchesTypes';
 

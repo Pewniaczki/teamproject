@@ -1,24 +1,18 @@
 import styles from './Header.module.scss';
 
 import { NavbarItem } from '../NavbarItem';
-// import { useState } from 'react';
 import { navbarItems } from '../../data/NavbarItems';
 import {
   useBreakPointStore,
   useBreakPointListener,
 } from '../../zustand/useBreakPoint';
-// import { NavbarItemType } from '../../types/navbarItemType';
 import { useAuthStore } from '../../zustand/useLogged';
 import { useNavigate } from 'react-router-dom';
 import { useActiveNavbarItem } from '../../zustand/useActiveNavbar';
 
 export const Header: React.FC = () => {
-  // const [activeItem, setActiveItem] = useState<string>(navbarItems[0].text);
   const { isDesktop } = useBreakPointStore();
   const {activeItem, setActiveItem} = useActiveNavbarItem();
-  // const [visibleNavbarItems, setVisibleNavbarItems] = useState<
-  //   NavbarItemType[]
-  // >([]);
   const { logged, setLogged } = useAuthStore();
   useBreakPointListener();
   const navigate = useNavigate();
@@ -37,19 +31,7 @@ export const Header: React.FC = () => {
       navigate('/start', { replace: true });
       location.reload();
     }
-
-    // if(itemName === 'Favourites') {
-    //   navigate('/favourite')
-    // }
   };
-
-  // useEffect(() => {
-  //   if (!isDesktop) {
-  //     setVisibleNavbarItems(navbarItems.slice(0, -2));
-  //   } else {
-  //     setVisibleNavbarItems(navbarItems);
-  //   }
-  // }, [isDesktop, navbarItems]);
 
   return (
     <nav role="menubar" className={styles.navbar}>

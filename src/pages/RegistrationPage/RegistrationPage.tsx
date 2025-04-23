@@ -3,10 +3,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { validationSchema } from './validation-schema';
-// import './RegistrationPage.scss';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
-// import { apiLogin } from '../../axiosConfig';
 import { Open } from '../StartPage/StartPage';
 import axios from 'axios';
 
@@ -36,7 +34,6 @@ export const RegistrationPage: React.FC<Props> = ({ setIsOpen }) => {
       setSubmissionStatus('pending');
 
       try {
-        // Simulating an API call
         const res = await axios.post(`${BACKEND}/register`, values, {
           withCredentials: true,
         });

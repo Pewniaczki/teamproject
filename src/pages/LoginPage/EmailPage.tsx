@@ -1,5 +1,4 @@
 import { FormikProps } from 'formik';
-// import styles from './LoginPage.module.scss';
 import { InputType } from '../../types/InputType';
 
 type Props = {

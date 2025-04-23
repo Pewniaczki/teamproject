@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import './styles.scss';
 import { MatchesPage } from './pages/MatchesPage/MatchesPage';
-// import { LoginPage } from './pages/LoginPage/LoginPage';
 import { RegistrationPage } from './pages/RegistrationPage/RegistrationPage';
 import { Layout } from './components/Layout/Layout';
 import { CurrentMatch } from './pages/MatchDetails/CurrentMatch';

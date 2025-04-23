@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-// import styles from './Page404.module.scss';
 
 export const Page404: React.FC = () => {
   const navigate = useNavigate();
