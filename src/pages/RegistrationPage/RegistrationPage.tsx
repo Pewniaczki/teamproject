@@ -62,7 +62,7 @@ export const RegistrationPage: React.FC<Props> = ({ setIsOpen }) => {
       >
         <img
           className="h-3.5 w-4.5"
-          src="public\UI_Elements\arrow_back.svg"
+          src=".\UI_Elements\arrow_back.svg"
           alt="back icon"
         />
         <p className="text-2xl font-normal text-[var(--color-grey-30)]">
