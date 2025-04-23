@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Match } from '../../types/countryMatchesTypes';
-import styles from './CurrentMatch.module.scss';
+// import styles from './CurrentMatch.module.scss';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { useState } from 'react';
 import { CurrentDetails } from '../../components/CurrentDetails/CurrentDetails';

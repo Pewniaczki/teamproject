@@ -1,6 +1,6 @@
 import { InputType } from '../../types/InputType';
 import { LoginStatus } from '../../types/loginStatus';
-import styles from './LoginPage.module.scss';
+// import styles from './LoginPage.module.scss';
 import { FormikProps } from 'formik';
 
 type Props = {
@@ -17,7 +17,9 @@ export const PasswordPage: React.FC<Props> = ({
 }) => {
   return (
     <>
-      <p className={styles.container__login_paragraph}>Enter your password</p>
+      <p className="mb-3 text-lg font-normal text-[var(--color-grey-20)]">
+        Enter your password
+      </p>
 
       <input
         type="password"
@@ -30,7 +32,7 @@ export const PasswordPage: React.FC<Props> = ({
       />
 
       {formik.touched.password && formik.errors.password && (
-        <div className={styles.container__login_error}>
+        <div className="text-[var(--color-grey-40)]">
           {formik.errors.password}
         </div>
       )}
@@ -41,7 +43,7 @@ export const PasswordPage: React.FC<Props> = ({
         disabled={isButtonDisabled}
         aria-disabled={isButtonDisabled}
         tabIndex={isButtonDisabled ? -1 : 0}
-        className={styles.container__login_btn}
+        className="h-12 w-full border-1 border-[var(--color-grey-40)] bg-[var(--color-grey-70)] font-bold text-[var(--color-grey-40)] hover:border-1 hover:border-[var(--color-secondary)] hover:bg-[var(--color-secondary-20)] hover:text-[var(--color-secondary)]"
         title={
           isButtonDisabled ? 'Fill out all required fields first.' : undefined
         }

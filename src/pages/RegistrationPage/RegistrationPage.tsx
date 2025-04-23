@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { validationSchema } from './validation-schema';
-import './RegistrationPage.scss';
+// import './RegistrationPage.scss';
 import { Button } from '../../components/Button';
 import { InputField } from '../../components/InputField';
 // import { apiLogin } from '../../axiosConfig';
@@ -19,7 +19,6 @@ type Props = {
 };
 
 export const RegistrationPage: React.FC<Props> = ({ setIsOpen }) => {
-  
   const [submissionStatus, setSubmissionStatus] =
     useState<SubmissionStatus>('idle');
 
@@ -57,34 +56,45 @@ export const RegistrationPage: React.FC<Props> = ({ setIsOpen }) => {
 
   return (
     <>
-      <div onClick={() => setIsOpen("start")} className='container__login_back'>
+      <div
+        onClick={() => setIsOpen('start')}
+        className="mb-8 flex items-center gap-2"
+      >
         <img
-          className='container__login_back_btn'
+          className="h-3.5 w-4.5"
           src="public\UI_Elements\arrow_back.svg"
           alt="back icon"
         />
-        <p className='container__login_back_paragraph'>SING UP</p>
+        <p className="text-2xl font-normal text-[var(--color-grey-30)]">
+          SING UP
+        </p>
       </div>
 
       <FormikProvider value={formik}>
-        <div className="registration-container">
-          <form onSubmit={formik.handleSubmit} className="registration-form">
-            <h2 className="registration-form__heading">Sign Up</h2>
+        <div className="m-auto flex w-full max-w-[400px] flex-col gap-4 rounded-xl bg-[var(--color-grey-70)] p-5 shadow-md">
+          <form
+            onSubmit={formik.handleSubmit}
+            className="flex flex-col gap-8 text-[var(--color-grey-20)]"
+          >
+            <h2 className="text-center text-2xl">Sign Up</h2>
             {submissionStatus === 'success' && (
-              <p className="registration-form__success-message">
+              <p className="text-center font-bold text-[var(--color-green)]">
                 Registration successful! You can now{' '}
-                <Link to="/login" className="registration-form__success-link">
+                <Link
+                  to="/login"
+                  className="font-bold text-[var(--color-green)] hover:no-underline"
+                >
                   log in
                 </Link>
                 .
               </p>
             )}
             {submissionStatus === 'error' && (
-              <p className="registration-form__error-message">
+              <p className="text-center font-bold text-[var(--color-red)]">
                 Something went wrong. Please try again.
               </p>
             )}
-            <div className="registration-form__input-group">
+            <div className="flex flex-col gap-4">
               <InputField
                 label="Username:"
                 type="text"
