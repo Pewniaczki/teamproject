@@ -26,7 +26,7 @@ export const PasswordPage: React.FC<Props> = ({
         onBlur={formik.handleBlur}
         name="password"
         placeholder="Password"
-        className='bg-inherit border-1 border-[var(--color-grey-50)] w-full p-2 rounded-md mb-8 text-[var(--color-grey-30)]'
+        className="mb-8 w-full rounded-md border-1 border-[var(--color-grey-50)] bg-inherit p-2 text-[var(--color-grey-30)]"
       />
 
       {formik.touched.password && formik.errors.password && (
@@ -42,7 +42,9 @@ export const PasswordPage: React.FC<Props> = ({
         aria-disabled={isButtonDisabled}
         tabIndex={isButtonDisabled ? -1 : 0}
         className={styles.container__login_btn}
-        title={isButtonDisabled ? 'Fill out all required fields first.' : undefined}
+        title={
+          isButtonDisabled ? 'Fill out all required fields first.' : undefined
+        }
       >
         {loginStatus === 'pending' ? 'Logging in...' : 'CONTINUE'}
       </button>

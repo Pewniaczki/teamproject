@@ -10,7 +10,7 @@ type Props = {
 export const EmailPage: React.FC<Props> = ({ formik, setInput }) => {
   return (
     <>
-      <p className='font-normal text-lg text-[var(--color-grey-20)] mb-3'>
+      <p className="mb-3 text-lg font-normal text-[var(--color-grey-20)]">
         Please enter your email
       </p>
 
@@ -21,13 +21,11 @@ export const EmailPage: React.FC<Props> = ({ formik, setInput }) => {
         onBlur={formik.handleBlur}
         name="email"
         placeholder="Email address"
-        className='bg-inherit border-1 border-[var(--color-grey-50)] w-full p-2 rounded-s mb-8 text-[var(--color-grey-20)]'
+        className="mb-8 w-full rounded-s border-1 border-[var(--color-grey-50)] bg-inherit p-2 text-[var(--color-grey-20)]"
       />
 
       {formik.touched.email && formik.errors.email && (
-        <div className='text-[var(--color-grey-40)]'>
-          {formik.errors.email}
-        </div>
+        <div className="text-[var(--color-grey-40)]">{formik.errors.email}</div>
       )}
 
       <button
@@ -39,14 +37,7 @@ export const EmailPage: React.FC<Props> = ({ formik, setInput }) => {
             setInput('password');
           }
         }}
-
-        className='border-1 border-[var(--color-grey-40)] bg-[var(--color-grey-70)] h-12 w-full text-[var(--color-grey-40)] font-bold 
-        active:border-[var(--color-secondary)] 
-        hover:border-[var(--color-secondary)] 
-        active:text-[var(--color-secondary)] 
-        hover:text-[var(--color-secondary)]
-        hover:bg-[var(--color-secondary-20)]
-        active:bg-[var(--color-secondary-20)]'
+        className="h-12 w-full border-1 border-[var(--color-grey-40)] bg-[var(--color-grey-70)] font-bold text-[var(--color-grey-40)] hover:border-[var(--color-secondary)] hover:bg-[var(--color-secondary-20)] hover:text-[var(--color-secondary)] active:border-[var(--color-secondary)] active:bg-[var(--color-secondary-20)] active:text-[var(--color-secondary)]"
       >
         CONTINUE
       </button>

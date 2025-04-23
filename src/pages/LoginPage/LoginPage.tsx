@@ -1,6 +1,6 @@
 import { FormikProvider, useFormik } from 'formik';
 import React, { useState } from 'react';
-import styles from './LoginPage.module.scss';
+// import styles from './LoginPage.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { validationSchema } from './validation-schema';
 // import { apiLogin } from '../../axiosConfig';
@@ -71,28 +71,28 @@ export const LoginPage: React.FC<Props> = ({
 
   return (
     <FormikProvider value={formik}>
-      <form onSubmit={formik.handleSubmit}>        
-          <div onClick={handlerBack} className='flex items-center gap-2 mb-2'>
-            <img
-              className='w-4 h-3'
-              src=".\UI_Elements\arrow_back.svg"
-              alt="back icon"
-            />
-            <p className='text-lg text-[var(--color-grey-0)] font-normal'>SING UP</p>
-          </div>
+      <form onSubmit={formik.handleSubmit}>
+        <div onClick={handlerBack} className="mb-2 flex items-center gap-2">
+          <img
+            className="h-3 w-4"
+            src=".\UI_Elements\arrow_back.svg"
+            alt="back icon"
+          />
+          <p className="text-lg font-normal text-[var(--color-grey-0)]">
+            SING UP
+          </p>
+        </div>
 
-          {input === 'login' && (
-            <EmailPage formik={formik} setInput={setInput} />
-          )}
+        {input === 'login' && <EmailPage formik={formik} setInput={setInput} />}
 
-          {input === 'password' && (
-            <PasswordPage
-              formik={formik}
-              isButtonDisabled={isButtonDisabled}
-              loginStatus={loginStatus}
-              setInput={setInput}
-            />
-          )}        
+        {input === 'password' && (
+          <PasswordPage
+            formik={formik}
+            isButtonDisabled={isButtonDisabled}
+            loginStatus={loginStatus}
+            setInput={setInput}
+          />
+        )}
       </form>
     </FormikProvider>
   );

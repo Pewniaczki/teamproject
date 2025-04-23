@@ -1,12 +1,13 @@
 :root {
 --color-primary: #f8ffae;
 --color-secondary: #43c6ac;
---color-secondary-20: rgb(67 198 172 / 20%);
+--color-secondary-20: rgb(68 197 172 / 20%);
 --color-red: #ba2022;
 --color-green: #179552;
 --color-yellow: #eac718;
 --color-grey-0: #f9f8f8;
 --color-grey-20: #d9d9d9;
+--color-grey-30: #a2a2a2;
 --color-grey-40: #6e6e6e;
 --color-grey-50: #404040;
 --color-grey-60: #292929;

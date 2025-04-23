@@ -31,32 +31,34 @@ export const CurrentMatch: React.FC = () => {
   const handleStarClick = () => {
     setFavourite(current);
 
-    setAnimateStar(true);
+    requestAnimationFrame(() => {
+      setAnimateStar(true);
 
-    setTimeout(() => {
-      setAnimateStar(false);
-    }, 300);
+      setTimeout(() => {
+        setAnimateStar(false);
+      }, 300);
+    });
   };
 
   return (
     <>
       {isDesktop && <SearchBar />}
 
-      <div className={styles.current}>
-        <div className={styles.current__icons}>
-          <button className={styles.current__back} onClick={() => navigate(-1)}>
+      <div className="p-3.5 lg:px-5 lg:py-0">
+        <div className="mx-auto mt-0 mb-3.5 flex w-[90%] justify-between">
+          <button
+            className="border-none bg-inherit"
+            onClick={() => navigate(-1)}
+          >
             <img src=".\UI_Elements\arrow_back.svg"></img>
           </button>
 
-          <div className={styles.current__icons__group}>
+          <div className="flex w-17.5 justify-between">
             <img src=".\UI_Elements\bell.svg" alt="bell image" />
 
-            {/* <div className={styles.current__icons__fav}> */}
             <img
               onClick={handleStarClick}
-              className={`${styles.current__icons__group__star} ${
-                animateStar ? styles.animate : ''
-              }`}
+              className={`cursor-pointer transition-transform duration-500 ${animateStar ? 'animate-pop' : ''}`}
               src={
                 includedInFavourite
                   ? './UI_Elements/filled_star.svg'
@@ -64,50 +66,49 @@ export const CurrentMatch: React.FC = () => {
               }
               alt="star image"
             />
-            {/* </div> */}
           </div>
         </div>
 
-        <div className={styles.current__teams}>
-          <div className={styles.current__teams_item}>
+        <div className="mb-5 flex scale-[0.8] justify-between lg:scale-[1]">
+          <div className="flex flex-col items-center">
             <img
-              className={styles.current__teams_item_logo}
+              className="mb-2.5 w-10"
               src={current.match_info.home_team_logo}
               alt="team icon"
             />
-            <p className={styles.current__teams_item_name}>
+            <p className="text-3xl font-bold text-[var(--color-grey-0)]">
               {current.match_info.home_team}
             </p>
           </div>
 
-          <div className={styles.current__time}>
-            <p className={styles.current__time_item}>
+          <div className="flex flex-col justify-center px-6 py-0 lg:px-12 lg:py-0">
+            <p className="text-[var(--color-grey-30)]">
               {current.match_info.date_time
                 .split('T')[1]
                 .split(':')
                 .slice(0, 2)
                 .join(':')}
             </p>
-            <p className={styles.current__time_item}>Today</p>
+            <p className="text-[var(--color-grey-30)]">Today</p>
           </div>
 
-          <div className={styles.current__teams_item}>
+          <div className="flex flex-col items-center">
             <img
-              className={styles.current__teams_item_logo}
+              className="mb-2.5 w-10"
               src={current.match_info.away_team_logo}
               alt="team icon"
             />
-            <p className={styles.current__teams_item_name}>
+            <p className="text-3xl font-bold text-[var(--color-grey-0)]">
               {current.match_info.away_team}
             </p>
           </div>
         </div>
 
-        <div className={styles.current__menu}>
+        <div className="mx-auto my-0 mb-5 flex w-[80%] justify-between overflow-auto lg:w-full">
           {menuItems.map((item) => (
             <p
               onClick={() => setActiveElement(item)}
-              className={`${styles.current__menu_item} ${activeElement === item && styles.active}`}
+              className={`px-2.5 py-0 text-2xl leading-8 font-normal whitespace-nowrap text-[var(--color-grey-0)] ${activeElement === item && 'border-b-2 border-b-[var(--color-grey-0)]'}`}
               key={item}
             >
               {item}
