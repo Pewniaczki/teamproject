@@ -15,7 +15,6 @@ export const StartPage: React.FC<Props> = ({
   isOpen,
   setIsOpen,
 }) => {
-  // const [isOpen, setIsOpen] = useState<Open>('start');
 
   return (
     <div className={styles.container}>
