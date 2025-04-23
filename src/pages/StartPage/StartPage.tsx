@@ -28,46 +28,44 @@ export const StartPage: React.FC<Props> = ({
           alt="logo image"
         />
 
-        {isOpen === 'start' && (
-          <div className={styles.container__start_container}>
-            <p className={styles.container__start_paragraph}>
-              REGISTER OR LOG IN
-            </p>
-
-            <div className={styles.container__start_element}>
-              <p className={styles.container__start_element_paragraph}>
-                New to WinZone?
+        <div className='ml-[1%] '>
+          {isOpen === 'start' && (
+            <div className={styles.container__start_container}>
+              <p className={styles.container__start_paragraph}>
+                REGISTER OR LOG IN
               </p>
-              <button
-                onClick={() => setIsOpen('signup')}
-                className={styles.container__start_element_btn}
-              >
-                SIGN UP
-              </button>
+              <div className={styles.container__start_element}>
+                <p className={styles.container__start_element_paragraph}>
+                  New to WinZone?
+                </p>
+                <button
+                  onClick={() => setIsOpen('signup')}
+                  className={styles.container__start_element_btn}
+                >
+                  SIGN UP
+                </button>
+              </div>
+              <div className={styles.container__start_element}>
+                <p className={styles.container__start_element_paragraph}>
+                  New to WinZone?
+                </p>
+                <button
+                  onClick={() => setIsOpen('login')}
+                  className={styles.container__start_element_btn}
+                >
+                  LOG IN
+                </button>
+              </div>
             </div>
-
-            <div className={styles.container__start_element}>
-              <p className={styles.container__start_element_paragraph}>
-                New to WinZone?
-              </p>
-              <button
-                onClick={() => setIsOpen('login')}
-                className={styles.container__start_element_btn}
-              >
-                LOG IN
-              </button>
-            </div>
-          </div>
-        )}
-
-        {isOpen === 'login' && (
-          <LoginPage
-            setIsOpen={setIsOpen}
-            setIsAuthenticated={setIsAuthenticated}
-          />
-        )}
-
-        {isOpen === 'signup' && <RegistrationPage setIsOpen={setIsOpen} />}
+          )}
+          {isOpen === 'login' && (
+            <LoginPage
+              setIsOpen={setIsOpen}
+              setIsAuthenticated={setIsAuthenticated}
+            />
+          )}
+          {isOpen === 'signup' && <RegistrationPage setIsOpen={setIsOpen} />}
+        </div>
       </div>
     </div>
   );

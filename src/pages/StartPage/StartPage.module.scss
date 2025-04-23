@@ -7,6 +7,8 @@
   justify-content: center;
 
   &__img {
+    position: fixed;
+    left: 0;
     background-image: url('/UI_Elements/loginImage.svg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -74,9 +76,9 @@
 
   &__start {
     padding: 1%;
-    
+
     @include for-desktop {
-        width: 50%;
+      width: 50%;
     }
 
     &_img {
