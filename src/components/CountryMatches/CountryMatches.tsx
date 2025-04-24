@@ -1,52 +1,41 @@
 import { useState } from 'react';
 import { Match } from '../../types/countryMatchesTypes';
 import { ListOfLeagues } from '../ListOfLeagues';
-import style from './CountryMatches.module.scss';
-import cn from 'classnames';
 
 type Props = {
-  countryName: string,
-  details: Match[]
+  countryName: string;
+  details: Match[];
+};
 
-}
-
-export const CountryMatches: React.FC<Props> = ({
-  countryName,
-  details,
-}) => {
+export const CountryMatches: React.FC<Props> = ({ countryName, details }) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => {
     setIsOpen((prev) => !prev);
   };
 
   return (
-    <div className={style.wrapper}>
+    <div className="mb-1 w-full place-items-center">
       <div
-        className={cn(style.country, {
-          [style.country__open]: isOpen,
-        })}
+        className={`flex w-full max-w-[var(--country-list-MaxWidth)] min-w-[var(--country-list-MinWidth)] items-center justify-between rounded-sm bg-[var(--color-grey-70)] px-2 py-4 text-[var(--color-grey-70)] ${isOpen && 'mb-0 rounded-b-none'}`}
       >
-        <div
-          className={`${style.country__container} ${style.country__containerLeft}`}
-        >
+        <div className="flex items-center gap-6">
           <img
-            className={style.country__container__img}
+            className="aspect-square w-6 rounded-full object-cover"
             src={details[0].country_flag}
             alt="country flag"
           />
-          <p className={style.country__container__paragraph}>{countryName}</p>
+          <p className="text-2xl leading-7 font-normal text-[var(--color-grey-20)]">
+            {countryName}
+          </p>
         </div>
 
-        <div
-          className={`${style.country__container} ${style.country__containerRight}`}
-        >
-          <p className={style.country__container__paragraph}>
+        <div className="flex items-center gap-4">
+          <p className="text-2xl leading-7 font-normal text-[var(--color-grey-20)]">
             {details.length}
           </p>
+
           <img
-            className={cn(style.country__container__arrow, {
-              [style.country__container__arrow__open]: isOpen,
-            })}
+            className={`h-5 w-5 transition-transform duration-200 ease-in-out ${isOpen && 'rotate-180'}`}
             src="./UI_Elements/arrow_down.svg"
             alt="arrow up"
             onClick={handleClick}
@@ -56,12 +45,9 @@ export const CountryMatches: React.FC<Props> = ({
 
       {isOpen && (
         <div
-          className={cn(style.country__list, {
-            [style.country__list__open]: isOpen,
-          })}
+          className={`w-full max-w-[var(--country-list-MaxWidth)] min-w-[var(--country-list-MinWidth)] bg-[var(--color-grey-70)] ${isOpen && 'mb-0'}`}
         >
           <ListOfLeagues details={details} />
-          {/* <LeagueItem key={details.} details={details} /> */}
         </div>
       )}
     </div>
