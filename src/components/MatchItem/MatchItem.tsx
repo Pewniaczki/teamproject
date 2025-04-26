@@ -35,7 +35,9 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
                   alt="team logo"
                   src={match_info.home_team_logo}
                 />
-                <p className={style.match__container__name}>{match_info.home_team}</p>
+                <p className={style.match__container__name}>
+                  {match_info.home_team}
+                </p>
               </div>
             </td>
             <td>{match_info.home_wins_probability}</td>
@@ -58,7 +60,9 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
                   alt="team logo"
                   src={match_info.away_team_logo}
                 />
-                <p className={style.match__container__name}>{match_info.away_team}</p>
+                <p className={style.match__container__name}>
+                  {match_info.away_team}
+                </p>
               </div>
             </td>
             <td>{match_info.away_wins_probability}</td>

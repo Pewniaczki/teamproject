@@ -1,4 +1,3 @@
-import cn from 'classnames';
 import { useField } from 'formik';
 import './InputField.scss';
 import { MdError } from 'react-icons/md';
