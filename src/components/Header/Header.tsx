@@ -1,5 +1,3 @@
-import styles from './Header.module.scss';
-
 import { NavbarItem } from '../NavbarItem';
 import { navbarItems } from '../../data/NavbarItems';
 import {
@@ -12,7 +10,7 @@ import { useActiveNavbarItem } from '../../zustand/useActiveNavbar';
 
 export const Header: React.FC = () => {
   const { isDesktop } = useBreakPointStore();
-  const {activeItem, setActiveItem} = useActiveNavbarItem();
+  const { activeItem, setActiveItem } = useActiveNavbarItem();
   const { logged, setLogged } = useAuthStore();
   useBreakPointListener();
   const navigate = useNavigate();
@@ -34,11 +32,14 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <nav role="menubar" className={styles.navbar}>
-      <div className={styles.navbarContainer}>
+    <nav
+      role="menubar"
+      className="fixed bottom-0 flex w-full justify-center overflow-auto border-t-1 border-[var(--color-grey-50)] border-r-[var(--color-grey-50)] bg-[var(--color-grey-70)] lg:sticky lg:h-full lg:border-t-0 lg:border-r-1 lg:border-r-[var(--color-grey-50)]"
+    >
+      <div className="flex w-full max-w-125 flex-row  lg:h-[70%] lg:flex-col lg:items-start">
         {isDesktop && (
           <img
-            className={styles.navbar__logo}
+            className="mb-5 px-1.5 py-2.5"
             src="./UI_Elements/Name_logo.svg"
           />
         )}

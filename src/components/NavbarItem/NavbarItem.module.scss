@@ -14,7 +14,8 @@
 
   @include for-desktop {
     flex-direction: row;
-    height: fit-content;
+    min-height: 80px;
+    max-height: 80px;
   }
 
   &Icon {
