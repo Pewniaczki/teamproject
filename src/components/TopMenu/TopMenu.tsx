@@ -17,7 +17,7 @@ export const TopMenu: React.FC = () => {
     >
       <div className="mr-[4%] lg:w-[calc(160px+4%)]">
         <Link
-          className={`mr-[4%] leading-10 font-bold no-underline lg:text-3xl`}
+          className={`mr-[4%] text-center leading-10 font-bold text-[var(--color-secondary)] no-underline lg:text-3xl`}
           to={links[activeIndex][0]}
         >
           {links[activeIndex][1]}
