@@ -39,3 +39,21 @@ body {
 th {
     font-weight: 300;
 }
+
+#nav-component {
+  ::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 70px;
+    height: 100%;
+    z-index: 2;
+    right: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      rgb(255 255 255 / 0%),
+      var(--color-grey-80)
+    );
+  }
+}
