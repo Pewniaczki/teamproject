@@ -1,6 +1,4 @@
 import React from 'react';
-import styles from './NavbarItem.module.scss';
-import cn from 'classnames';
 type NavbarItemProps = {
   text: string;
   icon: React.ReactNode;
