@@ -1,5 +1,4 @@
 import axios from 'axios';
-import styles from './Options.module.scss';
 import Select from 'react-select';
 
 import { useEffect, useState } from 'react';
@@ -44,23 +43,11 @@ export const Options: React.FC = () => {
   }, []);
 
   return (
-    <div className={styles.options}>
-      <div className={styles.options_container}>
-        {/* <select className={styles.options_container_input} defaultValue="">
-          <option value="" disabled>
-            Choose option
-          </option>
-          {options !== null &&
-            options.map((option) => (
-              <option key={option.competition_id} value={option.name}>
-                {option.name}
-              </option>
-            ))}
-        </select> */}
-
+    <div className="mb-8 flex w-full flex-col justify-between gap-6 px-2.5 py-0 lg:flex-row">
+      <div className="flex w-full justify-between">
         <Select
           classNamePrefix="react-select"
-          className={styles.options_container_input}
+          className="w-32.5 rounded-md border-none bg-[var(--color-grey-70)] p-2 text-base font-normal text-[var(--color-grey-20)] lg:w-fit"
           options={options}
           value={selectedOption}
           onChange={(selected) => setSelectedOption(selected)}
@@ -69,7 +56,7 @@ export const Options: React.FC = () => {
           styles={{
             container: (base) => ({
               ...base,
-              width:'40%'
+              width: '40%',
             }),
             control: (base) => ({
               ...base,
@@ -103,7 +90,7 @@ export const Options: React.FC = () => {
         />
 
         <input
-          className={styles.options_container_input}
+          className="w-32.5 rounded-md border-none bg-[var(--color-grey-70)] p-2 text-base font-normal text-[var(--color-grey-20)] lg:w-fit"
           type="date"
           onChange={(e) => {
             const [year, month, day] = e.target.value.split('-');
@@ -112,14 +99,14 @@ export const Options: React.FC = () => {
           defaultValue={date.split('.').reverse().join('-')}
         />
 
-        <div className={styles.options_container_search}>
+        <div className="flex w-[10%] rounded-md border-none bg-[var(--color-grey-70)] p-1.5 text-[var(--color-grey-20)] lg:text-[var(--color-grey-20)]">
           <img src=".\UI_Elements\search.svg" alt="" />
         </div>
       </div>
 
-      <div className={styles.options_container}>
+      <div className="flex w-full justify-between">
         <select
-          className={styles.options_container_recommended}
+          className="w-full rounded-md border-none bg-[var(--color-grey-70)] p-1 text-base font-normal text-[var(--color-grey-20)]"
           defaultValue=""
         >
           <option value="" disabled>

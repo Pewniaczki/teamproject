@@ -42,7 +42,6 @@
       width: 130px;
 
       @include for-desktop {
-        width: 50%;
         width: fit-content;
       }
     }
@@ -55,7 +54,6 @@
       border-radius: 5px;
       background-color: $color-grey-70;
       color: $color-grey-20;
-      
 
       @include for-desktop {
         display: none;
