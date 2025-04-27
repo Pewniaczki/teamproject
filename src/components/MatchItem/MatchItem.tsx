@@ -1,6 +1,5 @@
 import { Match } from '../../types/countryMatchesTypes';
 import { LastMatch } from '../LastMatch';
-import style from './MatchItem.module.scss';
 
 type Props = {
   match: Match;
@@ -10,7 +9,7 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
   const { match_info } = match;
   return (
     <>
-      <table className={style.match}>
+      <table className='text-sm text-[var(--color-grey-20)] p-1.5 text-center w-full font-extralight mb-1.5 not-italic border-collapse'>
         <thead>
           <tr>
             <th></th>
@@ -22,20 +21,20 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
         </thead>
         <tbody>
           <tr>
-            <td className={style.match__time}>
+            <td className='font-medium'>
               {new Date(match_info.date_time).toLocaleTimeString('pl-PL', {
                 hour: '2-digit',
                 minute: '2-digit',
               })}
             </td>
             <td>
-              <div className={style.match__container}>
+              <div className='flex gap-1 w-20'>
                 <img
-                  className={style.match__container__logo}
+                  className='w-3.5 h-3.5 rounded-[50%]'
                   alt="team logo"
                   src={match_info.home_team_logo}
                 />
-                <p className={style.match__container__name}>
+                <p className='whitespace-nowrap leading-3.5 font-medium'>
                   {match_info.home_team}
                 </p>
               </div>
@@ -54,13 +53,13 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
           <tr>
             <td>{'\u2014'}</td>
             <td>
-              <div className={style.match__container}>
+              <div className='flex gap-1 w-20'>
                 <img
-                  className={style.match__container__logo}
+                  className='w-3.5 h-3.5 rounded-[50%]'
                   alt="team logo"
                   src={match_info.away_team_logo}
                 />
-                <p className={style.match__container__name}>
+                <p className='whitespace-nowrap leading-3.5 font-medium'>
                   {match_info.away_team}
                 </p>
               </div>
