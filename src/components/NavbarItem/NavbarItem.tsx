@@ -16,22 +16,17 @@ export const NavbarItem = ({
   link,
   onClick,
 }: NavbarItemProps) => {
-
   return (
     <a
       href={link}
-      className={cn(styles.navbarItem,{[styles.active]: active})}
+      className={`flex basis-[20%] flex-col items-center justify-center gap-1.5 p-2 text-[var(--color-grey-40)] no-underline lg:max-h-20 lg:min-h-20 lg:flex-row ${active && 'text-[var(--color-secondary)]'}`}
       role="menuitem"
       onClick={onClick}
     >
       {React.cloneElement(icon as React.ReactElement, {
-        className: styles.navbarItemIcon,
+        className: 'text-inherit w-6 h-6',
       })}
-      <p
-        className={styles.navbarItemText}
-      >
-        {text}
-      </p>
+      <p className="text-sm leading-3.5 font-bold text-inherit">{text}</p>
     </a>
   );
 };
