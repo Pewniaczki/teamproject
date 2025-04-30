@@ -1,5 +1,4 @@
 import { useField } from 'formik';
-import './InputField.scss';
 import { MdError } from 'react-icons/md';
 interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;

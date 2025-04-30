@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom';
 import { Header } from '../Header/Header';
-import styles from './Layout.module.scss';
 
 export const Layout: React.FC = () => {
   return (
@@ -9,11 +8,13 @@ export const Layout: React.FC = () => {
         <Header />
       </header>
 
-      <main className="mb-2.5 flex min-h-dvh text-[var(--color-grey-0)] lg:w-full">
+
+      <main className='min-h-dvh text-[var(--color-grey-0)] flex flex-col mb-2.5 lg:w-full'>
+
         <Outlet />
       </main>
 
-      <footer className={styles.layout_footer}>{/* <Footer /> */}</footer>
+      <footer >{/* <Footer /> */}</footer>
     </div>
   );
 };
