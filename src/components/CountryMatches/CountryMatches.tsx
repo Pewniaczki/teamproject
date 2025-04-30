@@ -16,7 +16,7 @@ export const CountryMatches: React.FC<Props> = ({ countryName, details }) => {
   return (
     <div className="mb-1 w-full place-items-center">
       <div
-        className={`flex w-full max-w-[var(--country-list-MaxWidth)] min-w-[var(--country-list-MinWidth)] items-center justify-between rounded-sm bg-[var(--color-grey-70)] px-2 py-4 text-[var(--color-grey-70)] ${isOpen && 'mb-0 rounded-b-none'}`}
+        className={`flex w-full max-w-[var(--country-list-MaxWidth)] min-w-[var(--country-list-MinWidth)] items-center justify-between rounded-sm bg-[var(--color-grey-60)] px-2 py-4 text-[var(--color-grey-70)] ${isOpen && 'mb-0 rounded-b-none'}`}
       >
         <div className="flex items-center gap-6">
           <img

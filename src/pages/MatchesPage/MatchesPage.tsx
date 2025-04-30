@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { CountryMatches } from '../../components/CountryMatches';
 import { CurrentMatches } from '../../components/CurrentMatches/CurrentMatches';
 import { TopMenu } from '../../components/TopMenu/TopMenu';
 import { Options } from '../../components/Options/Options';
@@ -11,6 +10,7 @@ import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { useDateStore } from '../../zustand/useDate';
 import { Error } from '../../components/Error/Error';
 import { useMatchesQuery } from '../../hooks/useMatchesQuery';
+import { CountryMatchesList } from '../../components/CountryMatchesList/CountryMatchesList';
 
 export const MatchesPage: React.FC = () => {
   const { isDesktop } = useBreakPointStore();
@@ -42,20 +42,11 @@ export const MatchesPage: React.FC = () => {
           )}
 
           {!isError && (
-            <CurrentMatches matches={matches} isLoading={isPending} />
+            <>
+              <CurrentMatches matches={matches} isLoading={isPending} />
+              <CountryMatchesList data={data} isLoading={isPending} />
+            </>
           )}
-
-          <div className="mb-3.5 lg:w-full">
-            {Object.entries(data || {}).map(([cuntryName, details]) => {
-              return (
-                <CountryMatches
-                  key={cuntryName}
-                  countryName={cuntryName}
-                  details={details}
-                />
-              );
-            })}
-          </div>
         </div>
       </div>
     </>
