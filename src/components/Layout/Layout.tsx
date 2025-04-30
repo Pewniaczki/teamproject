@@ -9,7 +9,7 @@ export const Layout: React.FC = () => {
         <Header />
       </header>
 
-      <main className='text-[var(--color-grey-0)] flex mb-2.5 lg:w-full'>
+      <main className="mb-2.5 flex min-h-dvh text-[var(--color-grey-0)] lg:w-full">
         <Outlet />
       </main>
 
