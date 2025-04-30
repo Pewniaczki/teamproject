@@ -99,7 +99,7 @@ export const Options: React.FC = () => {
           defaultValue={date.split('.').reverse().join('-')}
         />
 
-        <div className="flex w-[10%] rounded-md border-none bg-[var(--color-grey-70)] p-1.5 text-[var(--color-grey-20)] lg:text-[var(--color-grey-20)]">
+        <div className="flex lg:hidden  w-[10%] rounded-md border-none bg-[var(--color-grey-70)] p-1.5 text-[var(--color-grey-20)] lg:text-[var(--color-grey-20)]">
           <img src=".\UI_Elements\search.svg" alt="" />
         </div>
       </div>
