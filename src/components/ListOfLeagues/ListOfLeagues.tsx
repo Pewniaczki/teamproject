@@ -1,5 +1,4 @@
 import { Match } from '../../types/countryMatchesTypes';
-import style from './ListOfLeagues.module.scss';
 import { MatchesList } from '../MatchesList';
 
 type Props = {
@@ -8,7 +7,7 @@ type Props = {
 
 export const ListOfLeagues: React.FC<Props> = ({ details }) => {
   return (
-    <div className={style.league}>
+    <div>
       <div className="flex items-center justify-between py-2 pr-2 pl-4">
         <div className="flex flex-row items-center gap-4">
           <img
