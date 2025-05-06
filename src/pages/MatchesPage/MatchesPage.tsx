@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { CurrentMatches } from '../../components/CurrentMatches/CurrentMatches';
 import { TopMenu } from '../../components/TopMenu/TopMenu';
 import { Options } from '../../components/Options/Options';
@@ -11,6 +11,20 @@ import { useDateStore } from '../../zustand/useDate';
 import { Error } from '../../components/Error/Error';
 import { useMatchesQuery } from '../../hooks/useMatchesQuery';
 import { CountryMatchesList } from '../../components/CountryMatchesList/CountryMatchesList';
+import { debounce } from 'lodash';
+import axios from 'axios';
+
+const BACKEND = import.meta.env.VITE_BACKEND_PEWNIACZKI;
+
+type SearchStateType = 'fetch' | 'pending' | 'error';
+type SearchDataType = {
+  team_id: number;
+  code: string;
+  name: string;
+  logo: string;
+  league: number;
+  country: string;
+};
 
 export const MatchesPage: React.FC = () => {
   const { isDesktop } = useBreakPointStore();
@@ -25,9 +39,44 @@ export const MatchesPage: React.FC = () => {
       : [];
   }, [data]);
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchData, setSearchData] = useState<SearchDataType[]>([]);
+  const [searchState, setSearchState] = useState<SearchStateType>('pending');
+
+  useEffect(() => {
+    console.log('wchodzi');
+
+    const getSearchData = async () => {
+      setSearchState('pending');
+      try {
+        const response =
+          searchQuery !== '' &&
+          (await axios(`${BACKEND}/api/search/?query=${searchQuery}`));
+
+        if (response !== false && response.data) {
+          setSearchData(response.data);
+          setSearchState('fetch');
+        }
+      } catch (error) {
+        setSearchState('error');
+        console.error({ message: 'Error in fetching searchData', error });
+      }
+    };
+
+    const debouncedData = debounce(() => {
+      getSearchData();
+    }, 700);
+
+    debouncedData();
+
+    return () => debouncedData.cancel();
+  }, [searchQuery]);
+
   return (
     <>
-      {isDesktop && <SearchBar />}
+      {isDesktop && (
+        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      )}
       <TopMenu />
       <Options />
 
@@ -41,7 +90,18 @@ export const MatchesPage: React.FC = () => {
             </p>
           )}
 
-          {!isError && (
+          {searchState === 'fetch' && searchQuery !== '' && (
+            <div className="flex flex-col w-full">
+              {searchData.map((item) => (
+                <div className='flex mb-1.5 m-auto justify-center'>
+                  <p className='p-1.5 text-2xl leading-20 lg:text-3xl'>{`${item.name}`}</p>
+                  <img className="my-auto h-7 w-7 lg:h-20 lg:w-20" src={`${item.logo}`} />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {!isError && !searchQuery && (
             <>
               <CurrentMatches matches={matches} isLoading={isPending} />
               <CountryMatchesList data={data} isLoading={isPending} />
