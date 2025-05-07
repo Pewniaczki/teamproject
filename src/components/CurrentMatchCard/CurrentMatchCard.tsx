@@ -19,7 +19,7 @@ export const CurrentMatchCard = ({ match }: CurrentMatchCardProps) => {
           state: { match },
         })
       }
-      className="flex shrink-0 flex-col items-center justify-center gap-2 rounded-sm bg-[var(--color-grey-70)] px-4 py-2 text-center text-[var(--color-grey-20)] lg:flex-row lg:justify-between"
+      className="flex cursor-pointer shrink-0 flex-col items-center justify-center gap-2 rounded-sm bg-[var(--color-grey-70)] px-4 py-2 text-center text-[var(--color-grey-20)] lg:flex-row lg:justify-between"
     >
       <div className="flex items-center justify-center lg:gap-1">
         {allLogosLoaded ? (
