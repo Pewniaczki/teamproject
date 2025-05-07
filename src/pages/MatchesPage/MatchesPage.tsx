@@ -89,13 +89,19 @@ export const MatchesPage: React.FC = () => {
               There is no matches today
             </p>
           )}
+          
+          {searchState === 'pending' && searchQuery !== '' && <p>loading...</p>}
 
           {searchState === 'fetch' && searchQuery !== '' && (
-            <div className="flex flex-col w-full">
+            <div className="flex w-full flex-col">
               {searchData.map((item) => (
-                <div className='flex mb-1.5 m-auto justify-center'>
-                  <p className='p-1.5 text-2xl leading-20 lg:text-3xl'>{`${item.name}`}</p>
-                  <img className="my-auto h-7 w-7 lg:h-20 lg:w-20" src={`${item.logo}`} />
+                <div className="m-auto mb-1.5 flex w-75 lg:w-100 cursor-pointer hover:border-1 hover:border-[var(--color-grey-30)] shrink-0 flex-col items-center justify-center gap-2 rounded-sm bg-[var(--color-grey-70)] px-4 py-2 text-center text-[var(--color-grey-20)] lg:flex-row lg:justify-between">
+                  <p className="p-1.5 text-2xl leading-20 lg:text-3xl">{`${item.name}`}</p>
+                  <img
+                    className="my-auto h-7 w-7 lg:h-20 lg:w-20"
+                    src={`${item.logo}`}
+                  />
+
                 </div>
               ))}
             </div>
