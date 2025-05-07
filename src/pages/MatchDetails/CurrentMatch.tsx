@@ -1,19 +1,12 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Match } from '../../types/countryMatchesTypes';
-import { SearchBar } from '../../components/SearchBar/SearchBar';
 import { useState } from 'react';
 import { CurrentDetails } from '../../components/CurrentDetails/CurrentDetails';
-import {
-  useBreakPointListener,
-  useBreakPointStore,
-} from '../../zustand/useBreakPoint';
 import { useFavouriteMatches } from '../../zustand/useFavouritesMatches';
 
 export const CurrentMatch: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  useBreakPointListener();
-  const { isDesktop } = useBreakPointStore();
   const current: Match = location.state.match;
   const menuItems = ['Details', 'Team composition', 'Grid', 'Matches'] as const;
   const [activeElement, setActiveElement] =
