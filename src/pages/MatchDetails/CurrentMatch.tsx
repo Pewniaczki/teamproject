@@ -41,8 +41,6 @@ export const CurrentMatch: React.FC = () => {
 
   return (
     <>
-      {isDesktop && <SearchBar />}
-
       <div className="p-3.5 lg:px-5 lg:py-0">
         <div className="mx-auto mt-0 mb-3.5 flex w-[90%] justify-between">
           <button
