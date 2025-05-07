@@ -89,7 +89,7 @@ export const MatchesPage: React.FC = () => {
               There is no matches today
             </p>
           )}
-
+          
           {searchState === 'pending' && searchQuery !== '' && <p>loading...</p>}
 
           {searchState === 'fetch' && searchQuery !== '' && (
@@ -101,6 +101,7 @@ export const MatchesPage: React.FC = () => {
                     className="my-auto h-7 w-7 lg:h-20 lg:w-20"
                     src={`${item.logo}`}
                   />
+
                 </div>
               ))}
             </div>
