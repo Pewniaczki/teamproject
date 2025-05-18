@@ -10,6 +10,7 @@ import { Page404 } from './pages/Page404/Page404';
 import { FavouriteMatches } from './pages/FavouriteMatches/FavouriteMatches';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { LeaguesPage } from './pages/LeaguesPage/LeaguesPage';
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ function App() {
           <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
             <Route index element={<Navigate to="/matches" />} />
             <Route path="matches" element={<MatchesPage />} />
+            <Route path='league' element={<LeaguesPage />} />
             <Route path="current_match" element={<CurrentMatch />} />
             <Route path="favourite" element={<FavouriteMatches />} />
           </Route>

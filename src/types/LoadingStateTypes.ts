@@ -1,0 +1,1 @@
+export type LoadingStateType = 'fetch' | 'pending' | 'error';
