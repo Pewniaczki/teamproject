@@ -13,10 +13,10 @@ import { useMatchesQuery } from '../../hooks/useMatchesQuery';
 import { CountryMatchesList } from '../../components/CountryMatchesList/CountryMatchesList';
 import { debounce } from 'lodash';
 import axios from 'axios';
+import { LoadingStateType } from '../../types/LoadingStateTypes';
 
 const BACKEND = import.meta.env.VITE_BACKEND_PEWNIACZKI;
 
-type SearchStateType = 'fetch' | 'pending' | 'error';
 type SearchDataType = {
   team_id: number;
   code: string;
@@ -41,11 +41,9 @@ export const MatchesPage: React.FC = () => {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchData, setSearchData] = useState<SearchDataType[]>([]);
-  const [searchState, setSearchState] = useState<SearchStateType>('pending');
+  const [searchState, setSearchState] = useState<LoadingStateType>('pending');
 
   useEffect(() => {
-    console.log('wchodzi');
-
     const getSearchData = async () => {
       setSearchState('pending');
       try {

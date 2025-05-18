@@ -10,7 +10,6 @@ export const Layout: React.FC = () => {
 
 
       <main className='min-h-dvh text-[var(--color-grey-0)] flex flex-col mb-2.5 lg:w-full'>
-
         <Outlet />
       </main>
 
