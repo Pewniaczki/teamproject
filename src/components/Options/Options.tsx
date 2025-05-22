@@ -28,6 +28,7 @@ export const Options: React.FC = () => {
       try {
         const response = await axios(`${BACKEND}/api/competitions`);
         if (response.data) {
+          console.log('dada', response.data)
           const mapped = response.data.map((item: CompetitionType) => ({
             value: item.competition_id,
             label: item.name,

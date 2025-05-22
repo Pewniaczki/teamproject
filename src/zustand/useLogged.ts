@@ -6,15 +6,15 @@ interface AuthState {
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-  logged: localStorage.getItem('logged') === 'true',
+  logged: sessionStorage.getItem('logged') === 'true',
   setLogged: (value) => {
     if (value === false) {
-      localStorage.removeItem('logged');
+      sessionStorage.removeItem('logged');
       set({ logged: value });
       return;
     }
 
-    localStorage.setItem("logged", value.toString());
+    sessionStorage.setItem("logged", value.toString());
     set({ logged: value });
   },
 }));

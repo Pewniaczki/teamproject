@@ -7,6 +7,7 @@ import {
 import { useAuthStore } from '../../zustand/useLogged';
 import { useNavigate } from 'react-router-dom';
 import { useActiveNavbarItem } from '../../zustand/useActiveNavbar';
+import axios from 'axios';
 
 export const Header: React.FC = () => {
   const { isDesktop } = useBreakPointStore();
@@ -14,6 +15,19 @@ export const Header: React.FC = () => {
   const { logged, setLogged } = useAuthStore();
   useBreakPointListener();
   const navigate = useNavigate();
+  const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
+
+  const handleLogOut = async () => {
+    try {
+      const res = await axios.post(`${BACKEND}/logout`)
+      if (res.status === 200) {
+        sessionStorage.removeItem('logged')
+        console.log('logged out correct')        
+      }  
+    } catch (error) {
+      
+    }
+  };
 
   const handleItemClick = (itemName: string) => {
     console.log('itemName', itemName);
@@ -21,6 +35,7 @@ export const Header: React.FC = () => {
     if (itemName === 'Log out') {
       setLogged(false);
       navigate('/start', { replace: true });
+      handleLogOut();
       location.reload();
     }
 
