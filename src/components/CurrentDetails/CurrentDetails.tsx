@@ -18,7 +18,7 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
     try {
       const betWinner = async () => {
         const response = await axios.post(`${BACKEND}/api/predictions/`, {
-          match: 1044881,
+          match: currentMatch.match_info.match_id,
           prediction_type: 'winner',
           answer: team,
         });
