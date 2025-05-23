@@ -17,3 +17,6 @@ export type TeamTypes = {
         league: number,
         country: string
     }
+
+    export type TeamType = '1' | '2';
+
