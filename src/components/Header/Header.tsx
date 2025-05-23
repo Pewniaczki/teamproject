@@ -33,20 +33,19 @@ export const Header: React.FC = () => {
     }
   };
 
-  const handleItemClick = (itemName: string) => {
+  const handleItemClick = async (itemName: string) => {
     console.log('itemName', itemName);
     setActiveItem(itemName);
     if (itemName === 'Log out') {
+      await handleLogOut();
       setLogged(false);
       navigate('/start', { replace: true });
-      handleLogOut();
-      location.reload();
+      
     }
 
     if (itemName === 'Log in') {
       setLogged(false);
       navigate('/start', { replace: true });
-      location.reload();
     }
   };
 
