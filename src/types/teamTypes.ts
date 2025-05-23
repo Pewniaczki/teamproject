@@ -19,3 +19,4 @@ export type TeamTypes = {
     }
 
     export type TeamType = '1' | '2';
+

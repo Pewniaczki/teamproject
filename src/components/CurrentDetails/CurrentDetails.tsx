@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Match } from '../../types/countryMatchesTypes';
+
 import { useEffect } from 'react';
 import { TeamType } from '../../types/teamTypes';
 import { useBettingStore } from '../../zustand/useBetting';
@@ -7,6 +8,7 @@ import { useBettingStore } from '../../zustand/useBetting';
 type Props = {
   currentMatch: Match;
 };
+
 
 const BACKEND = import.meta.env.VITE_BACKEND_PEWNIACZKI;
 
@@ -23,18 +25,21 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
 
         const response = await axios.post(`${BACKEND}/api/predictions/`, {
           match: currentMatch.match_info.match_id,
+
           prediction_type: 'winner',
           answer: team,
         });
 
         if (response.data.stats) {
           response.data.stats['1'] &&
+
             setMatchId(matchIde, '1', response.data.stats['1'] * 100);
           response.data.stats['2'] &&
             setMatchId(matchIde, '2', response.data.stats['2'] * 100);
         }
       };
       betWinner();
+              
     } catch (error) {
       console.error('Can not get answer from server', error);
     }
@@ -43,14 +48,13 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
   useEffect(() => {
     getMatchId(currentMatch.match_info.match_id);
   }, [useBettingStore]);
-
+                
   return (
     <div className="m-auto mb-16 flex flex-wrap justify-center gap-4">
       <div className="relative flex h-33.5 w-[400px] flex-col justify-center rounded-xl bg-[var(--color-grey-60)] px-2.5 py-0">
         <p className="mb-1.5 text-center text-2xl font-normal text-[var(--color-grey-0)]">
           Who will win
         </p>
-
         {(matchId[1] || matchId[2]) !== null && <p
           onClick={() => removeMatchId(currentMatch.match_info.match_id)}
           className="absolute top-2 right-2 underline"
@@ -70,6 +74,7 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
           >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
               {matchId[1] === null ? 1 : `${Math.round(matchId[1])}%`}
+
             </p>
           </div>
 

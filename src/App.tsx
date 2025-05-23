@@ -28,6 +28,7 @@ function App() {
     console.log('weszło');
     axios
       .post(`${BACKEND}/isUserLogged`,{}, { withCredentials: true })
+
       .then((res) => {
         setIsAuthenticated(res.data.user);
         sessionStorage.setItem('logged', 'true')
