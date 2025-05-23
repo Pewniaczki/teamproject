@@ -11,10 +11,10 @@ import { FavouriteMatches } from './pages/FavouriteMatches/FavouriteMatches';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { LeaguesPage } from './pages/LeaguesPage/LeaguesPage';
-// import axios from 'axios';
+import axios from 'axios';
 
 const queryClient = new QueryClient();
-// const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
+const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
@@ -22,19 +22,19 @@ function App() {
   );
   const [isOpen, setIsOpen] = useState<Open>('start');
 
-  // useEffect(() => {
-  //   console.log('weszło');
-  //   axios
-  //     .get(`${BACKEND}/isUserLogged`, { withCredentials: true })
-  //     .then((res) => {
-  //       setIsAuthenticated(res.data.user);
-  //       sessionStorage.setItem('logged', 'true')
-  //     })
-  //     .catch(() => {
-  //       setIsAuthenticated(false);
-  //       sessionStorage.removeItem('logged')
-  //     });
-  // }, []);
+  useEffect(() => {
+    console.log('weszło');
+    axios
+      .get(`${BACKEND}/isUserLogged`, { withCredentials: true })
+      .then((res) => {
+        setIsAuthenticated(res.data.user);
+        sessionStorage.setItem('logged', 'true')
+      })
+      .catch(() => {
+        setIsAuthenticated(false);
+        sessionStorage.removeItem('logged')
+      });
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
