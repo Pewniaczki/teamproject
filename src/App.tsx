@@ -27,7 +27,8 @@ function App() {
   useEffect(() => {
     console.log('weszło');
     axios
-      .get(`${BACKEND}/isUserLogged`, { withCredentials: true })
+      .post(`${BACKEND}/isUserLogged`,{}, { withCredentials: true })
+
       .then((res) => {
         setIsAuthenticated(res.data.user);
         sessionStorage.setItem('logged', 'true')

@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { TeamType } from '../../types/teamTypes';
 import { useBettingStore } from '../../zustand/useBetting';
 
-
 type Props = {
   currentMatch: Match;
 };
@@ -40,7 +39,7 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
         }
       };
       betWinner();
-
+              
     } catch (error) {
       console.error('Can not get answer from server', error);
     }
@@ -49,16 +48,13 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
   useEffect(() => {
     getMatchId(currentMatch.match_info.match_id);
   }, [useBettingStore]);
-
-
+                
   return (
     <div className="m-auto mb-16 flex flex-wrap justify-center gap-4">
       <div className="relative flex h-33.5 w-[400px] flex-col justify-center rounded-xl bg-[var(--color-grey-60)] px-2.5 py-0">
         <p className="mb-1.5 text-center text-2xl font-normal text-[var(--color-grey-0)]">
           Who will win
         </p>
-
-
         {(matchId[1] || matchId[2]) !== null && <p
           onClick={() => removeMatchId(currentMatch.match_info.match_id)}
           className="absolute top-2 right-2 underline"
@@ -83,7 +79,6 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
           </div>
 
           <div
-
             onClick={() => handlerWinner(currentMatch.match_info.match_id, '2')}
             className="h-10 rounded-xl bg-[var(--color-primary)]"
             style={{
@@ -92,7 +87,6 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
           >
             <p className="w-full text-center leading-10 font-bold text-[var(--color-grey-60)]">
               {matchId[2] === null ? 2 : `${Math.round(matchId[2])}%`}
-
             </p>
           </div>
         </div>
