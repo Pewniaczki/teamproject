@@ -6,6 +6,7 @@ type Props = {
   matchId: MatchIdType;
   setMatchId: (matchKey: number, key: '1' | '2', value: number) => void;
   getMatchId: (matchKey: number) => void;
+  removeMatchId: (matchKey: number) => void;
 };
 
 export const useBettingStore = create<Props>((set, get) => ({
@@ -29,5 +30,10 @@ export const useBettingStore = create<Props>((set, get) => ({
       console.error('Error loading matchId from localStorage:', error);
       set({ matchId: { '1': null, '2': null } });
     }
+  },
+
+  removeMatchId: (MatchKey: number) => {
+    localStorage.removeItem(MatchKey.toString());
+    set(() => ({ matchId: { '1': null, '2': null } }));
   },
 }));
