@@ -3,17 +3,19 @@ import Select from 'react-select';
 
 import { useEffect, useState } from 'react';
 import { useDateStore } from '../../zustand/useDate';
+import { TeamTypes } from '../../types/teamTypes';
 
-type CompetitionType = {
-  competition_id: number;
-  name: string;
-  logo: string;
-  country: null | string;
-};
+// type CompetitionType = {
+//   competition_id: number;
+//   name: string;
+//   logo: string;
+//   country: null | string;
+// };
 
 type OptionType = {
   value: number;
   label: string;
+  logo: string;
 };
 
 const BACKEND = import.meta.env.VITE_BACKEND_PEWNIACZKI;
@@ -26,11 +28,13 @@ export const Options: React.FC = () => {
   useEffect(() => {
     const getOptions = async () => {
       try {
-        const response = await axios(`${BACKEND}/api/competitions`);
+        const response = await axios(`${BACKEND}/api/teams`);
         if (response.data) {
-          const mapped = response.data.map((item: CompetitionType) => ({
-            value: item.competition_id,
+          console.log('dada', response.data);
+          const mapped = response.data.map((item: TeamTypes) => ({
+            value: item.team_id,
             label: item.name,
+            logo: item.logo,
           }));
           setOptions(mapped);
         }
@@ -49,6 +53,16 @@ export const Options: React.FC = () => {
           classNamePrefix="react-select"
           className="w-32.5 rounded-md border-none bg-[var(--color-grey-70)] p-2 text-base font-normal text-[var(--color-grey-20)] lg:w-fit"
           options={options}
+          formatOptionLabel={(option: OptionType) => (
+            <div className="flex items-center gap-2">
+              <img
+                src={option.logo}
+                alt={option.label}
+                className="h-6 w-6 rounded-full"
+              />
+              <span>{option.label}</span>
+            </div>
+          )}
           value={selectedOption}
           onChange={(selected) => setSelectedOption(selected)}
           placeholder="Choose option"

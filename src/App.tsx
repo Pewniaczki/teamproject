@@ -12,19 +12,30 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { LeaguesPage } from './pages/LeaguesPage/LeaguesPage';
 
+import axios from 'axios';
+
+
 const queryClient = new QueryClient();
+const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
-    !!localStorage.getItem('logged')
+    !!sessionStorage.getItem('logged')
   );
   const [isOpen, setIsOpen] = useState<Open>('start');
 
   useEffect(() => {
-    const token = localStorage.getItem('logged');
-    if (token === 'true') {
-      setIsAuthenticated(true);
-    }
+    console.log('weszło');
+    axios
+      .get(`${BACKEND}/isUserLogged`, { withCredentials: true })
+      .then((res) => {
+        setIsAuthenticated(res.data.user);
+        sessionStorage.setItem('logged', 'true')
+      })
+      .catch(() => {
+        setIsAuthenticated(false);
+        sessionStorage.removeItem('logged')
+      });
   }, []);
 
   return (
@@ -48,7 +59,10 @@ function App() {
           <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
             <Route index element={<Navigate to="/matches" />} />
             <Route path="matches" element={<MatchesPage />} />
-            <Route path='league' element={<LeaguesPage />} />
+
+            <Route path="league" element={<LeaguesPage />} />
+
+
             <Route path="current_match" element={<CurrentMatch />} />
             <Route path="favourite" element={<FavouriteMatches />} />
           </Route>

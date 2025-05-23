@@ -7,7 +7,9 @@ import { useFavouriteMatches } from '../../zustand/useFavouritesMatches';
 export const CurrentMatch: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const current: Match = location.state.match;
+
+  const currentMatch: Match = location.state.match;
+
   const menuItems = ['Details', 'Team composition', 'Grid', 'Matches'] as const;
   const [activeElement, setActiveElement] =
     useState<(typeof menuItems)[number]>('Details');
@@ -15,13 +17,13 @@ export const CurrentMatch: React.FC = () => {
   const { setFavourite, favourite } = useFavouriteMatches();
 
   const includedInFavourite = favourite.some(
-    (item) => current.match_info.match_id === item.match_info.match_id
+    (item) => currentMatch.match_info.match_id === item.match_info.match_id
   );
 
   const [animateStar, setAnimateStar] = useState(false);
 
   const handleStarClick = () => {
-    setFavourite(current);
+    setFavourite(currentMatch);
 
     requestAnimationFrame(() => {
       setAnimateStar(true);
@@ -63,17 +65,17 @@ export const CurrentMatch: React.FC = () => {
           <div className="flex flex-col items-center">
             <img
               className="mb-2.5 w-10"
-              src={current.match_info.home_team_logo}
+              src={currentMatch.match_info.home_team_logo}
               alt="team icon"
             />
             <p className="text-3xl font-bold text-[var(--color-grey-0)]">
-              {current.match_info.home_team}
+              {currentMatch.match_info.home_team}
             </p>
           </div>
 
           <div className="flex flex-col justify-center px-6 py-0 lg:px-12 lg:py-0">
             <p className="text-[var(--color-grey-30)]">
-              {current.match_info.date_time
+              {currentMatch.match_info.date_time
                 .split('T')[1]
                 .split(':')
                 .slice(0, 2)
@@ -85,11 +87,11 @@ export const CurrentMatch: React.FC = () => {
           <div className="flex flex-col items-center">
             <img
               className="mb-2.5 w-10"
-              src={current.match_info.away_team_logo}
+              src={currentMatch.match_info.away_team_logo}
               alt="team icon"
             />
             <p className="text-3xl font-bold text-[var(--color-grey-0)]">
-              {current.match_info.away_team}
+              {currentMatch.match_info.away_team}
             </p>
           </div>
         </div>
@@ -106,7 +108,7 @@ export const CurrentMatch: React.FC = () => {
           ))}
         </div>
 
-        {activeElement === 'Details' && <CurrentDetails />}
+        {activeElement === 'Details' && <CurrentDetails currentMatch={currentMatch}  />}
       </div>
     </>
   );

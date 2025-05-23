@@ -1,5 +1,43 @@
+import axios from 'axios';
+import { Match } from '../../types/countryMatchesTypes';
+import { useState } from 'react';
 
-export const CurrentDetails: React.FC = () => {
+type Props = {
+  currentMatch: Match;
+};
+
+type TeamType = '1' | '2';
+
+const BACKEND = import.meta.env.VITE_BACKEND_PEWNIACZKI;
+
+export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
+  const [winFirstTeam, setWinFirstTeam] = useState<null | number>(null);
+  const [winSecondTeam, setWinSecondTeam] = useState<null | number>(null);
+
+  const handlerWinner = (team: TeamType) => {
+    try {
+      const betWinner = async () => {
+        const response = await axios.post(`${BACKEND}/api/predictions/`, {
+          match: 1044881,
+          prediction_type: 'winner',
+          answer: team,
+        });
+
+        if (response.data.stats) {
+          response.data.stats['1'] &&
+            setWinFirstTeam(response.data.stats['1'] * 100);
+          response.data.stats['2'] &&
+            setWinSecondTeam(response.data.stats['2'] * 100);
+        }
+      };
+      betWinner();
+      console.log('winFirstTeam', winSecondTeam);
+      console.log('winSecondTeam', winSecondTeam);
+    } catch (error) {
+      console.error('Can not get answer from server', error);
+    }
+  };
+
   return (
     <div className="m-auto mb-16 flex flex-wrap justify-center gap-4">
       <div className="flex h-33.5 w-[400px] flex-col justify-center rounded-xl bg-[var(--color-grey-60)] px-2.5 py-0">
@@ -7,16 +45,30 @@ export const CurrentDetails: React.FC = () => {
           Who will win
         </p>
 
-        <div className="flex justify-center gap-1.5">
-          <div className="h-10 w-full rounded-xl bg-[var(--color-secondary)]">
+        <div
+          onClick={() => handlerWinner('1')}
+          className="flex w-full justify-center gap-1.5"
+        >
+          <div
+            className='h-10 rounded-xl bg-[var(--color-secondary)]'
+            style={{
+              width: winFirstTeam === null ? '100%' : `${winFirstTeam}%`,
+            }}
+          >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
-              1
+              {winFirstTeam === null ? 1 : `${winFirstTeam}%`}
             </p>
           </div>
 
-          <div className="h-10 w-full rounded-xl bg-[var(--color-primary)]">
+          <div
+            onClick={() => handlerWinner('2')}
+            className='h-10 rounded-xl bg-[var(--color-primary)]'
+            style={{
+              width: winSecondTeam === null ? '100%' : `${winSecondTeam}%`,
+            }}
+          >
             <p className="w-full text-center leading-10 font-bold text-[var(--color-grey-60)]">
-              2
+              {winSecondTeam === null ? 2 : `${winSecondTeam}%`}
             </p>
           </div>
         </div>
