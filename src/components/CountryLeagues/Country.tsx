@@ -45,7 +45,9 @@ export const Country: React.FC<Props> = ({ country }) => {
 
       {isOpen && (
         <div
+
           className={`w-full pl-8 max-w-[var(--country-list-MaxWidth)] min-w-[var(--country-list-MinWidth)] bg-[var(--color-grey-80)] ${isOpen && 'mb-0'}`}
+
         >
           {leagues.map((league) => (
             <CountryLeague key={league.competition_id} league={league} />
