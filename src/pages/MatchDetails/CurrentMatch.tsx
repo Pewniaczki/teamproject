@@ -7,7 +7,9 @@ import { useFavouriteMatches } from '../../zustand/useFavouritesMatches';
 export const CurrentMatch: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
   const currentMatch: Match = location.state.match;
+
   const menuItems = ['Details', 'Team composition', 'Grid', 'Matches'] as const;
   const [activeElement, setActiveElement] =
     useState<(typeof menuItems)[number]>('Details');
