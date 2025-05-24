@@ -37,6 +37,7 @@ function App() {
           sessionStorage.setItem('logged', 'true');
         }
       } catch (error) {
+
         setIsAuthenticated(false);
         sessionStorage.removeItem('logged');
       }
