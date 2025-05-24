@@ -14,7 +14,6 @@ import { LeaguesPage } from './pages/LeaguesPage/LeaguesPage';
 
 import axios from 'axios';
 
-
 const queryClient = new QueryClient();
 const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
 
@@ -26,17 +25,23 @@ function App() {
 
   useEffect(() => {
     console.log('weszło');
-    axios
-      .post(`${BACKEND}/isUserLogged`,{}, { withCredentials: true })
-
-      .then((res) => {
-        setIsAuthenticated(res.data.user);
-        sessionStorage.setItem('logged', 'true')
-      })
-      .catch(() => {
+    console.log('backend', BACKEND);
+    const auth = async () => {
+      try {
+        const res = await axios.get(
+          `${BACKEND}/isUserLogged`,
+          { withCredentials: true }
+        );
+        if (res.data.user) {
+          setIsAuthenticated(res.data.user);
+          sessionStorage.setItem('logged', 'true');
+        }
+      } catch (error) {
         setIsAuthenticated(false);
-        sessionStorage.removeItem('logged')
-      });
+        sessionStorage.removeItem('logged');
+      }
+    };
+    auth();
   }, []);
 
   return (
@@ -62,7 +67,6 @@ function App() {
             <Route path="matches" element={<MatchesPage />} />
 
             <Route path="league" element={<LeaguesPage />} />
-
 
             <Route path="current_match" element={<CurrentMatch />} />
             <Route path="favourite" element={<FavouriteMatches />} />
