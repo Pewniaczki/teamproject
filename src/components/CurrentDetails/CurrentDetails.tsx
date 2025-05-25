@@ -3,8 +3,6 @@ import { Match } from '../../types/countryMatchesTypes';
 
 import { useEffect } from 'react';
 import {
-  DrawType,
-  FirstType,
   ScoreType,
   TeamType,
 } from '../../types/teamTypes';
