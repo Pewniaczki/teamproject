@@ -2,65 +2,138 @@ import axios from 'axios';
 import { Match } from '../../types/countryMatchesTypes';
 
 import { useEffect } from 'react';
-import { TeamType } from '../../types/teamTypes';
+import {
+  DrawType,
+  FirstType,
+  ScoreType,
+  TeamType,
+} from '../../types/teamTypes';
 import { useBettingStore } from '../../zustand/useBetting';
 
 type Props = {
   currentMatch: Match;
 };
 
-
 const BACKEND = import.meta.env.VITE_BACKEND_PEWNIACZKI;
 
 export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
+  const {
+    getMatchId,
+    setMatchId,
+    matchId,
+    removeMatchId,
+    removeFirstScore,
+    removeBothScore,
+    removeDraw,
+  } = useBettingStore();
 
-  const { getMatchId, setMatchId, matchId, removeMatchId } = useBettingStore();
-
-  const handlerWinner = (matchIde: number, team: TeamType) => {
+  const handlerWinner = async (matchIde: number, team: TeamType) => {
     try {
-      const betWinner = async () => {
-        if (matchId[1] !== null || matchId[2] !== null) {
-          return;
-        }
+      if ((matchId['1'] || matchId['2']) !== null) {
+        return;
+      }
 
-        const response = await axios.post(`${BACKEND}/api/predictions/`, {
-          match: currentMatch.match_info.match_id,
+      const response = await axios.post(`${BACKEND}/api/predictions/`, {
+        match: currentMatch.match_info.match_id,
+        prediction_type: 'winner',
+        answer: team,
+      });
 
-          prediction_type: 'winner',
-          answer: team,
-        });
-
-        if (response.data.stats) {
-          response.data.stats['1'] &&
-
-            setMatchId(matchIde, '1', response.data.stats['1'] * 100);
-          response.data.stats['2'] &&
-            setMatchId(matchIde, '2', response.data.stats['2'] * 100);
-        }
-      };
-      betWinner();
-              
+      if (response.data.stats) {
+        response.data.stats['1'] &&
+          setMatchId(matchIde, '1', response.data.stats['1'] * 100);
+        response.data.stats['2'] &&
+          setMatchId(matchIde, '2', response.data.stats['2'] * 100);
+      }
     } catch (error) {
       console.error('Can not get answer from server', error);
     }
   };
 
+  const handleBothScore = async (matchIde: number, answer: ScoreType) => {
+    if ((matchId['yes'] || matchId['no']) !== null) {
+      return;
+    }
+    try {
+      const response = await axios.post(`${BACKEND}/api/predictions/`, {
+        match: currentMatch.match_info.match_id,
+        prediction_type: 'both_score',
+        answer: answer,
+      });
+
+      if (response.data.stats) {
+        response.data.stats['yes'] &&
+          setMatchId(matchIde, 'yes', response.data.stats['yes'] * 100);
+        response.data.stats['no'] &&
+          setMatchId(matchIde, 'no', response.data.stats['no'] * 100);
+      }
+    } catch (error) {}
+  };
+
+  const handleFirstScore = async (
+    matchIde: number,
+    answer: TeamType | 'without_heads'
+  ) => {
+    if ((matchId['1f'] || matchId['2f'] || matchId['wh']) !== null) {
+      return;
+    }
+    try {
+      const response = await axios.post(`${BACKEND}/api/predictions/`, {
+        match: currentMatch.match_info.match_id,
+        prediction_type: 'first_score',
+        answer: answer,
+      });
+
+      if (response.data.stats) {
+        response.data.stats[1] &&
+          setMatchId(matchIde, '1f', response.data.stats[1] * 100);
+        response.data.stats[2] &&
+          setMatchId(matchIde, '2f', response.data.stats[2] * 100);
+        response.data.stats.without_heads &&
+          setMatchId(matchIde, 'wh', response.data.stats.without_heads * 100);
+      }
+    } catch (error) {}
+  };
+
+  const handleDraw = async (matchIde: number, answer: ScoreType) => {
+    if ((matchId['yesD'] || matchId['noD']) !== null) {
+      return;
+    }
+
+    try {
+      const response = await axios.post(`${BACKEND}/api/predictions/`, {
+        match: currentMatch.match_info.match_id,
+        prediction_type: 'draw',
+        answer: answer,
+      });
+
+      if (response.data.stats) {
+        response.data.stats['yes'] &&
+          setMatchId(matchIde, 'yesD', response.data.stats['yes'] * 100);
+        response.data.stats['no'] &&
+          setMatchId(matchIde, 'noD', response.data.stats['no'] * 100);
+      }
+    } catch (error) {}
+  };
+
   useEffect(() => {
     getMatchId(currentMatch.match_info.match_id);
   }, [useBettingStore]);
-                
+
   return (
     <div className="m-auto mb-16 flex flex-wrap justify-center gap-4">
       <div className="relative flex h-33.5 w-[400px] flex-col justify-center rounded-xl bg-[var(--color-grey-60)] px-2.5 py-0">
         <p className="mb-1.5 text-center text-2xl font-normal text-[var(--color-grey-0)]">
           Who will win
         </p>
-        {(matchId[1] || matchId[2]) !== null && <p
-          onClick={() => removeMatchId(currentMatch.match_info.match_id)}
-          className="absolute top-2 right-2 underline"
-        >
-          Cancel
-        </p>}
+        {(matchId[1] || matchId[2]) !== null && (
+          <p
+            onClick={() => removeMatchId(currentMatch.match_info.match_id)}
+            className="absolute top-2 right-2 underline"
+          >
+            Cancel
+          </p>
+        )}
 
         <div
           onClick={() => handlerWinner(currentMatch.match_info.match_id, '1')}
@@ -74,7 +147,6 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
           >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
               {matchId[1] === null ? 1 : `${Math.round(matchId[1])}%`}
-
             </p>
           </div>
 
@@ -96,21 +168,48 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
         </p>
       </div>
 
-      <div className="flex h-33.5 w-[400px] flex-col justify-center rounded-xl bg-[var(--color-grey-60)] px-2.5 py-0">
+      <div className="relative flex h-33.5 w-[400px] flex-col justify-center rounded-xl bg-[var(--color-grey-60)] px-2.5 py-0">
         <p className="mb-1.5 text-center text-2xl font-normal text-[var(--color-grey-0)]">
           Will both teams score
         </p>
 
-        <div className="flex justify-center gap-1.5">
+        {(matchId['yes'] || matchId['no']) !== null && (
+          <p
+            onClick={() => removeBothScore(currentMatch.match_info.match_id)}
+            className="absolute top-2 right-2 underline"
+          >
+            Cancel
+          </p>
+        )}
+
+        <div
+          onClick={() =>
+            handleBothScore(currentMatch.match_info.match_id, 'yes')
+          }
+          className="flex justify-center gap-1.5"
+          style={{
+            width: matchId['yes'] === null ? '100%' : `${matchId['yes']}%`,
+          }}
+        >
           <div className="h-10 w-full rounded-xl bg-[var(--color-secondary)]">
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
-              Yes
+              {matchId['yes'] === null
+                ? 'Yes'
+                : `${Math.round(matchId['yes'])}%`}
             </p>
           </div>
 
-          <div className="h-10 w-full rounded-xl bg-[var(--color-primary)]">
+          <div
+            onClick={() =>
+              handleBothScore(currentMatch.match_info.match_id, 'no')
+            }
+            className="h-10 w-full rounded-xl bg-[var(--color-primary)]"
+            style={{
+              width: matchId['no'] === null ? '100%' : `${matchId['no']}%`,
+            }}
+          >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
-              No
+              {matchId['no'] === null ? 'No' : `${Math.round(matchId['no'])}%`}
             </p>
           </div>
         </div>
@@ -120,27 +219,65 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
         </p>
       </div>
 
-      <div className="flex h-33.5 w-[400px] flex-col justify-center rounded-xl bg-[var(--color-grey-60)] px-2.5 py-0">
+      <div className="relative flex h-33.5 w-[400px] flex-col justify-center rounded-xl bg-[var(--color-grey-60)] px-2.5 py-0">
         <p className="mb-1.5 text-center text-2xl font-normal text-[var(--color-grey-0)]">
           Who will score first
         </p>
 
+        {(matchId['1f'] || matchId['2f']) !== null && (
+          <p
+            onClick={() => removeFirstScore(currentMatch.match_info.match_id)}
+            className="absolute top-2 right-2 underline"
+          >
+            Cancel
+          </p>
+        )}
+
         <div className="flex justify-center gap-1.5">
-          <div className="h-10 w-full rounded-xl bg-[var(--color-secondary)]">
+          <div
+            onClick={() =>
+              handleFirstScore(currentMatch.match_info.match_id, '1')
+            }
+            className="h-10 w-full rounded-xl bg-[var(--color-secondary)]"
+            style={{
+              width: matchId['1f'] === null ? '100%' : `${matchId['1f']}%`,
+            }}
+          >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
-              1
+              {matchId['1f'] === null ? 1 : `${Math.round(matchId['1f'])}%`}
             </p>
           </div>
 
-          <div className="h-10 w-full rounded-xl bg-[var(--color-grey-30)]">
+          <div
+            onClick={() =>
+              handleFirstScore(
+                currentMatch.match_info.match_id,
+                'without_heads'
+              )
+            }
+            className="h-10 w-full rounded-xl bg-[var(--color-grey-30)]"
+            style={{
+              width: matchId['wh'] === null ? '100%' : `${matchId['wh']}%`,
+            }}
+          >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
-              Withoutnheads
+              {matchId['wh'] === null
+                ? 'Withoutnheads'
+                : `${Math.round(matchId['wh'])}%`}
             </p>
           </div>
 
-          <div className="h-10 w-full rounded-xl bg-[var(--color-primary)]">
+          <div
+            onClick={() =>
+              handleFirstScore(currentMatch.match_info.match_id, '2')
+            }
+            className="h-10 w-full rounded-xl bg-[var(--color-primary)]"
+            style={{
+              width: matchId['2f'] === null ? '100%' : `${matchId['2f']}%`,
+            }}
+          >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
-              2
+              {matchId['2f'] === null ? 2 : `${Math.round(matchId['2f'])}%`}
             </p>
           </div>
         </div>
@@ -149,21 +286,46 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
         </p>
       </div>
 
-      <div className="flex h-33.5 w-[400px] flex-col justify-center rounded-xl bg-[var(--color-grey-60)] px-2.5 py-0">
+      <div className="relative flex h-33.5 w-[400px] flex-col justify-center rounded-xl bg-[var(--color-grey-60)] px-2.5 py-0">
         <p className="mb-1.5 text-center text-2xl font-normal text-[var(--color-grey-0)]">
           Will there be a draw
         </p>
 
-        <div className="flex justify-center gap-1.5">
+        {(matchId['noD'] || matchId['yesD']) !== null && (
+          <p
+            onClick={() => removeDraw(currentMatch.match_info.match_id)}
+            className="absolute top-2 right-2 underline"
+          >
+            Cancel
+          </p>
+        )}
+
+        <div
+          onClick={() => handleDraw(currentMatch.match_info.match_id, 'yes')}
+          className="flex justify-center gap-1.5"
+          style={{
+            width: matchId['yesD'] === null ? '100%' : `${matchId['yesD']}%`,
+          }}
+        >
           <div className="h-10 w-full rounded-xl bg-[var(--color-secondary)]">
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
-              Yes
+              {matchId['yesD'] === null
+                ? 'Yes'
+                : `${Math.round(matchId['yesD'])}%`}
             </p>
           </div>
 
-          <div className="h-10 w-full rounded-xl bg-[var(--color-primary)]">
+          <div
+            onClick={() => handleDraw(currentMatch.match_info.match_id, 'no')}
+            className="h-10 w-full rounded-xl bg-[var(--color-primary)]"
+            style={{
+              width: matchId['noD'] === null ? '100%' : `${matchId['noD']}%`,
+            }}
+          >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
-              No
+              {matchId['noD'] === null
+                ? 'No'
+                : `${Math.round(matchId['noD'])}%`}
             </p>
           </div>
         </div>

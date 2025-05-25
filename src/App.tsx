@@ -19,7 +19,8 @@ const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
-    !!sessionStorage.getItem('logged')
+    // !!sessionStorage.getItem('logged')
+    true
   );
   const [isOpen, setIsOpen] = useState<Open>('start');
 
