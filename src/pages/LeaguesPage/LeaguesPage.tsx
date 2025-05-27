@@ -7,7 +7,7 @@ export const LeaguesPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div>
+      <div className="pr-8 pl-16">
         {[...Array(10)].map((_, index) => (
           <CountrySkeleton key={index} />
         ))}
@@ -16,7 +16,7 @@ export const LeaguesPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="pr-8 pl-16">
       {countries &&
         countries.map((country) => (
           <Country key={country.countryName} country={country} />
