@@ -13,6 +13,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { LeaguesPage } from './pages/LeaguesPage/LeaguesPage';
 
 import axios from 'axios';
+import { ProfilePage } from './pages/ProfilePage/ProfilePage';
 
 const queryClient = new QueryClient();
 const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
@@ -29,16 +30,14 @@ function App() {
     console.log('backend', BACKEND);
     const auth = async () => {
       try {
-        const res = await axios.get(
-          `${BACKEND}/isUserLogged`,
-          { withCredentials: true }
-        );
+        const res = await axios.get(`${BACKEND}/isUserLogged`, {
+          withCredentials: true,
+        });
         if (res.data.user) {
           setIsAuthenticated(res.data.user);
           sessionStorage.setItem('logged', 'true');
         }
       } catch (error) {
-
         setIsAuthenticated(false);
         sessionStorage.removeItem('logged');
       }
@@ -72,6 +71,7 @@ function App() {
 
             <Route path="current_match" element={<CurrentMatch />} />
             <Route path="favourite" element={<FavouriteMatches />} />
+            <Route path="profile" element={<ProfilePage />} />
           </Route>
         </Route>
         <Route path="*" element={<Page404 />} />
