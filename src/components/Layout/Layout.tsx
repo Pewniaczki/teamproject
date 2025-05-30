@@ -8,12 +8,11 @@ export const Layout: React.FC = () => {
         <Header />
       </header>
 
-
-      <main className='min-h-dvh text-[var(--color-grey-0)] flex flex-col mb-2.5 lg:w-full'>
+      <main className="mb-2.5 flex min-h-dvh w-full flex-col text-[var(--color-grey-0)]">
         <Outlet />
       </main>
 
-      <footer >{/* <Footer /> */}</footer>
+      <footer>{/* <Footer /> */}</footer>
     </div>
   );
 };
