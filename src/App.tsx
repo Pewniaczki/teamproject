@@ -14,6 +14,7 @@ import { LeaguesPage } from './pages/LeaguesPage/LeaguesPage';
 
 import axios from 'axios';
 import { ProfilePage } from './pages/ProfilePage/ProfilePage';
+import { LeagueMatches } from './LeagueMatches/LeagueMatches';
 
 const queryClient = new QueryClient();
 const BACKEND = import.meta.env.VITE_BACKEND_LOGIN_URL;
@@ -26,7 +27,6 @@ function App() {
   const [isOpen, setIsOpen] = useState<Open>('start');
 
   useEffect(() => {
-    console.log('weszło');
     console.log('backend', BACKEND);
     const auth = async () => {
       try {
@@ -66,12 +66,11 @@ function App() {
           <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
             <Route index element={<Navigate to="/matches" />} />
             <Route path="matches" element={<MatchesPage />} />
-
             <Route path="league" element={<LeaguesPage />} />
-
             <Route path="current_match" element={<CurrentMatch />} />
             <Route path="favourite" element={<FavouriteMatches />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path='league_matches' element={<LeagueMatches />} />
           </Route>
         </Route>
         <Route path="*" element={<Page404 />} />

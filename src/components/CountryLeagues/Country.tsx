@@ -17,7 +17,7 @@ export const Country: React.FC<Props> = ({ country }) => {
     <div className="w-full place-items-center p-4">
       <div
         onClick={handleClick}
-        className={`flex w-full max-w-[var(--country-list-MaxWidth)] min-w-[var(--country-list-MinWidth)] items-center justify-between rounded-sm bg-[var(--color-grey-60)] px-2 py-4 text-[var(--color-grey-70)] ${isOpen && 'mb-0 rounded-b-none'}`}
+        className={`flex cursor-pointer w-full max-w-[var(--country-list-MaxWidth)] min-w-[var(--country-list-MinWidth)] items-center justify-between rounded-sm bg-[var(--color-grey-60)] px-2 py-4 text-[var(--color-grey-70)] ${isOpen && 'mb-0 rounded-b-none'}`}
       >
         <div className="flex items-center gap-6">
           <img

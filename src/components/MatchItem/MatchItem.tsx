@@ -1,15 +1,16 @@
 import { Match } from '../../types/countryMatchesTypes';
 import { LastMatch } from '../LastMatch';
 
+type MatchInfo = Match['match_info'];
+
 type Props = {
-  match: Match;
+  match_info: MatchInfo;
 };
 
-export const MatchItem: React.FC<Props> = ({ match }) => {
-  const { match_info } = match;
+export const MatchItem: React.FC<Props> = ({ match_info }) => {
   return (
     <>
-      <table className='text-sm text-[var(--color-grey-20)] p-1.5 text-center w-full font-extralight mb-1.5 not-italic border-collapse'>
+      <table className="mb-1.5 w-full border-collapse p-1.5 text-center text-sm font-extralight text-[var(--color-grey-20)] not-italic">
         <thead>
           <tr>
             <th></th>
@@ -21,20 +22,20 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
         </thead>
         <tbody>
           <tr>
-            <td className='font-medium'>
+            <td className="font-medium">
               {new Date(match_info.date_time).toLocaleTimeString('pl-PL', {
                 hour: '2-digit',
                 minute: '2-digit',
               })}
             </td>
             <td>
-              <div className='flex gap-1 w-20'>
+              <div className="flex w-20 gap-1">
                 <img
-                  className='w-3.5 h-3.5 rounded-[50%]'
+                  className="h-3.5 w-3.5 rounded-[50%]"
                   alt="team logo"
                   src={match_info.home_team_logo}
                 />
-                <p className='whitespace-nowrap leading-3.5 font-medium'>
+                <p className="leading-3.5 font-medium whitespace-nowrap">
                   {match_info.home_team}
                 </p>
               </div>
@@ -53,13 +54,13 @@ export const MatchItem: React.FC<Props> = ({ match }) => {
           <tr>
             <td>{'\u2014'}</td>
             <td>
-              <div className='flex gap-1 w-20'>
+              <div className="flex w-20 gap-1">
                 <img
-                  className='w-3.5 h-3.5 rounded-[50%]'
+                  className="h-3.5 w-3.5 rounded-[50%]"
                   alt="team logo"
                   src={match_info.away_team_logo}
                 />
-                <p className='whitespace-nowrap leading-3.5 font-medium'>
+                <p className="leading-3.5 font-medium whitespace-nowrap">
                   {match_info.away_team}
                 </p>
               </div>
