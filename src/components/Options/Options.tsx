@@ -1,9 +1,9 @@
-import axios from 'axios';
-import Select from 'react-select';
+// import axios from 'axios';
+// import Select from 'react-select';
 
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { useDateStore } from '../../zustand/useDate';
-import { TeamTypes } from '../../types/teamTypes';
+// import { TeamTypes } from '../../types/teamTypes';
 
 // type CompetitionType = {
 //   competition_id: number;
@@ -12,44 +12,44 @@ import { TeamTypes } from '../../types/teamTypes';
 //   country: null | string;
 // };
 
-type OptionType = {
-  value: number;
-  label: string;
-  logo: string;
-};
+// type OptionType = {
+//   value: number;
+//   label: string;
+//   logo: string;
+// };
 
-const BACKEND = import.meta.env.VITE_BACKEND_PEWNIACZKI;
+// const BACKEND = import.meta.env.VITE_BACKEND_PEWNIACZKI;
 
 export const Options: React.FC = () => {
-  const [options, setOptions] = useState<OptionType[]>([]);
-  const [selectedOption, setSelectedOption] = useState<OptionType | null>(null);
+  // const [options, setOptions] = useState<OptionType[]>([]);
+  // const [selectedOption, setSelectedOption] = useState<OptionType | null>(null);
   const { date, setDate } = useDateStore();
 
-  useEffect(() => {
-    const getOptions = async () => {
-      try {
-        const response = await axios(`${BACKEND}/api/teams`);
-        if (response.data) {
-          console.log('dada', response.data);
-          const mapped = response.data.map((item: TeamTypes) => ({
-            value: item.team_id,
-            label: item.name,
-            logo: item.logo,
-          }));
-          setOptions(mapped);
-        }
-      } catch (error) {
-        console.error({ message: 'Error in fetching options', error });
-      }
-    };
+  // useEffect(() => {
+  //   const getOptions = async () => {
+  //     try {
+  //       const response = await axios(`${BACKEND}/api/teams`);
+  //       if (response.data) {
+  //         console.log('dada', response.data);
+  //         const mapped = response.data.map((item: TeamTypes) => ({
+  //           value: item.team_id,
+  //           label: item.name,
+  //           logo: item.logo,
+  //         }));
+  //         setOptions(mapped);
+  //       }
+  //     } catch (error) {
+  //       console.error({ message: 'Error in fetching options', error });
+  //     }
+  //   };
 
-    getOptions();
-  }, []);
+  //   getOptions();
+  // }, []);
 
   return (
     <div className="mb-8 flex w-full flex-col justify-between gap-6 px-2.5 py-0 lg:flex-row">
       <div className="flex w-full justify-between">
-        <Select
+        {/* <Select
           classNamePrefix="react-select"
           className="w-32.5 rounded-md border-none bg-[var(--color-grey-70)] p-2 text-base font-normal text-[var(--color-grey-20)] lg:w-fit"
           options={options}
@@ -101,7 +101,11 @@ export const Options: React.FC = () => {
               color: 'white',
             }),
           }}
-        />
+        /> */}
+
+        <p>Select date 📅</p>
+
+        <p>{'=>'}</p>
 
         <input
           className="w-32.5 rounded-md border-none bg-[var(--color-grey-70)] p-2 text-base font-normal text-[var(--color-grey-20)] lg:w-fit"

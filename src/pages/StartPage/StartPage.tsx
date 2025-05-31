@@ -33,30 +33,35 @@ export const StartPage: React.FC<Props> = ({
               <p className="mb-[10%] text-center text-2xl font-normal text-[var(--color-grey-30)]">
                 REGISTER OR LOG IN
               </p>
+
               <div className="mb-7.5 flex w-full flex-col bg-[var(--color-grey-70)] p-[2%]">
-                <p className="p-[3%] text-center text-lg font-medium text-[var(--color-grey-20)]">
+                <p className="cursor-default p-[3%] text-center text-lg font-medium text-[var(--color-grey-20)]">
                   New to WinZone?
                 </p>
+
                 <button
                   onClick={() => setIsOpen('signup')}
-                  className="border-1 border-[var(--color-secondary)] bg-[var(--color-grey-70)] px-2.5 py-4 text-[var(--color-secondary)] hover:bg-[var(--color-secondary-20)]"
+                  className="cursor-pointer border-1 border-[var(--color-secondary)] bg-[var(--color-grey-70)] px-2.5 py-4 text-[var(--color-secondary)] hover:bg-[var(--color-secondary-20)]"
                 >
                   SIGN UP
                 </button>
               </div>
+
               <div className="mb-7.5 flex w-full flex-col bg-[var(--color-grey-70)] p-[2%]">
-                <p className="p-[3%] text-center text-lg font-medium text-[var(--color-grey-20)]">
-                  New to WinZone?
+                <p className="cursor-default p-[3%] text-center text-lg font-medium text-[var(--color-grey-20)]">
+                  Login to WinZone?
                 </p>
+
                 <button
                   onClick={() => setIsOpen('login')}
-                  className="border-1 border-[var(--color-secondary)] bg-[var(--color-grey-70)] px-2.5 py-4 text-[var(--color-secondary)] hover:bg-[var(----color-secondary-20)]"
+                  className="cursor-pointer border-1 border-[var(--color-secondary)] bg-[var(--color-grey-70)] px-2.5 py-4 text-[var(--color-secondary)] hover:bg-[var(--color-secondary-20)]"
                 >
                   LOG IN
                 </button>
               </div>
             </div>
           )}
+
           {isOpen === 'login' && (
             <LoginPage
               setIsOpen={setIsOpen}

@@ -17,7 +17,7 @@ export const NavbarItem = ({
   return (
     <a
       href={link}
-      className={`flex basis-[20%] flex-col items-center justify-center gap-1.5 p-2 text-[var(--color-grey-40)] no-underline lg:max-h-20 lg:min-h-20 lg:flex-row ${active && 'text-[var(--color-secondary)]'}`}
+      className={`flex basis-[20%] cursor-pointer flex-col items-center justify-center gap-1.5 p-2 text-[var(--color-grey-40)] no-underline lg:max-h-20 lg:min-h-20 lg:flex-row ${active && 'text-[var(--color-secondary)]'}`}
       role="menuitem"
       onClick={onClick}
     >
