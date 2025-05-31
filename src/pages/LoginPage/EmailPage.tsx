@@ -36,7 +36,7 @@ export const EmailPage: React.FC<Props> = ({ formik, setInput }) => {
             setInput('password');
           }
         }}
-        className="h-12 w-full border-1 border-[var(--color-grey-40)] bg-[var(--color-grey-70)] font-bold text-[var(--color-grey-40)] hover:border-[var(--color-secondary)] hover:bg-[var(--color-secondary-20)] hover:text-[var(--color-secondary)] active:border-[var(--color-secondary)] active:bg-[var(--color-secondary-20)] active:text-[var(--color-secondary)]"
+        className="h-12 w-full cursor-pointer border-1 border-[var(--color-grey-40)] bg-[var(--color-grey-70)] font-bold text-[var(--color-grey-40)] hover:border-[var(--color-secondary)] hover:bg-[var(--color-secondary-20)] hover:text-[var(--color-secondary)] active:border-[var(--color-secondary)] active:bg-[var(--color-secondary-20)] active:text-[var(--color-secondary)]"
       >
         CONTINUE
       </button>

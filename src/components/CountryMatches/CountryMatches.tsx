@@ -14,7 +14,7 @@ export const CountryMatches: React.FC<Props> = ({ countryName, details }) => {
   };
 
   return (
-    <div className="mb-1 w-full place-items-center">
+    <div onClick={handleClick} className="mb-1 w-full place-items-center cursor-pointer">
       <div
         className={`flex w-full max-w-[var(--country-list-MaxWidth)] min-w-[var(--country-list-MinWidth)] items-center justify-between rounded-sm bg-[var(--color-grey-60)] px-2 py-4 text-[var(--color-grey-70)] ${isOpen && 'mb-0 rounded-b-none'}`}
       >
@@ -38,7 +38,6 @@ export const CountryMatches: React.FC<Props> = ({ countryName, details }) => {
             className={`h-5 w-5 transition-transform duration-200 ease-in-out ${isOpen && 'rotate-180'}`}
             src="./UI_Elements/arrow_down.svg"
             alt="arrow up"
-            onClick={handleClick}
           />
         </div>
       </div>

@@ -42,7 +42,7 @@ export const PasswordPage: React.FC<Props> = ({
         disabled={isButtonDisabled}
         aria-disabled={isButtonDisabled}
         tabIndex={isButtonDisabled ? -1 : 0}
-        className="h-12 w-full border-1 border-[var(--color-grey-40)] bg-[var(--color-grey-70)] font-bold text-[var(--color-grey-40)] hover:border-1 hover:border-[var(--color-secondary)] hover:bg-[var(--color-secondary-20)] hover:text-[var(--color-secondary)]"
+        className="h-12 w-full cursor-pointer border-1 border-[var(--color-grey-40)] bg-[var(--color-grey-70)] font-bold text-[var(--color-grey-40)] hover:border-1 hover:border-[var(--color-secondary)] hover:bg-[var(--color-secondary-20)] hover:text-[var(--color-secondary)]"
         title={
           isButtonDisabled ? 'Fill out all required fields first.' : undefined
         }
