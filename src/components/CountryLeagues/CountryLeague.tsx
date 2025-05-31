@@ -6,7 +6,7 @@ type Props = {
 
 export const CountryLeague: React.FC<Props> = ({ league }) => {
   return (
-    <div className="mt-2 flex items-center gap-4 rounded bg-[var(--color-grey-60)] p-3 text-[var(--color-grey-20)] shadow transition hover:bg-gray-50 hover:text-[var(--color-grey-60)]">
+    <div className="mt-2 cursor-pointer flex items-center gap-4 rounded bg-[var(--color-grey-60)] p-3 text-[var(--color-grey-20)] shadow transition hover:bg-gray-50 hover:text-[var(--color-grey-60)]">
       <img
         src={league.logo}
         alt={`${league.name} logo`}

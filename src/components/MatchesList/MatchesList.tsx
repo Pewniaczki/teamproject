@@ -9,7 +9,7 @@ export const MatchesList: React.FC<Props> = ({ details }) => {
   return (
     <div className='pb-1'>
       {details.map((detail) => (
-        <MatchItem key={detail.match_info.match_id} match={detail} />
+        <MatchItem key={detail.match_info.match_id} match_info={detail.match_info} />
       ))}
     </div>
   );
