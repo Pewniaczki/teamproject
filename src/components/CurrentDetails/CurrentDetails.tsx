@@ -2,10 +2,7 @@ import axios from 'axios';
 import { Match } from '../../types/countryMatchesTypes';
 
 import { useEffect } from 'react';
-import {
-  ScoreType,
-  TeamType,
-} from '../../types/teamTypes';
+import { ScoreType, TeamType } from '../../types/teamTypes';
 import { useBettingStore } from '../../zustand/useBetting';
 
 type Props = {
@@ -184,12 +181,14 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
           onClick={() =>
             handleBothScore(currentMatch.match_info.match_id, 'yes')
           }
-          className="flex justify-center gap-1.5"
-          style={{
-            width: matchId['yes'] === null ? '100%' : `${matchId['yes']}%`,
-          }}
+          className="flex w-full justify-center gap-1.5"
         >
-          <div className="h-10 w-full rounded-xl bg-[var(--color-secondary)]">
+          <div
+            style={{
+              width: matchId['yes'] === null ? '100%' : `${matchId['yes']}%`,
+            }}
+            className="h-10 rounded-xl bg-[var(--color-secondary)]"
+          >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
               {matchId['yes'] === null
                 ? 'Yes'
@@ -198,13 +197,13 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
           </div>
 
           <div
-            onClick={() =>
-              handleBothScore(currentMatch.match_info.match_id, 'no')
-            }
-            className="h-10 w-full rounded-xl bg-[var(--color-primary)]"
             style={{
               width: matchId['no'] === null ? '100%' : `${matchId['no']}%`,
             }}
+            onClick={() =>
+              handleBothScore(currentMatch.match_info.match_id, 'no')
+            }
+            className="h-10 rounded-xl bg-[var(--color-primary)]"
           >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
               {matchId['no'] === null ? 'No' : `${Math.round(matchId['no'])}%`}
@@ -300,12 +299,14 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
 
         <div
           onClick={() => handleDraw(currentMatch.match_info.match_id, 'yes')}
-          className="flex justify-center gap-1.5"
-          style={{
-            width: matchId['yesD'] === null ? '100%' : `${matchId['yesD']}%`,
-          }}
+          className="flex w-full justify-center gap-1.5"
         >
-          <div className="h-10 w-full rounded-xl bg-[var(--color-secondary)]">
+          <div
+            style={{
+              width: matchId['yesD'] === null ? '100%' : `${matchId['yesD']}%`,
+            }}
+            className="h-10 rounded-xl bg-[var(--color-secondary)]"
+          >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
               {matchId['yesD'] === null
                 ? 'Yes'
@@ -314,11 +315,11 @@ export const CurrentDetails: React.FC<Props> = ({ currentMatch }) => {
           </div>
 
           <div
-            onClick={() => handleDraw(currentMatch.match_info.match_id, 'no')}
-            className="h-10 w-full rounded-xl bg-[var(--color-primary)]"
             style={{
               width: matchId['noD'] === null ? '100%' : `${matchId['noD']}%`,
             }}
+            onClick={() => handleDraw(currentMatch.match_info.match_id, 'no')}
+            className="h-10 rounded-xl bg-[var(--color-primary)]"
           >
             <p className="text-center leading-10 font-bold text-[var(--color-grey-60)]">
               {matchId['noD'] === null
