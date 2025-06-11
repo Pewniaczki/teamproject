@@ -111,7 +111,7 @@ export const Options: React.FC = () => {
   }, []);
   return (
     <div className="mb-8 flex w-full flex-col justify-between gap-6 px-2.5 py-0 lg:flex-row">
-      <div className="flex w-full justify-between">
+      <div className="flex w-full justify-between items-baseline">
         {/* <Select
           classNamePrefix="react-select"
           className="w-32.5 rounded-md border-none bg-[var(--color-grey-70)] p-2 text-base font-normal text-[var(--color-grey-20)] lg:w-fit"
